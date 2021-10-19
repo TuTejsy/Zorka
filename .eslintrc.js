@@ -4,5 +4,6 @@ module.exports = {
   rules: {
     'no-extend-native': 'off',
     'no-sparse-arrays': 'off',
+    // 'prettier/prettier': 0,
   },
 };

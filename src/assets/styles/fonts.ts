@@ -1,7 +1,8 @@
 const fonts = {
-  BOLD: 'HeroNewBold',
-  MEDIUM: 'HeroNewMedium',
-  REGULAR: 'HeroNewRegular',
+    BOLD: 'HeroNewBold',
+    LIGHT: 'HeroNewLight',
+    MEDIUM: 'HeroNewMedium',
+    REGULAR: 'HeroNewRegular',
 };
 
 export default fonts;

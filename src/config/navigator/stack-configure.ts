@@ -7,18 +7,18 @@ const configureNavigationStack = (rootScreen: string) => ({
                     options: {
                         statusBar: {
                             backgroundColor: '#FFF',
-                        }
-                    }
-                }
-            }
+                        },
+                    },
+                },
+            },
         ],
         options: {
             topBar: {
                 visible: false,
                 height: 0,
-            }
-        }
-    }
+            },
+        },
+    },
 });
 
 export default configureNavigationStack;

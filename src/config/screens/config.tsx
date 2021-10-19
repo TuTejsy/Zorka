@@ -7,17 +7,11 @@ import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 
 import { NAVIGATION } from 'appConstants';
 
-// import { GetStartedScreen } from 'appContainers/screens';
-
-// import {
-
-// } from 'appContainers/';
-
-import App from '../../App';
+import { GetStartedScreen } from 'appContainers/screens';
 
 /* eslint-disable */
 const screens: [[string, Component]] = [
-    [ NAVIGATION.SCREENS.COMMON.GET_STARTED, App ],
+    [ NAVIGATION.SCREENS.COMMON.GET_STARTED, GetStartedScreen ],
 ];
 /* eslint-enable */
 

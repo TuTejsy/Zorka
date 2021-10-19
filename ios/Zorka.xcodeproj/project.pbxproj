@@ -14,6 +14,10 @@
 		6172F2D35A4C3AA820D92908 /* libPods-Zorka.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6423831EA8574132BED9D8CC /* libPods-Zorka.a */; };
 		7EF68E3733C33B6898317E18 /* libPods-Zorka-ZorkaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-Zorka-ZorkaTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		4F96E7BF59F549D199CB04E9 /* HeroNewBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5BA69E2D112441E69EBA8134 /* HeroNewBold.ttf */; };
+		FC64BF3254C04C6D9181F999 /* HeroNewLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74AE200985734B37BF852707 /* HeroNewLight.ttf */; };
+		25F9CDD3C7FF49B38ECFDB21 /* HeroNewMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 292C8239969F418791AAF7BD /* HeroNewMedium.ttf */; };
+		6444751D6A5B4B048A1E8889 /* HeroNewRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DDA79A152634656A22B160E /* HeroNewRegular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +48,10 @@
 		C0A881CF5CF3F2B244570E2A /* Pods-Zorka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zorka.debug.xcconfig"; path = "Target Support Files/Pods-Zorka/Pods-Zorka.debug.xcconfig"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-Zorka.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zorka.release.xcconfig"; path = "Target Support Files/Pods-Zorka/Pods-Zorka.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		5BA69E2D112441E69EBA8134 /* HeroNewBold.ttf */ = {isa = PBXFileReference; name = "HeroNewBold.ttf"; path = "../src/assets/fonts/HeroNewBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		74AE200985734B37BF852707 /* HeroNewLight.ttf */ = {isa = PBXFileReference; name = "HeroNewLight.ttf"; path = "../src/assets/fonts/HeroNewLight.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		292C8239969F418791AAF7BD /* HeroNewMedium.ttf */ = {isa = PBXFileReference; name = "HeroNewMedium.ttf"; path = "../src/assets/fonts/HeroNewMedium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		9DDA79A152634656A22B160E /* HeroNewRegular.ttf */ = {isa = PBXFileReference; name = "HeroNewRegular.ttf"; path = "../src/assets/fonts/HeroNewRegular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +130,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				E233CBF5F47BEE60B243DCF8 /* Pods */,
+				D9532B2B55014EA299D3ED45 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -148,6 +157,18 @@
 			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		D9532B2B55014EA299D3ED45 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				5BA69E2D112441E69EBA8134 /* HeroNewBold.ttf */,
+				74AE200985734B37BF852707 /* HeroNewLight.ttf */,
+				292C8239969F418791AAF7BD /* HeroNewMedium.ttf */,
+				9DDA79A152634656A22B160E /* HeroNewRegular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -245,6 +266,10 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				4F96E7BF59F549D199CB04E9 /* HeroNewBold.ttf in Resources */,
+				FC64BF3254C04C6D9181F999 /* HeroNewLight.ttf in Resources */,
+				25F9CDD3C7FF49B38ECFDB21 /* HeroNewMedium.ttf in Resources */,
+				6444751D6A5B4B048A1E8889 /* HeroNewRegular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
