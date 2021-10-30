@@ -7,7 +7,10 @@ const colors = {
 
     YONDER_BLUE: '#577399',
 
+    GREEN: '#BBECD9',
+
     LIGHT_BLUE: '#BDD5EA',
+
     ORANGE_RED: '#FE5F55',
 
     GREY: '#E8E8E8',

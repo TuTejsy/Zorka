@@ -13,15 +13,15 @@ const screensOptions: ScreensOptions = {
         topBar: {
             title: {
                 text: 'Create Wallet',
-                color: colors.CORAL_BLACK,
+                color: colors.GHOST_WHITE,
                 fontSize: 16,
                 fontFamily: fonts.MEDIUM,
             },
             background: {
-                color: colors.GHOST_WHITE,
+                color: colors.YONDER_BLUE,
             },
             backButton: {
-                color: colors.CORAL_BLACK,
+                color: colors.GHOST_WHITE,
                 enableMenu: false,
             },
             visible: true,

@@ -1,0 +1,1 @@
+export const SECRETPHRASE_LENGTH = 24;

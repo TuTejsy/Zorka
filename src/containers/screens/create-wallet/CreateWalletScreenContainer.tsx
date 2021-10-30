@@ -1,17 +1,20 @@
-import React, { useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import { CreateWalletScreen } from 'appComponents/screens';
 
 interface CreateWalletScreenContainerPropTypes {}
 
 function CreateWalletScreenContainer({}: CreateWalletScreenContainerPropTypes) {
-    const handleSignInPress = useCallback(() => {}, []);
-    const handleCreateWalletPress = useCallback(() => {}, []);
+    const [isGenerating, setIsGenerating] = useState(false);
+
+    const handleGenerateSecretPhrasePress = useCallback(() => {
+        setIsGenerating(true);
+    }, []);
 
     return (
         <CreateWalletScreen
-            onSignInPress={handleSignInPress}
-            onCreateWalletPress={handleCreateWalletPress}
+            isGenerating={isGenerating}
+            onGenerateSecretPhrasePress={handleGenerateSecretPhrasePress}
         />
     );
 }

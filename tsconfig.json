@@ -45,6 +45,7 @@
         "appContainers/*": [ "src/containers/*" ],
         
         "appApi": [ "src/api" ],
+        "appData": [ "src/data" ],
         "appUtils": [ "src/utils" ],
         "appHooks": [ "src/hooks" ],
         "appAssets/*": [ "src/assets/*" ],
