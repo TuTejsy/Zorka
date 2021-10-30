@@ -17,6 +17,7 @@
 		6444751D6A5B4B048A1E8889 /* HeroNewRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9DDA79A152634656A22B160E /* HeroNewRegular.ttf */; };
 		7EF68E3733C33B6898317E18 /* libPods-Zorka-ZorkaTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFE59519B596E51CEFDCCC0 /* libPods-Zorka-ZorkaTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		E9FE3BF3272DC67400A4C929 /* ZorkaNative.m in Sources */ = {isa = PBXBuildFile; fileRef = E9FE3BF2272DC67400A4C929 /* ZorkaNative.m */; };
 		FC64BF3254C04C6D9181F999 /* HeroNewLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 74AE200985734B37BF852707 /* HeroNewLight.ttf */; };
 /* End PBXBuildFile section */
 
@@ -41,16 +42,18 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = Zorka/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = Zorka/main.m; sourceTree = "<group>"; };
 		1D0AE47A65C8663E3B452821 /* Pods-Zorka-ZorkaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zorka-ZorkaTests.release.xcconfig"; path = "Target Support Files/Pods-Zorka-ZorkaTests/Pods-Zorka-ZorkaTests.release.xcconfig"; sourceTree = "<group>"; };
-		292C8239969F418791AAF7BD /* HeroNewMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = HeroNewMedium.ttf; path = ../src/assets/fonts/HeroNewMedium.ttf; sourceTree = "<group>"; };
-		5BA69E2D112441E69EBA8134 /* HeroNewBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = HeroNewBold.ttf; path = ../src/assets/fonts/HeroNewBold.ttf; sourceTree = "<group>"; };
+		292C8239969F418791AAF7BD /* HeroNewMedium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = HeroNewMedium.ttf; path = ../src/assets/fonts/HeroNewMedium.ttf; sourceTree = "<group>"; };
+		5BA69E2D112441E69EBA8134 /* HeroNewBold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = HeroNewBold.ttf; path = ../src/assets/fonts/HeroNewBold.ttf; sourceTree = "<group>"; };
 		6423831EA8574132BED9D8CC /* libPods-Zorka.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Zorka.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C97AB639B58BBB4B15BBE30 /* Pods-Zorka-ZorkaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zorka-ZorkaTests.debug.xcconfig"; path = "Target Support Files/Pods-Zorka-ZorkaTests/Pods-Zorka-ZorkaTests.debug.xcconfig"; sourceTree = "<group>"; };
-		74AE200985734B37BF852707 /* HeroNewLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = HeroNewLight.ttf; path = ../src/assets/fonts/HeroNewLight.ttf; sourceTree = "<group>"; };
+		74AE200985734B37BF852707 /* HeroNewLight.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = HeroNewLight.ttf; path = ../src/assets/fonts/HeroNewLight.ttf; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = Zorka/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9DDA79A152634656A22B160E /* HeroNewRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = HeroNewRegular.ttf; path = ../src/assets/fonts/HeroNewRegular.ttf; sourceTree = "<group>"; };
+		9DDA79A152634656A22B160E /* HeroNewRegular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = HeroNewRegular.ttf; path = ../src/assets/fonts/HeroNewRegular.ttf; sourceTree = "<group>"; };
 		ABFE59519B596E51CEFDCCC0 /* libPods-Zorka-ZorkaTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Zorka-ZorkaTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0A881CF5CF3F2B244570E2A /* Pods-Zorka.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zorka.debug.xcconfig"; path = "Target Support Files/Pods-Zorka/Pods-Zorka.debug.xcconfig"; sourceTree = "<group>"; };
 		D00AAFFCFCFDA5787532823F /* Pods-Zorka.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Zorka.release.xcconfig"; path = "Target Support Files/Pods-Zorka/Pods-Zorka.release.xcconfig"; sourceTree = "<group>"; };
+		E9FE3BF1272DC67400A4C929 /* ZorkaNative.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZorkaNative.h; sourceTree = "<group>"; };
+		E9FE3BF2272DC67400A4C929 /* ZorkaNative.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ZorkaNative.m; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -94,6 +97,7 @@
 		13B07FAE1A68108700A75B9A /* Zorka */ = {
 			isa = PBXGroup;
 			children = (
+				E9FE3BF0272DC61000A4C929 /* ZorkaNative */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -155,7 +159,6 @@
 				9DDA79A152634656A22B160E /* HeroNewRegular.ttf */,
 			);
 			name = Resources;
-			path = "";
 			sourceTree = "<group>";
 		};
 		E233CBF5F47BEE60B243DCF8 /* Pods */ = {
@@ -166,8 +169,16 @@
 				6C97AB639B58BBB4B15BBE30 /* Pods-Zorka-ZorkaTests.debug.xcconfig */,
 				1D0AE47A65C8663E3B452821 /* Pods-Zorka-ZorkaTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E9FE3BF0272DC61000A4C929 /* ZorkaNative */ = {
+			isa = PBXGroup;
+			children = (
+				E9FE3BF1272DC67400A4C929 /* ZorkaNative.h */,
+				E9FE3BF2272DC67400A4C929 /* ZorkaNative.m */,
+			);
+			name = ZorkaNative;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -436,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9FE3BF3272DC67400A4C929 /* ZorkaNative.m in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);

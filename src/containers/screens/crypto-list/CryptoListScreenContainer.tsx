@@ -5,15 +5,15 @@ import { Options } from 'react-native-navigation';
 import { actionCreators } from 'appApi';
 import { Generator } from 'appUtils';
 import { NAVIGATION } from 'appConstants';
-import { CreateWalletScreen } from 'appComponents/screens';
+import { CryptoListScreen } from 'appComponents/screens';
 
-interface CreateWalletScreenContainerPropTypes {
+interface CryptoListScreenContainerPropTypes {
     componentId: string;
 }
 
-function CreateWalletScreenContainer({
+function CryptoListScreenContainer({
     componentId,
-}: CreateWalletScreenContainerPropTypes) {
+}: CryptoListScreenContainerPropTypes) {
     const dispatch = useDispatch();
     const dispatchPush = useCallback(
         ({
@@ -57,11 +57,11 @@ function CreateWalletScreenContainer({
     }, [dispatchPush]);
 
     return (
-        <CreateWalletScreen
+        <CryptoListScreen
             isGenerating={isGenerating}
             onGenerateSecretPhrasePress={handleGenerateSecretPhrasePress}
         />
     );
 }
 
-export default React.memo(CreateWalletScreenContainer);
+export default React.memo(CryptoListScreenContainer);

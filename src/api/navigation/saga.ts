@@ -1,8 +1,9 @@
 import { fork } from 'redux-saga/effects';
 
-import { watchNavigationActions } from './watchers';
+import { watchSetRoot, watchNavigationActions } from './watchers';
 
 function* navigationStateSaga(dispatch) {
+    yield fork(watchSetRoot);
     yield fork(watchNavigationActions);
 }
 

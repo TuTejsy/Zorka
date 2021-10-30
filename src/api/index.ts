@@ -1,15 +1,28 @@
 import { all } from 'redux-saga/effects';
 
-import { authSaga, authReducer } from './auth';
-import { navigationSaga, navigationActionCreators } from './navigation';
+import {
+    authSaga,
+    authReducer,
+    authActionTypes,
+    authActionCreators,
+} from './auth';
+import {
+    navigationSaga,
+    navigationOperations,
+    navigationActionCreators,
+} from './navigation';
 
-export const types = {};
+export const types = {
+    ...authActionTypes,
+};
 
 export const reducers = {
     auth: authReducer,
 };
 
-export const operations = {};
+export const operations = {
+    ...navigationOperations,
+};
 
 export function* rootSaga(
     dispatch: (props: { type: string; payload: any }) => void,
@@ -18,6 +31,7 @@ export function* rootSaga(
 }
 
 export const actionCreators = {
+    ...authActionCreators,
     ...navigationActionCreators,
 };
 

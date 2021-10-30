@@ -9,20 +9,33 @@ import { NAVIGATION } from 'appConstants';
 
 import {
     GetStartedScreen,
+    CryptoListScreen,
     CreateWalletScreen,
     GeneratedSecretPhraseScreen,
 } from 'appContainers/screens';
 
+import { LeftSideMenu } from 'appContainers/navigation';
+
 /* eslint-disable */
 const screens: [[string, FunctionComponent | Component]] = [
     [ NAVIGATION.SCREENS.COMMON.GET_STARTED, GetStartedScreen ],
+    [ NAVIGATION.SCREENS.COMMON.CRYPTO_LIST, CryptoListScreen],
+
     [ NAVIGATION.SCREENS.AUTH.CREATE_WALLET, CreateWalletScreen],
     [ NAVIGATION.SCREENS.AUTH.GENERATED_SECRET_PHRASE, GeneratedSecretPhraseScreen],
+];
+
+const components: [[string, FunctionComponent | Component]] = [
+    [ NAVIGATION.COMPONENTS.CORE.LEFT_SIDE_MENU, LeftSideMenu],
 ];
 /* eslint-enable */
 
 const registerScreens = (store: Store) => {
     const registerScreen = registerScreenProvider(store);
+
+    components.forEach(([name, Component]) => {
+        registerScreen(name, Component);
+    });
 
     screens.forEach(([name, Component]) => {
         registerScreen(name, Component);

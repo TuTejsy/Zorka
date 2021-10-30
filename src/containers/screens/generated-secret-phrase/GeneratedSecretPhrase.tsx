@@ -1,6 +1,9 @@
 import React, { useRef, useCallback } from 'react';
 import { Share } from 'react-native';
 import ViewShot, { captureRef } from 'react-native-view-shot';
+import { useDispatch } from 'react-redux';
+
+import { actionCreators } from 'appApi';
 import { GeneratedSecretPhraseScreen } from 'appComponents/screens';
 
 interface GeneratedSecretPhraseScreenContainerPropTypes {
@@ -12,6 +15,15 @@ function GeneratedSecretPhraseScreenContainer({
     componentId,
     secretPhrase,
 }: GeneratedSecretPhraseScreenContainerPropTypes) {
+    const dispatch = useDispatch();
+    const dispatchCreateWallet = useCallback(() => {
+        dispatch(
+            actionCreators.createWallet({
+                secretPhrase,
+            }),
+        );
+    }, [dispatch, secretPhrase]);
+
     const secretPhraseRef = useRef<ViewShot>();
 
     const handleSaveSecretPhrasePress = useCallback(() => {
@@ -26,7 +38,9 @@ function GeneratedSecretPhraseScreenContainer({
         );
     }, []);
 
-    const handleDonePress = useCallback(() => {}, []);
+    const handleDonePress = useCallback(() => {
+        dispatchCreateWallet();
+    }, [dispatchCreateWallet]);
 
     return (
         <GeneratedSecretPhraseScreen

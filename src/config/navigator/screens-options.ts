@@ -16,6 +16,17 @@ const screensOptions: ScreensOptions = {
             },
         },
     },
+    [NAVIGATION.SCREENS.COMMON.CRYPTO_LIST]: {
+        topBar: {
+            title: {
+                text: 'Get Started',
+            },
+            background: {
+                color: colors.GHOST_WHITE,
+            },
+            visible: true,
+        },
+    },
 
     [NAVIGATION.SCREENS.AUTH.CREATE_WALLET]: {
         topBar: {

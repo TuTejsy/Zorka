@@ -21,6 +21,7 @@
     "react-native-navigation-hooks": "^6.3.0",
     "react-native-qrcode-svg": "^6.1.1",
     "react-native-randombytes": "^3.6.1",
+    "react-native-sensitive-info": "^5.5.8",
     "react-native-svg": "^12.1.1",
     "react-native-view-shot": "^3.1.2",
     "react-redux": "^7.2.5",

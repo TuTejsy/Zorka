@@ -3,7 +3,7 @@ import { call, take, fork, race } from 'redux-saga/effects';
 import navigationTypes from '../action-types';
 import { PopPayload, PushPayload } from '../types';
 
-import { pushTo } from '../operations';
+import navigationOperations from '../operations';
 
 export default function* () {
     yield fork(watchNavigationActions);
@@ -32,7 +32,7 @@ function* watchNavigationActions() {
                     },
                 }: { payload: PushPayload } = pushEvent;
 
-                yield call(pushTo, {
+                yield call(navigationOperations.pushTo, {
                     componentId,
                     screenName,
                     passProps,

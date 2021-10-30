@@ -41,9 +41,9 @@ function SecretPhrase({ secretPhrase }: SecretPhrasePropTypes) {
         <View style={styles.secretPhrase} onLayout={onViewLayout}>
             <View style={styles.secretPhraseColumnsContrainer}>
                 {secretPhraseArrays.map((secretWords, arrayIndex) => (
-                    <View style={styles.secretPhraseColumn}>
+                    <View key={arrayIndex} style={styles.secretPhraseColumn}>
                         {secretWords.map((word, wordIndex) => (
-                            <Text style={styles.word}>
+                            <Text key={word} style={styles.word}>
                                 {arrayIndex + wordIndex + 1}. {word}
                             </Text>
                         ))}

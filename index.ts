@@ -12,18 +12,4 @@ registerScreens(store);
 
 Navigation.events().registerAppLaunchedListener(() => {
     Navigation.setDefaultOptions(getDefaultOptions());
-
-    Navigation.setRoot({
-        root: {
-            stack: {
-                children: [
-                    {
-                        component: {
-                            name: NAVIGATION.SCREENS.COMMON.GET_STARTED,
-                        },
-                    },
-                ],
-            },
-        },
-    });
 });
