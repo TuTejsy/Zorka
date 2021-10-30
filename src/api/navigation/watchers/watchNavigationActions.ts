@@ -24,10 +24,20 @@ function* watchNavigationActions() {
 
             case !!pushEvent: {
                 const {
-                    payload: { componentId, screenName, screenOptions },
+                    payload: {
+                        componentId,
+                        screenName,
+                        passProps,
+                        screenOptions,
+                    },
                 }: { payload: PushPayload } = pushEvent;
 
-                yield call(pushTo, { componentId, screenName, screenOptions });
+                yield call(pushTo, {
+                    componentId,
+                    screenName,
+                    passProps,
+                    screenOptions,
+                });
                 break;
             }
         }

@@ -9,7 +9,15 @@ interface ScreensOptions {
 }
 
 const screensOptions: ScreensOptions = {
-    [NAVIGATION.SCREENS.COMMON.CREATE_WALLET]: {
+    [NAVIGATION.SCREENS.COMMON.GET_STARTED]: {
+        topBar: {
+            title: {
+                text: 'Get Started',
+            },
+        },
+    },
+
+    [NAVIGATION.SCREENS.AUTH.CREATE_WALLET]: {
         topBar: {
             title: {
                 text: 'Create Wallet',
@@ -22,6 +30,26 @@ const screensOptions: ScreensOptions = {
             },
             backButton: {
                 color: colors.GHOST_WHITE,
+                title: '',
+                enableMenu: false,
+            },
+            visible: true,
+        },
+    },
+    [NAVIGATION.SCREENS.AUTH.GENERATED_SECRET_PHRASE]: {
+        topBar: {
+            title: {
+                text: 'Secret Phrase',
+                color: colors.GHOST_WHITE,
+                fontSize: 16,
+                fontFamily: fonts.MEDIUM,
+            },
+            background: {
+                color: colors.YONDER_BLUE,
+            },
+            backButton: {
+                color: colors.GHOST_WHITE,
+                title: '',
                 enableMenu: false,
             },
             visible: true,

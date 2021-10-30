@@ -29,7 +29,7 @@ function GetStartedScreenContainer({
 
     const handleSignInPress = useCallback(() => {}, []);
     const handleCreateWalletPress = useCallback(() => {
-        dispatchPush(NAVIGATION.SCREENS.COMMON.CREATE_WALLET);
+        dispatchPush(NAVIGATION.SCREENS.AUTH.CREATE_WALLET);
     }, [dispatchPush]);
 
     return (

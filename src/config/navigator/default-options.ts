@@ -18,6 +18,7 @@ const getDefaultOptions: () => Options = () => ({
     },
     topBar: {
         title: {
+            title: 'Get Started',
             color: colors.BLACK,
         },
         visible: false,

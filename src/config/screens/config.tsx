@@ -7,12 +7,17 @@ import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 
 import { NAVIGATION } from 'appConstants';
 
-import { GetStartedScreen, CreateWalletScreen } from 'appContainers/screens';
+import {
+    GetStartedScreen,
+    CreateWalletScreen,
+    GeneratedSecretPhraseScreen,
+} from 'appContainers/screens';
 
 /* eslint-disable */
 const screens: [[string, FunctionComponent | Component]] = [
     [ NAVIGATION.SCREENS.COMMON.GET_STARTED, GetStartedScreen ],
-    [ NAVIGATION.SCREENS.COMMON.CREATE_WALLET, CreateWalletScreen],
+    [ NAVIGATION.SCREENS.AUTH.CREATE_WALLET, CreateWalletScreen],
+    [ NAVIGATION.SCREENS.AUTH.GENERATED_SECRET_PHRASE, GeneratedSecretPhraseScreen],
 ];
 /* eslint-enable */
 

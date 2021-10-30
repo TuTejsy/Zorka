@@ -4,12 +4,18 @@ import { call } from 'redux-saga/effects';
 import { screensOptions } from 'appConfig/navigator';
 
 interface PushToPropTypes {
+    passProps: any;
     screenName: string;
     componentId: string;
     screenOptions?: Options;
 }
 
-function* pushTo({ screenName, componentId, screenOptions }: PushToPropTypes) {
+function* pushTo({
+    passProps,
+    screenName,
+    componentId,
+    screenOptions,
+}: PushToPropTypes) {
     const defaultScreenOptions = screensOptions[screenName] ?? {};
 
     const combinedScreenOptions = {
@@ -22,6 +28,7 @@ function* pushTo({ screenName, componentId, screenOptions }: PushToPropTypes) {
             component: {
                 name: screenName,
                 options: combinedScreenOptions,
+                passProps,
             },
         });
     } catch (err) {

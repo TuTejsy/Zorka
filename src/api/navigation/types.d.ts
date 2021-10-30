@@ -9,5 +9,6 @@ interface PopPayload {
 interface PushPayload {
     componentId: string;
     screenName: string;
+    passProps?: any;
     screenOptions?: Options;
 }
