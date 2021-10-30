@@ -1,3 +1,4 @@
 import { SecretPharse } from './secret-pharse';
+import { NavBarDoneButton } from './navbar-done-button';
 
-export { SecretPharse };
+export { SecretPharse, NavBarDoneButton };
