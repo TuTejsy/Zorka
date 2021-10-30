@@ -39,6 +39,9 @@ function* pushTo({
 }
 
 function* setupRootCryptoScreen() {
+    const defaultScreenOptions =
+        screensOptions[NAVIGATION.SCREENS.COMMON.CRYPTO_LIST] ?? {};
+
     const setRootPromise = Navigation.setRoot({
         root: {
             sideMenu: {
@@ -54,6 +57,7 @@ function* setupRootCryptoScreen() {
                             {
                                 component: {
                                     name: NAVIGATION.SCREENS.COMMON.CRYPTO_LIST,
+                                    options: defaultScreenOptions,
                                 },
                             },
                         ],
@@ -67,6 +71,9 @@ function* setupRootCryptoScreen() {
 }
 
 function* setupRootGetStartedScreen() {
+    const defaultScreenOptions =
+        screensOptions[NAVIGATION.SCREENS.COMMON.GET_STARTED] ?? {};
+
     const setRootPromise = Navigation.setRoot({
         root: {
             stack: {
@@ -74,6 +81,7 @@ function* setupRootGetStartedScreen() {
                     {
                         component: {
                             name: NAVIGATION.SCREENS.COMMON.GET_STARTED,
+                            options: defaultScreenOptions,
                         },
                     },
                 ],

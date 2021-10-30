@@ -9,6 +9,6 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: colors.CORAL_BLACK,
+        backgroundColor: colors.LIGHT_BLUE,
     },
 });

@@ -18,11 +18,9 @@ const screensOptions: ScreensOptions = {
     },
     [NAVIGATION.SCREENS.COMMON.CRYPTO_LIST]: {
         topBar: {
-            title: {
-                text: 'Get Started',
-            },
+            title: {},
             background: {
-                color: colors.GHOST_WHITE,
+                color: colors.LIGHT_BLUE,
             },
             visible: true,
         },
