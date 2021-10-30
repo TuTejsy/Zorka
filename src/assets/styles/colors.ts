@@ -1,19 +1,16 @@
 const colors = {
     WHITE: '#FFFFFF',
+    GHOST_WHITE: '#F7F7FF',
 
-    BLACK: '#242B2E',
+    BLACK: '#222831',
+    CORAL_BLACK: '#495867',
 
-    BLUE: '#233142',
-    BLUE_1: 'rgba(35, 49, 66, 1)',
+    YONDER_BLUE: '#577399',
 
-    LIGHT_BLUE: '#455D7A',
-    LIGHT_BLUE_1: 'rgba(69, 93, 122, 1)',
+    LIGHT_BLUE: '#BDD5EA',
+    ORANGE_RED: '#FE5F55',
 
-    RED: '#F95959',
-    RED_1: 'rgba(249, 89, 89, 1)',
-
-    GREY: '#E3E3E3',
-    GREY_1: 'rgba(227, 227, 227, 1)',
+    GREY: '#E8E8E8',
 };
 
 export default colors;

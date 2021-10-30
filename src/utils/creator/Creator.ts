@@ -13,7 +13,8 @@ class Creator {
     static middleware = createMiddleware;
     static nameForDuplicate = createNameForDuplicate;
     static collectionObserverChannel = createCollectionObserverChannel;
-    static collectionChangesObserverChannel = createCollectionChangesObserverChannel;
+    static collectionChangesObserverChannel =
+        createCollectionChangesObserverChannel;
 }
 
 export default Creator;
