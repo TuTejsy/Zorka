@@ -1,10 +1,12 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Options } from 'react-native-navigation';
 
 import { actionCreators } from 'appApi';
 import { Generator } from 'appUtils';
 import { NAVIGATION } from 'appConstants';
+import { useCryptoCurrencies } from 'appHooks';
+
 import { CryptoListScreen } from 'appComponents/screens';
 
 interface CryptoListScreenContainerPropTypes {
@@ -15,6 +17,11 @@ function CryptoListScreenContainer({
     componentId,
 }: CryptoListScreenContainerPropTypes) {
     const dispatch = useDispatch();
+
+    const dispatchUpdateCyptoList = useCallback(() => {
+        dispatch(actionCreators.updateCryptoList());
+    }, [ dispatch ]);
+
     const dispatchPush = useCallback(
         ({
             passProps,
@@ -37,29 +44,16 @@ function CryptoListScreenContainer({
         [componentId, dispatch],
     );
 
-    const [isGenerating, setIsGenerating] = useState(false);
+    const [cryptoCurrencies, cryptoCurrenciesVersion] = useCryptoCurrencies('');
 
-    const handleGenerateSecretPhrasePress = useCallback(() => {
-        setIsGenerating(true);
-
-        Generator.passphrase().then((secretPhrase: string) => {
-            setTimeout(() => {
-                dispatchPush({
-                    screenName: NAVIGATION.SCREENS.AUTH.GENERATED_SECRET_PHRASE,
-                    passProps: {
-                        secretPhrase,
-                    },
-                });
-
-                setIsGenerating(false);
-            }, 1500);
-        });
-    }, [ dispatchPush ]);
+    useEffect(() => {
+        dispatchUpdateCyptoList();
+    }, []);
 
     return (
         <CryptoListScreen
-            isGenerating={isGenerating}
-            onGenerateSecretPhrasePress={handleGenerateSecretPhrasePress}
+            cryptoCurrencies={cryptoCurrencies}
+            cryptoCurrenciesVersion={cryptoCurrenciesVersion}
         />
     );
 }

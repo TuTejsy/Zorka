@@ -6,7 +6,7 @@ import { default as RealmDB } from './Realm';
 //     path: Realm.defaultPath
 // });
 
-const CryptoDB = new RealmDB<Crypto>(cryptoConfig, 'Crypro');
+const CryptoDB = new RealmDB<CryptoCurrency>(cryptoConfig, 'Crypto');
 
 export type RealmDBType = typeof CryptoDB;
 

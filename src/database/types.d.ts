@@ -3,11 +3,3 @@ declare module 'realm' {
         deleteCache: (dbInstance: Realm) => void;
     }
 }
-
-interface CryptoCurrency {
-    id: string,
-    name: string,
-    lastPrice: string,
-
-    logoUrl?: string,
-}

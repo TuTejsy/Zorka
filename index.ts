@@ -19,6 +19,7 @@ Keychain.getItem(KEYCHAIN.KEYS.SECRET_PHRASE).then((secretPhrase: string | null)
     }
 });
 
+
 const store = configureStore();
 registerScreens(store);
 

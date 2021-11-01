@@ -1,6 +1,6 @@
 import { Configuration } from 'realm';
 
-import {} from '../schema';
+import { CryptoSchema } from '../schema';
 
 const cryptoConfig: Configuration = {
     schemaVersion: 3,
@@ -9,7 +9,9 @@ const cryptoConfig: Configuration = {
         // TODO: for now we just drop database --> then we have to apply migrations
         newRealm.deleteAll();
     },
-    schema: [],
+    schema: [
+        CryptoSchema
+    ],
 };
 
 export default cryptoConfig;
