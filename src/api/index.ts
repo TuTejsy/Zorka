@@ -6,14 +6,24 @@ import {
     authActionTypes,
     authActionCreators,
 } from './auth';
+
 import {
     navigationSaga,
     navigationOperations,
     navigationActionCreators,
 } from './navigation';
 
+
+import {
+    cryptoSaga,
+    cryptoOperations,
+    cryptoActionTypes,
+    cryptoActionCreators,
+} from './crypto';
+
 export const types = {
     ...authActionTypes,
+    ...cryptoActionTypes,
 };
 
 export const reducers = {
@@ -21,17 +31,23 @@ export const reducers = {
 };
 
 export const operations = {
+    ...cryptoOperations,
     ...navigationOperations,
 };
 
 export function* rootSaga(
     dispatch: (props: { type: string; payload: any }) => void,
 ) {
-    yield all([authSaga(dispatch), navigationSaga(dispatch)]);
+    yield all([
+        authSaga(dispatch),
+        cryptoSaga(dispatch),
+        navigationSaga(dispatch)
+    ]);
 }
 
 export const actionCreators = {
     ...authActionCreators,
+    ...cryptoActionCreators,
     ...navigationActionCreators,
 };
 

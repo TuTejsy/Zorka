@@ -54,7 +54,7 @@ function CryptoListScreenContainer({
                 setIsGenerating(false);
             }, 1500);
         });
-    }, [dispatchPush]);
+    }, [ dispatchPush ]);
 
     return (
         <CryptoListScreen

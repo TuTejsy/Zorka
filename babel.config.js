@@ -1,10 +1,9 @@
 module.exports = {
-    presets: ['module:metro-react-native-babel-preset'],
+    presets: [ 'module:metro-react-native-babel-preset' ],
     plugins: [
         [
             'babel-plugin-module-resolver',
             {
-                root: ['./src/'],
                 alias: {
                     app: './src',
                     appApi: './src/api',
@@ -20,6 +19,8 @@ module.exports = {
                     appComponents: './src/components',
                     appContainers: './src/containers',
                     appCollections: './src/collections',
+
+                    'zorka-native': './zorka-native',
                 },
             },
         ],

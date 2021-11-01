@@ -16,7 +16,11 @@ function CryptoListScreen({
     isGenerating = false,
     onGenerateSecretPhrasePress,
 }: CryptoListScreenPropTypes) {
-    return <SafeAreaView style={styles.screen} />;
+    return (
+        <SafeAreaView
+            style={styles.screen}
+        />
+    );
 }
 
 export default React.memo(CryptoListScreen);

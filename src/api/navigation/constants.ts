@@ -16,6 +16,7 @@ export const NAVIGATION = {
         },
         NAVBAR: {
             DONE_BUTTON: 'zrk.NavBarDoneButton',
+            UPDATE_CRYPTO_LIST_BUTTON: 'zrk.UpdateCryptoListButton',
         },
     },
 };

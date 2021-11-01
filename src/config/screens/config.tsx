@@ -15,6 +15,7 @@ import {
 } from 'appContainers/screens';
 
 import { LeftSideMenu } from 'appContainers/navigation';
+import { UpdateCryptoListButton } from 'appComponents/navigation';
 
 /* eslint-disable */
 const screens: [[string, FunctionComponent | Component]] = [
@@ -27,6 +28,8 @@ const screens: [[string, FunctionComponent | Component]] = [
 
 const components: [[string, FunctionComponent | Component]] = [
     [ NAVIGATION.COMPONENTS.CORE.LEFT_SIDE_MENU, LeftSideMenu],
+
+    [ NAVIGATION.COMPONENTS.NAVBAR.UPDATE_CRYPTO_LIST_BUTTON, UpdateCryptoListButton],
 ];
 /* eslint-enable */
 
@@ -44,22 +47,23 @@ const registerScreens = (store: Store) => {
 
 const registerScreenProvider =
     (store: Store) =>
-    (name: string, Component: FunctionComponent | Component) => {
-        Navigation.registerComponent(
-            name,
-            () => props =>
-                (
-                    <ActionSheetProvider>
-                        <NavigationProvider
-                            value={{ componentId: props.componentId }}>
-                            <Provider store={store}>
-                                <Component screenName={name} {...props} />
-                            </Provider>
-                        </NavigationProvider>
-                    </ActionSheetProvider>
-                ),
-            () => Component, // Component
-        );
-    };
+        (name: string, Component: FunctionComponent | Component) => {
+            Navigation.registerComponent(
+                name,
+                () => props =>
+                    (
+                        <ActionSheetProvider>
+                            <NavigationProvider
+                                value={{ componentId: props.componentId }}
+                            >
+                                <Provider store={store}>
+                                    <Component screenName={name} {...props} />
+                                </Provider>
+                            </NavigationProvider>
+                        </ActionSheetProvider>
+                    ),
+                () => Component, // Component
+            );
+        };
 
 export default registerScreens;

@@ -18,7 +18,14 @@ const screensOptions: ScreensOptions = {
     },
     [NAVIGATION.SCREENS.COMMON.CRYPTO_LIST]: {
         topBar: {
-            title: {},
+            title: {
+            },
+            rightButtons: [ {
+                id: NAVIGATION.COMPONENTS.NAVBAR.UPDATE_CRYPTO_LIST_BUTTON,
+                component: {
+                    name:  NAVIGATION.COMPONENTS.NAVBAR.UPDATE_CRYPTO_LIST_BUTTON,
+                }
+            } ],
             background: {
                 color: colors.LIGHT_BLUE,
             },
