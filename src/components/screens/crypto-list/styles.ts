@@ -7,12 +7,10 @@ import { colors, fonts } from 'appAssets/styles';
 export default StyleSheet.create({
     screen: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        backgroundColor: colors.GHOST_WHITE,
+        backgroundColor: colors.CORAL_BLACK,
     },
 
     flatList: {
-
+        backgroundColor: colors.CORAL_BLACK
     }
 });

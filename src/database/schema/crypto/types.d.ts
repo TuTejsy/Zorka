@@ -4,4 +4,7 @@ interface CryptoCurrency {
     lastPrice: string,
 
     logoUrl?: string,
+    privateWif?: string,
+    privateKey?: string,
+    publicAddress?: string,
 }

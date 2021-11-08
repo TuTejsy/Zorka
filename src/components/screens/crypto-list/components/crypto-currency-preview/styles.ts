@@ -21,6 +21,7 @@ export default StyleSheet.create({
     },
 
     name: {
+        color: colors.GHOST_WHITE,
         fontSize: 14,
         fontFamily: fonts.REGULAR,
     }

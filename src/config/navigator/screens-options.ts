@@ -20,6 +20,10 @@ const screensOptions: ScreensOptions = {
         topBar: {
             title: {
             },
+            searchBar: {
+                visible: true,
+                tintColor: colors.GHOST_WHITE,
+            },
             rightButtons: [ {
                 id: NAVIGATION.COMPONENTS.NAVBAR.UPDATE_CRYPTO_LIST_BUTTON,
                 component: {
@@ -27,13 +31,27 @@ const screensOptions: ScreensOptions = {
                 }
             } ],
             background: {
-                color: colors.LIGHT_BLUE,
+                color: colors.CORAL_BLACK,
+            },
+            visible: true,
+        },
+    },
+    [NAVIGATION.SCREENS.COMMON.CRYPTO_WALLET]: {
+        topBar: {
+            title: {
+            },
+            backButton: {
+                color: colors.GHOST_WHITE,
+            },
+
+            background: {
+                color: colors.CORAL_BLACK,
             },
             visible: true,
         },
     },
 
-    [NAVIGATION.SCREENS.AUTH.CREATE_WALLET]: {
+    [NAVIGATION.SCREENS.AUTH.CREATE_CRYPTO_WALLET]: {
         topBar: {
             title: {
                 text: 'Create Wallet',

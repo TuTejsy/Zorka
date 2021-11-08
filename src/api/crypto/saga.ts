@@ -1,9 +1,13 @@
 import { fork, cancel, take, race } from 'redux-saga/effects';
 
-import { watchUpdateCryptoList } from './watchers';
+import {
+    watchUpdateCryptoList,
+    watchCreateCryptoWallet,
+} from './watchers';
 
 function* authSaga(dispatch) {
     yield fork(watchUpdateCryptoList);
+    yield fork(watchCreateCryptoWallet);
 }
 
 export default authSaga;

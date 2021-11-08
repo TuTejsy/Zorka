@@ -1,6 +1,8 @@
+import 'node-libs-react-native/globals';
+
 import './polyfills';
 
-import { Navigation, Options } from 'react-native-navigation';
+import { Navigation } from 'react-native-navigation';
 import { SHA512, enc } from 'crypto-js';
 
 import { configureStore } from 'appConfig/redux';

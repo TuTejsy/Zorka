@@ -11,27 +11,32 @@ import styles from './styles';
 
 interface CryptoListScreenPropTypes {
     cryptoCurrencies: Realm.Results<CryptoCurrency & Realm.Object>
-    cryptoCurrenciesVersion: number
+    cryptoCurrenciesVersion: number,
+
+    onCryptoCurrencyPress: () => void,
 }
 
 function CryptoListScreen({
     cryptoCurrencies,
     cryptoCurrenciesVersion,
+
+    onCryptoCurrencyPress,
 }: CryptoListScreenPropTypes) {
     const renderItem = useCallback(({ item }: {item: CryptoCurrency }) => (
         <CryptoCurrencyPreview
             name={item.id}
             price={item.lastPrice}
             logoURL={item.logoUrl}
+            onPress={onCryptoCurrencyPress}
         />
-    ), []);
+    ), [ onCryptoCurrencyPress ]);
 
     const keyExtractor = useCallback((item: CryptoCurrency & Realm.Object, index: number) => (
         item.id
     ), []);
 
     return (
-        <SafeAreaView >
+        <SafeAreaView style={styles.screen}>
             <FlatList
                 data={cryptoCurrencies}
                 style={styles.flatList}

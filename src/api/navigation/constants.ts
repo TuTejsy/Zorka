@@ -3,9 +3,10 @@ export const NAVIGATION = {
         COMMON: {
             GET_STARTED: 'zrk.GetStartedScreen',
             CRYPTO_LIST: 'zrk.CryptoListScreen',
+            CRYPTO_WALLET: 'zrk.CryptoWalletScreen',
         },
         AUTH: {
-            CREATE_WALLET: 'zrk.CreateWalletScreen',
+            CREATE_CRYPTO_WALLET: 'zrk.CreateWalletScreen',
             GENERATED_SECRET_PHRASE: 'zrk.GeneratedSecretPhraseScreen',
         },
     },

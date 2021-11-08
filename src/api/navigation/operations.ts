@@ -33,7 +33,7 @@ function* pushTo({
         });
 
         yield pushPromise;
-    } catch (err) {
+    } catch(err) {
         console.log(err);
     }
 }
@@ -52,7 +52,8 @@ function* setupRootCryptoScreen() {
                 },
                 center: {
                     stack: {
-                        options: {},
+                        options: {
+                        },
                         children: [
                             {
                                 component: {

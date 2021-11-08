@@ -11,11 +11,11 @@ export default function* () {
 }
 
 function* watchCreateWallet() {
-    while (true) {
+    while(true) {
         const {
             payload: { secretPhrase },
         }: { payload: CreateWalletPayload } = yield take(
-            authTypes.CREATE_WALLET,
+            authTypes.CREATE_CRYPTO_WALLET,
         );
 
         if (secretPhrase) {

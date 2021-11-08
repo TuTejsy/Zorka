@@ -28,8 +28,9 @@ function CryptoListScreenContainer({
             screenName,
             screenOptions,
         }: {
-            passProps: any;
             screenName: string;
+
+            passProps?: any;
             screenOptions?: Options;
         }) => {
             dispatch(
@@ -50,9 +51,17 @@ function CryptoListScreenContainer({
         dispatchUpdateCyptoList();
     }, []);
 
+    const handleCryptoCurrencyPress = useCallback(
+        () => {
+            dispatchPush({ screenName: NAVIGATION.SCREENS.COMMON.CRYPTO_WALLET });
+        },
+        [ dispatchPush ],
+    );
+
     return (
         <CryptoListScreen
             cryptoCurrencies={cryptoCurrencies}
+            onCryptoCurrencyPress={handleCryptoCurrencyPress}
             cryptoCurrenciesVersion={cryptoCurrenciesVersion}
         />
     );

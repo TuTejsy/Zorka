@@ -12,6 +12,8 @@ interface CryptoCurrencyPreviewPropTypes {
     name: string,
     price: string,
 
+    onPress: () => void,
+
     logoURL?: string,
 }
 
@@ -19,11 +21,14 @@ function CryptoCurrencyPreview({
     name,
     price,
 
+    onPress,
+
     logoURL,
 }: CryptoCurrencyPreviewPropTypes) {
     return (
         <TouchableOpacity
             style={styles.preview}
+            onPress={onPress}
         >
             <View
                 style={styles.logo}
