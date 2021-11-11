@@ -6,6 +6,14 @@ const CryptoSchema: ObjectSchema = {
     properties: {
         id: 'string',
         name: 'string',
+        balance: {
+            type: 'int',
+            default: 0,
+        },
+        unconfirmedBalance: {
+            type: 'int',
+            default: 0,
+        },
         lastPrice: 'string',
 
         logoUrl: 'string?',

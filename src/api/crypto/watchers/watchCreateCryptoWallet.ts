@@ -1,4 +1,4 @@
-import Bitcore from 'bitcore-lib';
+import Bitcore, { Networks } from 'bitcore-lib';
 import { call, fork, take } from 'redux-saga/effects';
 
 import { CryptoDB } from 'appDatabase';
@@ -14,7 +14,7 @@ function* watchCreateCryptoWallet() {
     while(true) {
         yield take(cryptoTypes.CREATE_CRYPTO_WALLET);
 
-        const bitcoreKey = new Bitcore.PrivateKey();
+        const bitcoreKey = new Bitcore.PrivateKey(undefined, Networks.testnet);
         const privateWif: string = bitcoreKey.toWIF();
         const privateKey: string = bitcoreKey.toString();
         const publicAddress: string = bitcoreKey.toAddress().toString();

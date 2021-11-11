@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Options } from 'react-native-navigation';
 
@@ -39,6 +39,12 @@ function CryptoWalletScreenContainer({
         },
         [componentId, dispatch],
     );
+
+    useEffect(() => {
+        dispatch(
+            actionCreators.updateCryptoBalance({ cryptoId: 'BTC' }),
+        );
+    }, []);
 
     const handleCreateWalletPress = useCallback(
         () => {

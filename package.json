@@ -4,19 +4,19 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "restart": "rm -rf node_modules && yarn cache clean && watchman watch-del-all && yarn && yarn pod-reinstall && yarn start --reset-cache",
+    "restart": "rm -rf node_modules && yarn cache clean && watchman watch-del-all && yarn && yarn pod-reinstall && yarn start --reset-cache && yarn fix-bitcore-lib && yarn postinstall",
     "pod-install": "cd ./ios && pod install --repo-update && cd ..",
     "pod-reinstall": "cd ./ios && rm -rf ~/Library/Caches/CocoaPods && rm -rf Pods && pod install --repo-update && cd ..",
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "postinstall": "sed -i -e \"s/var Script = function Script(from) {/var Script = function Script(from) { Address = require('..\\/address');/g\" ./node_modules/bitcore-lib/lib/script/script.js",
-    "fix-node-js-modules": "node scripts/fix-node-js-modules.js"
+    "postinstall": "yarn postinstall-crypto",
+    "postinstall-crypto": "sed -i -e \"s/var Script = function Script(from) {/var Script = function Script(from) { Address = require('..\\/address');/g\" ./node_modules/bitcore-lib/lib/script/script.js",
+    "fix-bitcore-lib": "node scripts/fix-bitcore-lib.js"
   },
   "dependencies": {
     "@expo/react-native-action-sheet": "^3.11.0",
-    "bitcore-insight": "^1.0.1",
     "bitcore-lib": "^8.25.10",
     "crypto-js": "^4.1.1",
     "eslint-plugin-json": "^3.1.0",

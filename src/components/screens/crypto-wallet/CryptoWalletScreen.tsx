@@ -3,6 +3,7 @@ import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
 
 import { Screen } from 'appUtils';
 import { colors } from 'appAssets/styles';
+import { SATOSHI_IN_BTC } from 'appConstants';
 import { LoadingCircle } from 'appComponents/core';
 
 import styles from './styles';
@@ -20,7 +21,12 @@ function CryptoWalletScreen({
     return (
         <SafeAreaView style={styles.screen}>
             { cryptoCurrency?.publicAddress ? (
-                    <Text style={styles.publicAddress}>Public Address: {cryptoCurrency.publicAddress}</Text>
+                <View>
+                    <Text >Public Address: </Text>
+                    <Text selectable>{cryptoCurrency.publicAddress}</Text>
+                    <Text >Balance: {cryptoCurrency.balance / SATOSHI_IN_BTC}</Text>
+                    <Text >Unconfirmed Balance: {cryptoCurrency.unconfirmedBalance / SATOSHI_IN_BTC}</Text>
+                </View>
                 ) : (
                     <TouchableOpacity
                         style={styles.createWalletButton}

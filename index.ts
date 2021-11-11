@@ -18,13 +18,12 @@ Keychain.getItem(KEYCHAIN.KEYS.SECRET_PHRASE).then((secretPhrase: string | null)
         const privateKeyBuffer = Buffer.from(privateKey, 'base64');
 
         CryptoDB.open(privateKeyBuffer);
+
+        const store = configureStore();
+        registerScreens(store);
+
+        Navigation.events().registerAppLaunchedListener(() => {
+            Navigation.setDefaultOptions(getDefaultOptions());
+        });
     }
-});
-
-
-const store = configureStore();
-registerScreens(store);
-
-Navigation.events().registerAppLaunchedListener(() => {
-    Navigation.setDefaultOptions(getDefaultOptions());
 });
