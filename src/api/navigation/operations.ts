@@ -47,6 +47,7 @@ function* setupRootCryptoScreen() {
             sideMenu: {
                 left: {
                     component: {
+                        id: NAVIGATION.COMPONENTS.CORE.LEFT_SIDE_MENU,
                         name: NAVIGATION.COMPONENTS.CORE.LEFT_SIDE_MENU,
                     },
                 },

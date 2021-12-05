@@ -8,17 +8,27 @@ import { SvgIcon } from 'appComponents/core';
 import { actionCreators } from 'appApi';
 
 import styles from './styles';
+import { ToggleSideBarPayload } from 'api/types';
 
 
 interface SideBarButtonPropTypes {
+    componentId: string,
 }
 
 function SideBarButton({
+    componentId,
 }: SideBarButtonPropTypes) {
     const dispatch = useDispatch();
-    const dispatchUpdateCyptoList = useCallback(() => {
-        dispatch(actionCreators.updateCryptoList());
+    const dispatchToggleSideBar = useCallback((props: ToggleSideBarPayload) => {
+        dispatch(actionCreators.toggleSideBar(props));
     }, [ dispatch ]);
+
+    const handleToggleSideBarPress = useCallback(
+        () => {
+            dispatchToggleSideBar({ visible: true });
+        },
+        [ dispatchToggleSideBar ],
+    );
 
     return (
         <SvgIcon
@@ -27,7 +37,7 @@ function SideBarButton({
             width={44}
             height={44}
             iconSet="symbol"
-            onPress={dispatchUpdateCyptoList}
+            onPress={handleToggleSideBarPress}
             isTouchable
         />
     );

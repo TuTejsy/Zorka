@@ -12,3 +12,7 @@ interface PushPayload {
     passProps?: any;
     screenOptions?: Options;
 }
+
+interface ToggleSideBarPayload {
+    visible: boolean,
+}

@@ -7198,7 +7198,7 @@ react-native-crypto@^2.0.1:
 
 react-native-navigation-hooks@^6.3.0:
   version "6.3.0"
-  resolved "https://registry.npmjs.org/react-native-navigation-hooks/-/react-native-navigation-hooks-6.3.0.tgz"
+  resolved "https://registry.yarnpkg.com/react-native-navigation-hooks/-/react-native-navigation-hooks-6.3.0.tgz#468e1f80065fd5e8d0ad0a23671656ee06ba21cf"
   integrity sha512-fvKYYIEIHROnqLDYVZtyojXNeJ/h0LBx4OFBBtPxJpVM2wvVj4vFO0ABU16i0SGwStGs32iLKdcgkB5qgAv7kA==
   dependencies:
     hoist-non-react-statics "3.3.2"

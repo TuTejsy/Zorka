@@ -1,9 +1,4 @@
-import React, { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
-import { Navigation, Options } from 'react-native-navigation';
-
-import { actionCreators } from 'appApi';
-import { NAVIGATION } from 'appConstants';
+import React, { } from 'react';
 import { LeftSideMenu } from 'appComponents/navigation';
 
 interface LeftSideMenuContainerPropTypes {
