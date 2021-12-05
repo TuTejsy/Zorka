@@ -1,15 +1,13 @@
 const colors = {
     WHITE: '#FFFFFF',
-    GHOST_WHITE: '#F7F7FF',
+    GHOST_WHITE: '#EEEEEE',
 
     BLACK: '#222831',
-    CORAL_BLACK: '#495867',
+    CORAL_BLACK: '#393E46',
 
-    YONDER_BLUE: '#577399',
+    YELLOW: '#FFD369',
 
     GREEN: '#BBECD9',
-
-    LIGHT_BLUE: '#BDD5EA',
 
     ORANGE_RED: '#FE5F55',
 

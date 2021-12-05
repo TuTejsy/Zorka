@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-native start",
-    "restart": "rm -rf node_modules && yarn cache clean && watchman watch-del-all && yarn && yarn pod-reinstall && yarn start --reset-cache && yarn fix-bitcore-lib && yarn postinstall",
+    "restart": "rm -rf node_modules && yarn cache clean && watchman watch-del-all && yarn && yarn pod-reinstall && yarn fix-bitcore-lib && yarn postinstall && yarn start --reset-cache",
     "pod-install": "cd ./ios && pod install --repo-update && cd ..",
     "pod-reinstall": "cd ./ios && rm -rf ~/Library/Caches/CocoaPods && rm -rf Pods && pod install --repo-update && cd ..",
     "android": "react-native run-android",
@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@expo/react-native-action-sheet": "^3.11.0",
+    "@react-native-clipboard/clipboard": "^1.9.0",
     "bitcore-lib": "^8.25.10",
     "crypto-js": "^4.1.1",
     "eslint-plugin-json": "^3.1.0",

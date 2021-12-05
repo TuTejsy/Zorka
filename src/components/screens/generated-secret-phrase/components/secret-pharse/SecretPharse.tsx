@@ -57,7 +57,7 @@ function SecretPhrase({ secretPhrase }: SecretPhrasePropTypes) {
                     size={viewWidth * 0.4}
                     color={colors.ORANGE_RED}
                     value={secretPhrase}
-                    backgroundColor={colors.WHITE}
+                    backgroundColor={colors.GHOST_WHITE}
                 />
             </View>
         </View>

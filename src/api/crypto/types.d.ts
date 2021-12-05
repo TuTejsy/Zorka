@@ -1,4 +1,5 @@
-import { CURRENCY } from './constants';
+import { CurrencyId } from './constants';
+
 interface UpdateCryptBalancePayload {
-    cryptoId: keyof typeof CURRENCY.ID
+    cryptoId: CurrencyId;
 }

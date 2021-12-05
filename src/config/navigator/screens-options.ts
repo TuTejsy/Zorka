@@ -21,7 +21,7 @@ const screensOptions: ScreensOptions = {
             title: {
             },
             searchBar: {
-                visible: true,
+                visible: false,
                 tintColor: colors.GHOST_WHITE,
             },
             rightButtons: [ {
@@ -31,7 +31,12 @@ const screensOptions: ScreensOptions = {
                 }
             } ],
             background: {
-                color: colors.CORAL_BLACK,
+                color: colors.BLACK,
+            },
+            backButton: {
+                color: colors.GHOST_WHITE,
+                title: '',
+                enableMenu: false,
             },
             visible: true,
         },
@@ -39,6 +44,9 @@ const screensOptions: ScreensOptions = {
     [NAVIGATION.SCREENS.COMMON.CRYPTO_WALLET]: {
         topBar: {
             title: {
+                color: colors.GHOST_WHITE,
+                fontSize: 16,
+                fontFamily: fonts.MEDIUM,
             },
             backButton: {
                 color: colors.GHOST_WHITE,
@@ -60,7 +68,7 @@ const screensOptions: ScreensOptions = {
                 fontFamily: fonts.MEDIUM,
             },
             background: {
-                color: colors.YONDER_BLUE,
+                color: colors.BLACK,
             },
             backButton: {
                 color: colors.GHOST_WHITE,
@@ -79,7 +87,7 @@ const screensOptions: ScreensOptions = {
                 fontFamily: fonts.MEDIUM,
             },
             background: {
-                color: colors.YONDER_BLUE,
+                color: colors.BLACK,
             },
             backButton: {
                 color: colors.GHOST_WHITE,

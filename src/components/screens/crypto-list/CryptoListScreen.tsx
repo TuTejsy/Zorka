@@ -1,11 +1,10 @@
 import React, { useCallback } from 'react';
-import { Text, View, SafeAreaView, FlatList } from 'react-native';
+import { View, SafeAreaView, FlatList } from 'react-native';
 
-import { Screen } from 'appUtils';
-import { colors } from 'appAssets/styles';
-import { LoadingCircle } from 'appComponents/core';
+import { CurrencyId } from 'appConstants';
 
 import { CryptoCurrencyPreview } from './components';
+import { CryptoCurrency } from 'database/schema/crypto/types';
 
 import styles from './styles';
 
@@ -13,7 +12,7 @@ interface CryptoListScreenPropTypes {
     cryptoCurrencies: Realm.Results<CryptoCurrency & Realm.Object>
     cryptoCurrenciesVersion: number,
 
-    onCryptoCurrencyPress: () => void,
+    onCryptoCurrencyPress: (cryptoCurrencyId: CurrencyId) => void,
 }
 
 function CryptoListScreen({
@@ -22,14 +21,19 @@ function CryptoListScreen({
 
     onCryptoCurrencyPress,
 }: CryptoListScreenPropTypes) {
+    const createOnCurrencyPress = useCallback(
+        (cryptoId: CurrencyId) => () => onCryptoCurrencyPress(cryptoId),
+        [ onCryptoCurrencyPress ],
+    );
+
     const renderItem = useCallback(({ item }: {item: CryptoCurrency }) => (
         <CryptoCurrencyPreview
             name={item.id}
             price={item.lastPrice}
             logoURL={item.logoUrl}
-            onPress={onCryptoCurrencyPress}
+            onPress={createOnCurrencyPress(item.id)}
         />
-    ), [ onCryptoCurrencyPress ]);
+    ), [ createOnCurrencyPress ]);
 
     const keyExtractor = useCallback((item: CryptoCurrency & Realm.Object, index: number) => (
         item.id

@@ -23,11 +23,11 @@ export default StyleSheet.create({
         alignItems: 'center',
         borderRadius: 30,
         justifyContent: 'center',
-        backgroundColor: colors.LIGHT_BLUE,
+        backgroundColor: colors.YELLOW,
     },
 
     saveText: {
-        color: colors.WHITE,
+        color: colors.GHOST_WHITE,
         fontSize: 16,
         fontFamily: fonts.MEDIUM,
     },

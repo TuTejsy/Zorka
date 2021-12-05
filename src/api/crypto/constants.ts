@@ -11,3 +11,6 @@ export const CURRENCY = {
         ADA: 'ADA',
     }
 };
+
+
+export type CurrencyId = keyof typeof CURRENCY.ID;

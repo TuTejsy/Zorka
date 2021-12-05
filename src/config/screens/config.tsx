@@ -17,6 +17,7 @@ import {
 
 import { LeftSideMenu } from 'appContainers/navigation';
 import { UpdateCryptoListButton } from 'appComponents/navigation';
+import { ToastProvider } from 'appComponents/core';
 
 /* eslint-disable */
 const screens: [[string, FunctionComponent | Component]] = [
@@ -37,9 +38,10 @@ const components: [[string, FunctionComponent | Component]] = [
 
 const registerScreens = (store: Store) => {
     const registerScreen = registerScreenProvider(store);
+    const registerComponent = registerComponentProvider(store);
 
     components.forEach(([name, Component]) => {
-        registerScreen(name, Component);
+        registerComponent(name, Component);
     });
 
     screens.forEach(([name, Component]) => {
@@ -58,14 +60,36 @@ const registerScreenProvider =
                             <NavigationProvider
                                 value={{ componentId: props.componentId }}
                             >
-                                <Provider store={store}>
-                                    <Component screenName={name} {...props} />
-                                </Provider>
+                                <ToastProvider componentId={props.componentId}>
+                                    <Provider store={store}>
+                                        <Component screenName={name} {...props} />
+                                    </Provider>
+                                </ToastProvider>
                             </NavigationProvider>
                         </ActionSheetProvider>
                     ),
                 () => Component, // Component
             );
         };
+
+const registerComponentProvider =
+    (store: Store) =>
+        (name: string, Component: FunctionComponent | Component) => {
+            Navigation.registerComponent(
+                name,
+                () => props =>
+                    (
+                        <NavigationProvider
+                            value={{ componentId: props.componentId }}
+                        >
+                            <Provider store={store}>
+                                <Component screenName={name} {...props} />
+                            </Provider>
+                        </NavigationProvider>
+                    ),
+                () => Component, // Component
+            );
+        };
+
 
 export default registerScreens;

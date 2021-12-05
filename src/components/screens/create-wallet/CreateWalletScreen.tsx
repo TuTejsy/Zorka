@@ -23,9 +23,9 @@ function CreateWalletScreen({
                     <LoadingCircle
                         size={Screen.width * 0.6}
                         style={styles.loadingCirlce}
-                        color={colors.YONDER_BLUE}
+                        color={colors.CORAL_BLACK}
                         strokeWidth={5}
-                        backgroundColor={colors.WHITE}>
+                        backgroundColor={colors.GHOST_WHITE}>
                         <View style={styles.generateTextContainer}>
                             <Text style={styles.generateText}>
                                 Generating a

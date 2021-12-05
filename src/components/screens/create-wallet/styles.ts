@@ -25,7 +25,7 @@ export default StyleSheet.create({
     },
 
     generateText: {
-        color: colors.WHITE,
+        color: colors.GHOST_WHITE,
         fontSize: 16,
         lineHeight: 19,
         fontFamily: fonts.MEDIUM,
@@ -34,7 +34,7 @@ export default StyleSheet.create({
     loadingCirlce: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.LIGHT_BLUE,
+        backgroundColor: colors.YELLOW,
     },
 
     generateSecretPhraseButton: {
@@ -42,9 +42,9 @@ export default StyleSheet.create({
         height: Screen.width * 0.6,
         alignItems: 'center',
         borderWidth: 5,
-        borderColor: colors.WHITE,
+        borderColor: colors.GHOST_WHITE,
         borderRadius: Screen.width * 0.3,
         justifyContent: 'center',
-        backgroundColor: colors.LIGHT_BLUE,
+        backgroundColor: colors.YELLOW,
     },
 });

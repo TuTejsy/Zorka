@@ -3,8 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Options } from 'react-native-navigation';
 
 import { actionCreators } from 'appApi';
-import { Generator } from 'appUtils';
-import { NAVIGATION } from 'appConstants';
+import { NAVIGATION, CurrencyId } from 'appConstants';
 import { useCryptoCurrencies } from 'appHooks';
 
 import { CryptoListScreen } from 'appComponents/screens';
@@ -52,8 +51,11 @@ function CryptoListScreenContainer({
     }, []);
 
     const handleCryptoCurrencyPress = useCallback(
-        () => {
-            dispatchPush({ screenName: NAVIGATION.SCREENS.COMMON.CRYPTO_WALLET });
+        (cryptoCurrencyId: CurrencyId) => {
+            dispatchPush({
+                screenName: NAVIGATION.SCREENS.COMMON.CRYPTO_WALLET,
+                passProps: { cryptoCurrencyId }
+            });
         },
         [ dispatchPush ],
     );

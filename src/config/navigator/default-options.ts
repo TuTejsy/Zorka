@@ -10,7 +10,7 @@ const getDefaultOptions: () => Options = () => ({
         iconColor: colors.BLACK,
         labelColor: colors.BLACK,
         fontFamily: fonts.REGULAR,
-        backgroundColor: colors.WHITE,
+        backgroundColor: colors.GHOST_WHITE,
     },
     bottomTabs: {
         visible: false,
@@ -24,8 +24,8 @@ const getDefaultOptions: () => Options = () => ({
         visible: false,
     },
     layout: {
-        orientation: [DEVICE_ORIENTATION.PORTRAIT],
-        backgroundColor: colors.WHITE,
+        orientation: [ DEVICE_ORIENTATION.PORTRAIT ],
+        backgroundColor: colors.BLACK,
     },
     statusBar: {
         backgroundColor: 'transparent',

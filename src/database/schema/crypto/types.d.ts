@@ -1,5 +1,7 @@
+import { CurrencyId } from 'appConstants';
+
 interface CryptoCurrency {
-    id: string,
+    id: CurrencyId,
     name: string,
     balance: number,
     lastPrice: string,

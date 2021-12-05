@@ -34,14 +34,14 @@ export default StyleSheet.create({
         alignItems: 'center',
         borderRadius: 30,
         justifyContent: 'center',
-        backgroundColor: colors.YONDER_BLUE,
+        backgroundColor: colors.CORAL_BLACK,
     },
 
     signInButton: {
         width: Screen.width * 0.6,
         height: 45,
         alignItems: 'center',
-        borderColor: colors.YONDER_BLUE,
+        borderColor: colors.CORAL_BLACK,
         borderWidth: 2,
         marginBottom: 20,
         borderRadius: 30,
@@ -49,7 +49,7 @@ export default StyleSheet.create({
         backgroundColor: colors.GHOST_WHITE,
     },
     signInButtonText: {
-        color: colors.YONDER_BLUE,
+        color: colors.CORAL_BLACK,
         fontSize: 16,
         fontFamily: fonts.REGULAR,
     },

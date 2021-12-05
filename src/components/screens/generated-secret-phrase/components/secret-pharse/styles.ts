@@ -11,7 +11,7 @@ export default StyleSheet.create({
         borderColor: colors.CORAL_BLACK,
         borderRadius: 10,
         paddingVertical: 10,
-        backgroundColor: colors.WHITE,
+        backgroundColor: colors.GHOST_WHITE,
     },
 
     secretPhraseColumnsContrainer: {

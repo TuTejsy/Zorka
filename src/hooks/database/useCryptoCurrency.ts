@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { ObjectChangeCallback } from 'realm';
 
-import { getMapById } from 'appUtils';
 import { CryptoDB } from 'appDatabase';
+import { getMapById } from 'appUtils';
+import { CurrencyId } from 'appConstants';
 
 function useCryptoCurrency(
-    cryptoId: string,
+    cryptoId: CurrencyId,
     propsToWatch?: Array<keyof CryptoCurrency>
 ): (CryptoCurrency & Realm.Object) | null | undefined {
     const [cryptoCurrency, setCryptoCurrency] = useState(CryptoDB.object(cryptoId));
