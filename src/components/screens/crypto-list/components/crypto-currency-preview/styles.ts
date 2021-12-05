@@ -1,7 +1,5 @@
 import { StyleSheet } from 'react-native';
 
-import { Screen } from 'appUtils';
-
 import { colors, fonts } from 'appAssets/styles';
 
 export default StyleSheet.create({
@@ -15,9 +13,14 @@ export default StyleSheet.create({
     },
 
     logo: {
-        width: 40,
-        height: 40,
+        width: 50,
+        height: 50,
+        overflow: 'hidden',
         marginRight: 20,
+        borderRadius: 25,
+        paddingVertical: 5,
+        backgroundColor: colors.GHOST_WHITE,
+        paddingHorizontal: 10,
     },
 
     name: {

@@ -19,6 +19,9 @@ const screensOptions: ScreensOptions = {
     [NAVIGATION.SCREENS.COMMON.CRYPTO_LIST]: {
         topBar: {
             title: {
+                text: 'Zorka Wallet',
+                color: colors.GHOST_WHITE,
+                fontFamily: fonts.MEDIUM,
             },
             searchBar: {
                 visible: false,
@@ -28,6 +31,12 @@ const screensOptions: ScreensOptions = {
                 id: NAVIGATION.COMPONENTS.NAVBAR.UPDATE_CRYPTO_LIST_BUTTON,
                 component: {
                     name:  NAVIGATION.COMPONENTS.NAVBAR.UPDATE_CRYPTO_LIST_BUTTON,
+                }
+            } ],
+            leftButtons: [ {
+                id: NAVIGATION.COMPONENTS.NAVBAR.SIDE_BAR_BUTTON,
+                component: {
+                    name:  NAVIGATION.COMPONENTS.NAVBAR.SIDE_BAR_BUTTON,
                 }
             } ],
             background: {

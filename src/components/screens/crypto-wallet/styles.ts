@@ -54,7 +54,7 @@ export default StyleSheet.create({
         color: colors.GREY,
         fontSize: 16,
         fontFamily: fonts.REGULAR,
-        marginBottom: 100,
+        marginBottom: 50,
     },
     button: {
         width: Screen.width * 0.5,

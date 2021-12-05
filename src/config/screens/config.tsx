@@ -16,7 +16,7 @@ import {
 } from 'appContainers/screens';
 
 import { LeftSideMenu } from 'appContainers/navigation';
-import { UpdateCryptoListButton } from 'appComponents/navigation';
+import { LogoutButton, SideBarButton, UpdateCryptoListButton } from 'appComponents/navigation';
 import { ToastProvider } from 'appComponents/core';
 
 /* eslint-disable */
@@ -32,6 +32,8 @@ const screens: [[string, FunctionComponent | Component]] = [
 const components: [[string, FunctionComponent | Component]] = [
     [ NAVIGATION.COMPONENTS.CORE.LEFT_SIDE_MENU, LeftSideMenu],
 
+    [ NAVIGATION.COMPONENTS.NAVBAR.LOGOUT_BUTTON, LogoutButton],
+    [ NAVIGATION.COMPONENTS.NAVBAR.SIDE_BAR_BUTTON, SideBarButton],
     [ NAVIGATION.COMPONENTS.NAVBAR.UPDATE_CRYPTO_LIST_BUTTON, UpdateCryptoListButton],
 ];
 /* eslint-enable */

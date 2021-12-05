@@ -17,6 +17,8 @@ export const NAVIGATION = {
         },
         NAVBAR: {
             DONE_BUTTON: 'zrk.NavBarDoneButton',
+            LOGOUT_BUTTON: 'zrk.LogoutButton',
+            SIDE_BAR_BUTTON: 'zrk.SideBarButton',
             UPDATE_CRYPTO_LIST_BUTTON: 'zrk.UpdateCryptoListButton',
         },
     },

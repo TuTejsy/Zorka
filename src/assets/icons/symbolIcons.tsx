@@ -20,7 +20,7 @@ export default {
                     y1={22}
                     x2={33}
                     y2={22}
-                    stroke="black"
+                    stroke={colors.GHOST_WHITE}
                     strokeWidth={2}
                     strokeLinecap="round"
                 />
@@ -29,7 +29,7 @@ export default {
                     y1={14}
                     x2={33}
                     y2={14}
-                    stroke="black"
+                    stroke={colors.GHOST_WHITE}
                     strokeWidth={2}
                     strokeLinecap="round"
                 />
@@ -38,7 +38,7 @@ export default {
                     y1={30}
                     x2={33}
                     y2={30}
-                    stroke="black"
+                    stroke={colors.GHOST_WHITE}
                     strokeWidth={2}
                     strokeLinecap="round"
                 />
@@ -68,4 +68,23 @@ export default {
             </Svg>,
         viewBox: '0 0 44 44'
     },
+    logout: {
+        svg:
+        <Svg width={44} height={44} fill="none">
+            <Path
+                d="M13.127 17.1059V15.843C13.127 14.2238 14.4396 12.9111 16.0588 12.9111H28.3724C29.9916 12.9111 31.3042 14.2238 31.3042 15.843V28.1566C31.3042 29.7758 29.9916 31.0884 28.3724 31.0884H16.0588C14.4396 31.0884 13.127 29.7758 13.127 28.1566V26.8936"
+                stroke={colors.ORANGE_RED}
+                strokeWidth={1.6}
+                strokeLinecap="round"
+                strokeLinejoin="round"
+            />
+            <Path
+                d="M18.9147 24.9409C18.6187 25.2307 18.6138 25.7055 18.9036 26.0015C19.1935 26.2974 19.6683 26.3023 19.9642 26.0125L23.5115 22.5384C23.6556 22.3973 23.7367 22.2042 23.7367 22.0026C23.7368 21.801 23.6556 21.6079 23.5116 21.4668L19.9643 17.9916C19.6684 17.7017 19.1936 17.7066 18.9037 18.0025C18.6138 18.2984 18.6187 18.7732 18.9146 19.0631L21.0958 21.2L10.8 21.2C10.3582 21.2 10 21.5582 10 22C10 22.4418 10.3582 22.8 10.8 22.8L21.1006 22.8L18.9147 24.9409Z"
+                fill={colors.ORANGE_RED}
+                fillRule="evenodd"
+                clipRule="evenodd"
+            />
+        </Svg>,
+        viewBox: '0 0 44 44'
+    }
 };
