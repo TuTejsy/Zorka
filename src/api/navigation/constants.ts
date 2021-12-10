@@ -1,6 +1,11 @@
 export const NAVIGATION = {
+    STACKS: {
+        CRYPTO_LIST: 'zrk.CryptoListStack',
+    },
+
     SCREENS: {
         COMMON: {
+            BACKUP: 'zrk.BackupScreen',
             GET_STARTED: 'zrk.GetStartedScreen',
             CRYPTO_LIST: 'zrk.CryptoListScreen',
             CRYPTO_WALLET: 'zrk.CryptoWalletScreen',

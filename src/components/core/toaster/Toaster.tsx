@@ -17,6 +17,7 @@ function Toaster({
 }: ToasterTypes) {
     const toastTimeoutValueHandler = useMemo(() => (new ValueHandler<null | NodeJS.Timeout>(null)), []);
     const animatedOpacityRef = useRef(new Animated.Value(0));
+    const animatedScaleRef = useRef(new Animated.Value(0));
 
     const [text, setText] = useState('');
     const [isSuccess, setIsSuccess] = useState(true);
@@ -33,7 +34,13 @@ function Toaster({
                 toValue: 0,
                 duration: ANIMATION_DURATION,
                 useNativeDriver: true,
-            }).start();
+            }).start(() => {
+                Animated.timing(animatedScaleRef.current, {
+                    toValue: 0,
+                    duration: 0,
+                    useNativeDriver: true,
+                }).start();
+            });
         },
         [ toastTimeoutValueHandler ],
     );
@@ -43,13 +50,19 @@ function Toaster({
             setText(text);
             setIsSuccess(isSuccess);
 
-            Animated.timing(animatedOpacityRef.current, {
+            Animated.timing(animatedScaleRef.current, {
                 toValue: 1,
-                duration: ANIMATION_DURATION,
+                duration: 0,
                 useNativeDriver: true,
             }).start(() => {
-                const timeout = setTimeout(hideToaster, TOAST_DURATION);
-                toastTimeoutValueHandler.set(timeout);
+                Animated.timing(animatedOpacityRef.current, {
+                    toValue: 1,
+                    duration: ANIMATION_DURATION,
+                    useNativeDriver: true,
+                }).start(() => {
+                    const timeout = setTimeout(hideToaster, TOAST_DURATION);
+                    toastTimeoutValueHandler.set(timeout);
+                });
             });
         },
         [hideToaster, toastTimeoutValueHandler],
@@ -68,7 +81,10 @@ function Toaster({
         <Animated.View
             style={[
                 styles.toast,
-                { opacity: animatedOpacityRef.current }
+                {
+                    opacity: animatedOpacityRef.current,
+                    transform: [ { scale: animatedScaleRef.current } ]
+                }
             ]}
         >
             <Text style={styles.toastText}>{text}</Text>

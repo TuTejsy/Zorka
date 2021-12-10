@@ -1,8 +1,9 @@
 import { fork, cancel, take, race } from 'redux-saga/effects';
 
-import { watchCreateWallet } from './watchers';
+import { watchSaveBackup, watchCreateWallet } from './watchers';
 
 function* authSaga(dispatch) {
+    yield fork(watchSaveBackup);
     yield fork(watchCreateWallet);
 }
 

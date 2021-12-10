@@ -29,7 +29,7 @@ function SecretPhrase({ secretPhrase }: SecretPhrasePropTypes) {
         ];
 
         return arrayOfScretPharse;
-    }, [secretPhrase]);
+    }, [ secretPhrase ]);
 
     const [viewWidth, setViewWidth] = useState(0);
 

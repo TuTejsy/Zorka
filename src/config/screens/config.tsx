@@ -8,6 +8,7 @@ import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import { NAVIGATION } from 'appConstants';
 
 import {
+    BackupScreen,
     GetStartedScreen,
     CryptoListScreen,
     CreateWalletScreen,
@@ -21,8 +22,9 @@ import { ToastProvider } from 'appComponents/core';
 
 /* eslint-disable */
 const screens: [[string, FunctionComponent | Component]] = [
-    [ NAVIGATION.SCREENS.COMMON.GET_STARTED, GetStartedScreen ],
     [ NAVIGATION.SCREENS.COMMON.CRYPTO_LIST, CryptoListScreen],
+    [ NAVIGATION.SCREENS.COMMON.BACKUP, BackupScreen ],
+    [ NAVIGATION.SCREENS.COMMON.GET_STARTED, GetStartedScreen ],
     [ NAVIGATION.SCREENS.COMMON.CRYPTO_WALLET, CryptoWalletScreen],
 
     [ NAVIGATION.SCREENS.AUTH.CREATE_CRYPTO_WALLET, CreateWalletScreen],

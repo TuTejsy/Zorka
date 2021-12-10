@@ -5,6 +5,12 @@ const createWallet = (payload: CreateWalletPayload) => ({
     payload,
 });
 
+const saveBackup = () => ({
+    type: authTypes.SAVE_BACKUP,
+    payload: undefined,
+});
+
 export default {
+    saveBackup,
     createWallet,
 };

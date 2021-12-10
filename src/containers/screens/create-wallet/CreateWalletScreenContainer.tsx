@@ -54,7 +54,7 @@ function CreateWalletScreenContainer({
                 setIsGenerating(false);
             }, 1500);
         });
-    }, [dispatchPush]);
+    }, [ dispatchPush ]);
 
     return (
         <CreateWalletScreen

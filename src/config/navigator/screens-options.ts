@@ -67,6 +67,25 @@ const screensOptions: ScreensOptions = {
             visible: true,
         },
     },
+    [NAVIGATION.SCREENS.COMMON.BACKUP]: {
+        topBar: {
+            title: {
+                text: 'Secret Phrase',
+                color: colors.GHOST_WHITE,
+                fontSize: 16,
+                fontFamily: fonts.MEDIUM,
+            },
+            background: {
+                color: colors.BLACK,
+            },
+            backButton: {
+                color: colors.GHOST_WHITE,
+                title: '',
+                enableMenu: false,
+            },
+            visible: true,
+        },
+    },
 
     [NAVIGATION.SCREENS.AUTH.CREATE_CRYPTO_WALLET]: {
         topBar: {

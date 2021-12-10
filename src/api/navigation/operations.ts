@@ -53,6 +53,7 @@ function* setupRootCryptoScreen() {
                 },
                 center: {
                     stack: {
+                        id: NAVIGATION.STACKS.CRYPTO_LIST,
                         options: {
                         },
                         children: [

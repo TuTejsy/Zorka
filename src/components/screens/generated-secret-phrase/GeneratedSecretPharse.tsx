@@ -4,8 +4,7 @@ import ViewShot from 'react-native-view-shot';
 import { Navigation } from 'react-native-navigation';
 
 import { NAVIGATION } from 'appConstants';
-
-import { SecretPharse, NavBarDoneButton } from './components';
+import { SecretPharse } from 'appComponents/core';
 import styles from './styles';
 
 interface GeneratedSecretPhraseScreenPropTypes {
@@ -51,13 +50,15 @@ function GeneratedSecretPhraseScreen({
         <SafeAreaView style={styles.screen}>
             <ViewShot
                 ref={secretPhraseRef}
-                style={styles.secretPhraseContainer}>
+                style={styles.secretPhraseContainer}
+            >
                 <SecretPharse secretPhrase={secretPhrase} />
             </ViewShot>
 
             <TouchableOpacity
                 onPress={onSaveSecretPharsePress}
-                style={styles.saveButton}>
+                style={styles.saveButton}
+            >
                 <Text style={styles.saveText}>Save</Text>
             </TouchableOpacity>
         </SafeAreaView>
