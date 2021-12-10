@@ -377,6 +377,8 @@ PODS:
     - React
   - RNCClipboard (1.9.0):
     - React-Core
+  - RNFS (2.18.0):
+    - React
   - RNSVG (12.1.1):
     - React
   - Yoga (1.14.0)
@@ -445,6 +447,7 @@ DEPENDENCIES:
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
   - RealmJS (from `../node_modules/realm`)
   - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
+  - RNFS (from `../node_modules/react-native-fs`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -540,6 +543,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/realm"
   RNCClipboard:
     :path: "../node_modules/@react-native-clipboard/clipboard"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   Yoga:
@@ -597,6 +602,7 @@ SPEC CHECKSUMS:
   ReactNativeNavigation: d8e360047f2cbccc8fa10cabc1c385e59b82fa33
   RealmJS: 1277d8b323126b247a503ea0f97da59a9d63f5cd
   RNCClipboard: 99fc8ad669a376b756fbc8098ae2fd05c0ed0668
+  RNFS: 3ab21fa6c56d65566d1fb26c2228e2b6132e5e32
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f
   Yoga: c11abbf5809216c91fcd62f5571078b83d9b6720
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
