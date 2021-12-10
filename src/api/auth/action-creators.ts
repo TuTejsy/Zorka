@@ -10,7 +10,13 @@ const saveBackup = () => ({
     payload: undefined,
 });
 
+const logout = () => ({
+    type: authTypes.LOGOUT,
+    payload: undefined,
+});
+
 export default {
+    logout,
     saveBackup,
     createWallet,
 };

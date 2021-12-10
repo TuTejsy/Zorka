@@ -6,11 +6,14 @@ import styles from './styles';
 interface LeftSideMenuPropTypes {
     componentId: string;
 
+    onLogoutPress: () => void,
     onSecretPhrasePress: () => void,
 }
 
 function LeftSideMenu({
     componentId,
+
+    onLogoutPress,
     onSecretPhrasePress,
 }: LeftSideMenuPropTypes) {
     return (
@@ -24,7 +27,10 @@ function LeftSideMenu({
                 >
                     <Text style={styles.buttonText}>Secret Phrase</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.button}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={onLogoutPress}
+                >
                     <Text style={styles.buttonText}>Logout</Text>
                 </TouchableOpacity>
             </View>

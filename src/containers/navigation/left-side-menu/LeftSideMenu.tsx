@@ -38,6 +38,15 @@ function LeftSideMenuContainer({
         [ dispatch ],
     );
 
+    const dispatchLogout = useCallback(
+        () => {
+            dispatch(
+                actionCreators.logout(),
+            );
+        },
+        [ dispatch ],
+    );
+
     const handleSecretPhrasePress = useCallback(
         () => {
             Keychain.getItem(KEYCHAIN.KEYS.SECRET_PHRASE).then((secretPhrase: string | null) => {
@@ -64,6 +73,7 @@ function LeftSideMenuContainer({
     return (
         <LeftSideMenu
             componentId={componentId}
+            onLogoutPress={dispatchLogout}
             onSecretPhrasePress={handleSecretPhrasePress}
         />);
 }
