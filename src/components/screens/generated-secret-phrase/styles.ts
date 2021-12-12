@@ -9,7 +9,7 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.GHOST_WHITE,
+        backgroundColor: colors.CORAL_BLACK,
     },
 
     secretPhraseContainer: {
@@ -18,7 +18,7 @@ export default StyleSheet.create({
 
     saveButton: {
         width: Screen.width * 0.6,
-        height: 45,
+        height: 50,
         marginTop: 50,
         alignItems: 'center',
         borderRadius: 30,
@@ -27,7 +27,7 @@ export default StyleSheet.create({
     },
 
     saveText: {
-        color: colors.GHOST_WHITE,
+        color: colors.BLACK,
         fontSize: 16,
         fontFamily: fonts.MEDIUM,
     },

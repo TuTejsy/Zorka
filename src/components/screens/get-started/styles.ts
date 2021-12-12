@@ -9,11 +9,11 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: colors.GHOST_WHITE,
+        backgroundColor: colors.CORAL_BLACK,
     },
 
     title: {
-        color: colors.CORAL_BLACK,
+        color: colors.GHOST_WHITE,
         marginTop: Screen.height / 5,
         fontSize: 31,
         fontFamily: fonts.BOLD,
@@ -24,22 +24,22 @@ export default StyleSheet.create({
     },
 
     createWalletButtonText: {
-        color: colors.GHOST_WHITE,
+        color: colors.CORAL_BLACK,
         fontSize: 16,
         fontFamily: fonts.REGULAR,
     },
     createWalletButton: {
         width: Screen.width * 0.6,
-        height: 45,
+        height: 50,
         alignItems: 'center',
         borderRadius: 30,
         justifyContent: 'center',
-        backgroundColor: colors.CORAL_BLACK,
+        backgroundColor: colors.YELLOW,
     },
 
     signInButton: {
         width: Screen.width * 0.6,
-        height: 45,
+        height: 50,
         alignItems: 'center',
         borderColor: colors.CORAL_BLACK,
         borderWidth: 2,

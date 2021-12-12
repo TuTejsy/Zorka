@@ -18,7 +18,7 @@ export default StyleSheet.create({
 
     saveBackupButton: {
         width: Screen.width * 0.6,
-        height: 45,
+        height: 50,
         marginTop: 50,
         alignItems: 'center',
         borderRadius: 30,
@@ -28,7 +28,7 @@ export default StyleSheet.create({
 
     saveSecretPharseButton: {
         width: Screen.width * 0.6,
-        height: 45,
+        height: 50,
         marginTop: 20,
         alignItems: 'center',
         borderRadius: 30,

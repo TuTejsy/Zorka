@@ -9,7 +9,7 @@ export default StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'space-between',
-        backgroundColor: colors.GHOST_WHITE,
+        backgroundColor: colors.CORAL_BLACK,
     },
 
     generateSecretPhraseContainer: {
@@ -25,7 +25,7 @@ export default StyleSheet.create({
     },
 
     generateText: {
-        color: colors.GHOST_WHITE,
+        color: colors.CORAL_BLACK,
         fontSize: 16,
         lineHeight: 19,
         fontFamily: fonts.MEDIUM,
@@ -34,7 +34,7 @@ export default StyleSheet.create({
     loadingCirlce: {
         alignItems: 'center',
         justifyContent: 'center',
-        backgroundColor: colors.YELLOW,
+        backgroundColor: colors.GREEN,
     },
 
     generateSecretPhraseButton: {
@@ -45,6 +45,6 @@ export default StyleSheet.create({
         borderColor: colors.GHOST_WHITE,
         borderRadius: Screen.width * 0.3,
         justifyContent: 'center',
-        backgroundColor: colors.YELLOW,
+        backgroundColor: colors.GREEN,
     },
 });
