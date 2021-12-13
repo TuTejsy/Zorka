@@ -4,6 +4,7 @@ import { ObjectChangeCallback } from 'realm';
 import { CryptoDB } from 'appDatabase';
 import { getMapById } from 'appUtils';
 import { CurrencyId } from 'appConstants';
+import { CryptoCurrency } from 'database/types';
 
 function useCryptoCurrency(
     cryptoId: CurrencyId,
@@ -15,7 +16,7 @@ function useCryptoCurrency(
         const cryptoCurrency = CryptoDB.object(cryptoId);
 
         if (cryptoCurrency) {
-            setCryptoCurrency(cryptoCurrency.cloneZRK());
+            setCryptoCurrency(cryptoCurrency.cloneZRK<CryptoCurrency>());
             let propsToWatchMap: {[props: string]: boolean} = {};
 
             if (propsToWatch) {
@@ -30,7 +31,7 @@ function useCryptoCurrency(
                 }
 
                 if (isAnythingChanged) {
-                    setCryptoCurrency(nextcryptoCurrency.cloneZRK());
+                    setCryptoCurrency(nextcryptoCurrency.cloneZRK<CryptoCurrency>());
                 }
             };
 

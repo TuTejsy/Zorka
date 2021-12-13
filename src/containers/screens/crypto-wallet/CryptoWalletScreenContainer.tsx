@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import Clipboard from '@react-native-clipboard/clipboard';
 import { Options, Navigation } from 'react-native-navigation';
@@ -18,6 +18,7 @@ function CryptoWalletScreenContainer({
     componentId,
     cryptoCurrencyId,
 }: CryptoWalletScreenContainerPropTypes) {
+    const [isRefreshing, setIsRefreshing] = useState(false);
     const cryptoCurrency = useCryptoCurrency(cryptoCurrencyId);
 
     const dispatch = useDispatch();
@@ -50,14 +51,31 @@ function CryptoWalletScreenContainer({
     }, []);
 
     useEffect(() => {
+        if (isRefreshing) {
+            setIsRefreshing(false);
+        }
+    }, [cryptoCurrency ,isRefreshing]);
+
+    useEffect(() => {
         Navigation.mergeOptions(componentId, {
             topBar: {
                 title: {
-                    text: cryptoCurrency.name
+                    text: cryptoCurrency?.name
                 },
             },
         });
     }, [componentId, cryptoCurrency]);
+
+    const handleRefresh = useCallback(
+        () => {
+            setIsRefreshing(true);
+
+            dispatch(
+                actionCreators.updateCryptoBalance({ cryptoId: cryptoCurrencyId }),
+            );
+        },
+        [cryptoCurrencyId, dispatch],
+    );
 
     const handleCreateWalletPress = useCallback(
         () => {
@@ -70,17 +88,21 @@ function CryptoWalletScreenContainer({
 
     const hanldeCopyPublicAddressPress = useCallback(
         () => {
-            Clipboard.setString(cryptoCurrency.publicAddress);
-            ToastEmitter.showToast({
-                text: 'Copied',
-                isSuccess: true,
-            });
+            if (cryptoCurrency?.publicAddress) {
+                Clipboard.setString(cryptoCurrency.publicAddress);
+                ToastEmitter.showToast({
+                    text: 'Copied',
+                    isSuccess: true,
+                });
+            }
         },
-        [ cryptoCurrency.publicAddress ],
+        [ cryptoCurrency?.publicAddress ],
     );
 
     return (
         <CryptoWalletScreen
+            onRefresh={handleRefresh}
+            isRefreshing={isRefreshing}
             cryptoCurrency={cryptoCurrency}
             onCreateWalletPress={handleCreateWalletPress}
             onCopyPublicAddressPress={hanldeCopyPublicAddressPress}

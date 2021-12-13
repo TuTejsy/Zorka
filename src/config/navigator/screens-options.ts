@@ -11,8 +11,12 @@ interface ScreensOptions {
 const screensOptions: ScreensOptions = {
     [NAVIGATION.SCREENS.COMMON.GET_STARTED]: {
         topBar: {
-            title: {
-                text: 'Get Started',
+            visible: false,
+
+            backButton: {
+                color: colors.GHOST_WHITE,
+                title: '',
+                enableMenu: false,
             },
         },
     },

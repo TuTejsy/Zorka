@@ -5,6 +5,7 @@ import { Navigation } from 'react-native-navigation';
 
 import { NAVIGATION } from 'appConstants';
 import { SecretPharse } from 'appComponents/core';
+import { NavBarDoneButton } from './components';
 import styles from './styles';
 
 interface GeneratedSecretPhraseScreenPropTypes {

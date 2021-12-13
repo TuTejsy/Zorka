@@ -19,13 +19,14 @@ function CreateWalletScreen({
     return (
         <SafeAreaView style={styles.screen}>
             <View style={styles.generateSecretPhraseContainer}>
-                {isGenerating ? (
+                { isGenerating ? (
                     <LoadingCircle
                         size={Screen.width * 0.6}
                         style={styles.loadingCirlce}
-                        color={colors.CORAL_BLACK}
+                        color={colors.ORANGE_RED}
                         strokeWidth={5}
-                        backgroundColor={colors.GHOST_WHITE}>
+                        backgroundColor={colors.GHOST_WHITE}
+                    >
                         <View style={styles.generateTextContainer}>
                             <Text style={styles.generateText}>
                                 Generating a
@@ -38,7 +39,8 @@ function CreateWalletScreen({
                 ) : (
                     <TouchableOpacity
                         style={styles.generateSecretPhraseButton}
-                        onPress={onGenerateSecretPhrasePress}>
+                        onPress={onGenerateSecretPhrasePress}
+                    >
                         <View style={styles.generateTextContainer}>
                             <Text style={styles.generateText}>Generate a</Text>
                             <Text style={styles.generateText}>

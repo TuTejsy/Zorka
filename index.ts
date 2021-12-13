@@ -12,18 +12,27 @@ import { CryptoDB } from 'appDatabase';
 import { Keychain } from 'appUtils';
 import { KEYCHAIN } from 'appConstants';
 
-Keychain.getItem(KEYCHAIN.KEYS.SECRET_PHRASE).then((secretPhrase: string | null) => {
-    if (secretPhrase) {
-        const privateKey = SHA512(secretPhrase).toString(enc.Base64);
-        const privateKeyBuffer = Buffer.from(privateKey, 'base64');
+// Keychain.getItem(KEYCHAIN.KEYS.SECRET_PHRASE).then((secretPhrase: string | null) => {
+//     if (secretPhrase) {
+//         const privateKey = SHA512(secretPhrase).toString(enc.Base64);
+//         const privateKeyBuffer = Buffer.from(privateKey, 'base64');
 
-        CryptoDB.open(privateKeyBuffer);
+//         CryptoDB.open(privateKeyBuffer);
+//     }
 
-        const store = configureStore();
-        registerScreens(store);
+//     const store = configureStore();
+//     registerScreens(store);
 
-        Navigation.events().registerAppLaunchedListener(() => {
-            Navigation.setDefaultOptions(getDefaultOptions());
-        });
-    }
+//     Navigation.events().registerAppLaunchedListener(() => {
+//         Navigation.setDefaultOptions(getDefaultOptions());
+//     });
+// })
+
+CryptoDB.open();
+
+const store = configureStore();
+registerScreens(store);
+
+Navigation.events().registerAppLaunchedListener(() => {
+    Navigation.setDefaultOptions(getDefaultOptions());
 });

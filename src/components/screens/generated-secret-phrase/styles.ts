@@ -29,6 +29,6 @@ export default StyleSheet.create({
     saveText: {
         color: colors.BLACK,
         fontSize: 16,
-        fontFamily: fonts.MEDIUM,
+        fontFamily: fonts.REGULAR,
     },
 });

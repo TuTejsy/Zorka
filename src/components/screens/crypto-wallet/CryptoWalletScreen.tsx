@@ -1,34 +1,41 @@
 import React, { useMemo } from 'react';
-import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
+import { Text, View, RefreshControl, ScrollView, TouchableOpacity } from 'react-native';
 
+import { colors } from 'appAssets/styles';
 import { SATOSHI_IN_BTC } from 'appConstants';
 
 import styles from './styles';
 import { CryptoCurrency } from 'database/schema/crypto/types';
 
 interface CryptoWalletScreenPropTypes {
+    isRefreshing: boolean,
     cryptoCurrency: (CryptoCurrency & Realm.Object) | null | undefined,
 
+    onRefresh: () => void,
     onCreateWalletPress: () => void,
     onCopyPublicAddressPress: () => void,
 }
 
 function CryptoWalletScreen({
+    isRefreshing,
     cryptoCurrency,
+
+    onRefresh,
     onCreateWalletPress,
     onCopyPublicAddressPress,
 }: CryptoWalletScreenPropTypes) {
-    const createWalletButton = useMemo(() => (
-        <TouchableOpacity
-            style={styles.button}
-            onPress={onCreateWalletPress}
-        >
-            <Text style={styles.buttonText}>Create Wallet</Text>
-        </TouchableOpacity>),
-    [ onCreateWalletPress ]);
-
     return (
-        <SafeAreaView style={styles.screen}>
+        <ScrollView
+            style={styles.scrollView}
+            refreshControl={(
+                <RefreshControl
+                    onRefresh={onRefresh}
+                    tintColor={colors.GHOST_WHITE}
+                    refreshing={isRefreshing}
+                />
+            )}
+            contentContainerStyle={styles.screen}
+        >
             { cryptoCurrency?.publicAddress ? (
                 <View style={styles.content}>
                     <View style={styles.balanceContainer}>
@@ -38,6 +45,22 @@ function CryptoWalletScreen({
                         <Text
                             style={styles.balance}
                         >{cryptoCurrency.balance / SATOSHI_IN_BTC} {cryptoCurrency.name}</Text>
+                    </View>
+
+                    <View style={styles.transactionsContainer}>
+                        <TouchableOpacity
+                            style={styles.transactionsButton}
+                            onPress={onCopyPublicAddressPress}
+                        >
+                            <Text style={styles.transactionsText}>View History</Text>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity
+                            style={styles.sendButton}
+                            onPress={onCopyPublicAddressPress}
+                        >
+                            <Text style={styles.transactionsText}>Send Crypto</Text>
+                        </TouchableOpacity>
                     </View>
 
                     <View style={styles.publicAddressContainer}>
@@ -54,9 +77,17 @@ function CryptoWalletScreen({
                     {/* <Text >Unconfirmed Balance: {cryptoCurrency.unconfirmedBalance / SATOSHI_IN_BTC}</Text> */}
                 </View>
                 ) : (
-                    createWalletButton
+                    <View style={styles.createWalletContainer}>
+                        <Text style={styles.createWalletText}>Create Your {cryptoCurrency?.name} Wallet</Text>
+                        <TouchableOpacity
+                            style={styles.button}
+                            onPress={onCreateWalletPress}
+                        >
+                            <Text style={styles.buttonText}>Create Wallet</Text>
+                        </TouchableOpacity>
+                    </View>
                 )}
-        </SafeAreaView>
+        </ScrollView>
     );
 }
 

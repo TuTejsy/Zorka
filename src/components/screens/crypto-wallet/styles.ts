@@ -10,8 +10,11 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'flex-start',
         backgroundColor: colors.CORAL_BLACK,
+        paddingHorizontal: 16,
     },
-
+    scrollView: {
+        backgroundColor: colors.CORAL_BLACK,
+    },
     content: {
         flex: 1,
         alignItems: 'center',
@@ -20,12 +23,12 @@ export default StyleSheet.create({
     },
 
     balanceContainer: {
+        width: '100%',
         alignItems: 'center',
         borderRadius: 20,
         justifyContent: 'flex-start',
         paddingVertical: 16,
         backgroundColor: colors.CORAL_BLACK,
-        width: Screen.width * 0.8,
     },
     balanceTitle: {
         color: colors.GHOST_WHITE,
@@ -68,5 +71,49 @@ export default StyleSheet.create({
         color: colors.BLACK,
         fontSize: 14,
         fontFamily: fonts.REGULAR,
-    }
+    },
+
+    transactionsContainer: {
+        marginTop: 90,
+        justifyContent: 'center',
+    },
+
+    sendButton: {
+        width: Screen.width * 0.7,
+        height: 60,
+        marginTop: 20,
+        alignItems: 'center',
+        borderRadius: 15,
+        justifyContent: 'center',
+        backgroundColor: colors.GREEN,
+        paddingHorizontal: 15,
+    },
+    transactionsButton: {
+        width: Screen.width * 0.7,
+        height: 60,
+        alignItems: 'center',
+        borderRadius: 15,
+        justifyContent: 'center',
+        backgroundColor: colors.GHOST_WHITE,
+        paddingHorizontal: 15,
+    },
+    transactionsText: {
+        color: colors.BLACK,
+        fontSize: 16,
+        textAlign: 'center',
+        fontFamily: fonts.REGULAR,
+    },
+
+    createWalletContainer: {
+        flex: 1,
+        alignItems: 'center',
+        paddingBottom: 150,
+        justifyContent: 'center',
+    },
+    createWalletText: {
+        color: colors.GHOST_WHITE,
+        fontSize: 21,
+        fontFamily: fonts.REGULAR,
+        marginBottom: 50,
+    },
 });
