@@ -46,7 +46,7 @@ function CryptoWalletScreenContainer({
 
     useEffect(() => {
         dispatch(
-            actionCreators.updateCryptoBalance({ cryptoId: cryptoCurrencyId }),
+            actionCreators.updateCryptoWalletBalance({ cryptoId: cryptoCurrencyId }),
         );
     }, []);
 
@@ -71,7 +71,7 @@ function CryptoWalletScreenContainer({
             setIsRefreshing(true);
 
             dispatch(
-                actionCreators.updateCryptoBalance({ cryptoId: cryptoCurrencyId }),
+                actionCreators.updateCryptoWalletBalance({ cryptoId: cryptoCurrencyId }),
             );
         },
         [cryptoCurrencyId, dispatch],

@@ -19,3 +19,17 @@ interface CryptoCurrency {
     privateKey?: string,
     publicAddress?: string,
 }
+
+interface Transaction {
+    hash: string,
+    value: number,
+    timestamp: number,
+    isIncoming: boolean,
+    doubleSpend: boolean,
+    confirmations: number,
+    walletAddress: string,
+
+    preference?: 'high' | 'medium' | 'low',
+    blockHeight?: number,
+    totalBalance?: number,
+}

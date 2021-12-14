@@ -8,7 +8,7 @@ import { SHA512, enc } from 'crypto-js';
 import { configureStore } from 'appConfig/redux';
 import { registerScreens } from 'appConfig/screens';
 import { getDefaultOptions } from 'appConfig/navigator';
-import { CryptoDB } from 'appDatabase';
+import { CryptoDB, TransactionsDB } from 'appDatabase';
 import { Keychain } from 'appUtils';
 import { KEYCHAIN } from 'appConstants';
 
@@ -29,6 +29,7 @@ import { KEYCHAIN } from 'appConstants';
 // })
 
 CryptoDB.open();
+TransactionsDB.open();
 
 const store = configureStore();
 registerScreens(store);
