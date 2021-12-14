@@ -1,9 +1,14 @@
 import navigationTypes from './action-types';
 
-import { PushPayload, ToggleSideBarPayload } from './types';
+import { PushPayload, ToggleSideBarPayload, ShowModalPayload } from './types';
 
 const push = (payload: PushPayload) => ({
     type: navigationTypes.PUSH,
+    payload,
+});
+
+const showModal = (payload: ShowModalPayload) => ({
+    type: navigationTypes.SHOW_MODAL,
     payload,
 });
 
@@ -14,5 +19,6 @@ const toggleSideBar = (payload: ToggleSideBarPayload) => ({
 
 export default {
     push,
+    showModal,
     toggleSideBar,
 };

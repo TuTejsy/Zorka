@@ -2,7 +2,7 @@ import { call, take, fork, race } from 'redux-saga/effects';
 import { Navigation } from 'react-native-navigation';
 
 import navigationTypes from '../action-types';
-import { PopPayload, PushPayload } from '../types';
+import { PopPayload, PushPayload, ShowModalPayload } from '../types';
 
 import { NAVIGATION } from '../constants';
 import navigationOperations from '../operations';
@@ -14,9 +14,15 @@ export default function* () {
 
 function* watchNavigationActions() {
     while(true) {
-        const { popEvent, pushEvent, toggleSideMenuEvent } = yield race({
+        const {
+            popEvent,
+            pushEvent,
+            showModalEvent,
+            toggleSideMenuEvent,
+        } = yield race({
             popEvent: take(navigationTypes.POP),
             pushEvent: take(navigationTypes.PUSH),
+            showModalEvent: take(navigationTypes.SHOW_MODAL),
             toggleSideMenuEvent: take(navigationTypes.TOGGLE_SIDE_MENU),
         });
 
@@ -42,6 +48,24 @@ function* watchNavigationActions() {
                     passProps,
                     screenOptions,
                 });
+                break;
+            }
+
+            case !!showModalEvent: {
+                const {
+                    payload: {
+                        screenName,
+                        passProps,
+                        screenOptions,
+                    },
+                }: { payload: ShowModalPayload } = showModalEvent;
+
+                yield call(navigationOperations.showModal, {
+                    screenName,
+                    passProps,
+                    screenOptions,
+                });
+
                 break;
             }
 

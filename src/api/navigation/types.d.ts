@@ -6,6 +6,12 @@ interface PopPayload {
     screenOptions: Options;
 }
 
+interface ShowModalPayload {
+    screenName: string;
+    passProps?: any;
+    screenOptions?: Options;
+}
+
 interface PushPayload {
     componentId: string;
     screenName: string;

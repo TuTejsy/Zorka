@@ -5,13 +5,14 @@ import { colors } from 'appAssets/styles';
 import { SATOSHI_IN_BTC } from 'appConstants';
 
 import styles from './styles';
-import { CryptoCurrency } from 'database/schema/crypto/types';
+import { CryptoCurrency } from 'database/types';
 
 interface CryptoWalletScreenPropTypes {
     isRefreshing: boolean,
     cryptoCurrency: (CryptoCurrency & Realm.Object) | null | undefined,
 
     onRefresh: () => void,
+    onViewHistoryPress: () => void,
     onCreateWalletPress: () => void,
     onCopyPublicAddressPress: () => void,
 }
@@ -21,6 +22,7 @@ function CryptoWalletScreen({
     cryptoCurrency,
 
     onRefresh,
+    onViewHistoryPress,
     onCreateWalletPress,
     onCopyPublicAddressPress,
 }: CryptoWalletScreenPropTypes) {
@@ -50,7 +52,7 @@ function CryptoWalletScreen({
                     <View style={styles.transactionsContainer}>
                         <TouchableOpacity
                             style={styles.transactionsButton}
-                            onPress={onCopyPublicAddressPress}
+                            onPress={onViewHistoryPress}
                         >
                             <Text style={styles.transactionsText}>View History</Text>
                         </TouchableOpacity>

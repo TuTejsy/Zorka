@@ -4,7 +4,7 @@ import { View, SafeAreaView, FlatList } from 'react-native';
 import { CurrencyId } from 'appConstants';
 
 import { CryptoCurrencyPreview } from './components';
-import { CryptoCurrency } from 'database/schema/crypto/types';
+import { CryptoCurrency } from 'database/types';
 
 import styles from './styles';
 

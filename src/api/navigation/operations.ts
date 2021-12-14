@@ -2,6 +2,7 @@ import { Navigation, Options } from 'react-native-navigation';
 
 import { screensOptions } from 'appConfig/navigator';
 import { NAVIGATION } from 'appConstants';
+import { ShowModalPayload } from './types';
 
 interface PushToPropTypes {
     passProps: any;
@@ -38,9 +39,36 @@ function* pushTo({
     }
 }
 
+function* showModal({
+    passProps,
+    screenName,
+    screenOptions,
+}: ShowModalPayload) {
+    const defaultScreenOptions = screensOptions[screenName] ?? {};
+
+    const combinedScreenOptions = {
+        ...defaultScreenOptions,
+        ...screenOptions,
+    };
+
+    try {
+        const shoModalPromise = Navigation.showModal({
+            component: {
+                name: screenName,
+                options: combinedScreenOptions,
+                passProps,
+            }
+        });
+
+        yield shoModalPromise;
+    } catch(err) {
+        console.log(err);
+    }
+}
+
 function* setupRootCryptoScreen() {
     const defaultScreenOptions =
-        screensOptions[NAVIGATION.SCREENS.COMMON.CRYPTO_LIST] ?? {};
+        screensOptions[NAVIGATION.SCREENS.CRYPTO.CRYPTO_LIST] ?? {};
 
     const setRootPromise = Navigation.setRoot({
         root: {
@@ -59,7 +87,7 @@ function* setupRootCryptoScreen() {
                         children: [
                             {
                                 component: {
-                                    name: NAVIGATION.SCREENS.COMMON.CRYPTO_LIST,
+                                    name: NAVIGATION.SCREENS.CRYPTO.CRYPTO_LIST,
                                     options: defaultScreenOptions,
                                 },
                             },
@@ -95,4 +123,9 @@ function* setupRootGetStartedScreen() {
     yield setRootPromise;
 }
 
-export default { pushTo, setupRootCryptoScreen, setupRootGetStartedScreen };
+export default {
+    pushTo,
+    showModal,
+    setupRootCryptoScreen,
+    setupRootGetStartedScreen,
+};

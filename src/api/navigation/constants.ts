@@ -10,6 +10,11 @@ export const NAVIGATION = {
             CRYPTO_LIST: 'zrk.CryptoListScreen',
             CRYPTO_WALLET: 'zrk.CryptoWalletScreen',
         },
+        CRYPTO: {
+            CRYPTO_LIST: 'zrk.CryptoListScreen',
+            CRYPTO_WALLET: 'zrk.CryptoWalletScreen',
+            TRANSACTIONS_LIST: 'zrk.TransactionsListScreen',
+        },
         AUTH: {
             CREATE_CRYPTO_WALLET: 'zrk.CreateWalletScreen',
             GENERATED_SECRET_PHRASE: 'zrk.GeneratedSecretPhraseScreen',

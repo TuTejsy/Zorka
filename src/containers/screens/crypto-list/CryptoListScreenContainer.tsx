@@ -53,7 +53,7 @@ function CryptoListScreenContainer({
     const handleCryptoCurrencyPress = useCallback(
         (cryptoCurrencyId: CurrencyId) => {
             dispatchPush({
-                screenName: NAVIGATION.SCREENS.COMMON.CRYPTO_WALLET,
+                screenName: NAVIGATION.SCREENS.CRYPTO.CRYPTO_WALLET,
                 passProps: { cryptoCurrencyId }
             });
         },

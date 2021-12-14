@@ -20,7 +20,7 @@ const screensOptions: ScreensOptions = {
             },
         },
     },
-    [NAVIGATION.SCREENS.COMMON.CRYPTO_LIST]: {
+    [NAVIGATION.SCREENS.CRYPTO.CRYPTO_LIST]: {
         topBar: {
             title: {
                 text: 'Zorka Wallet',
@@ -54,7 +54,7 @@ const screensOptions: ScreensOptions = {
             visible: true,
         },
     },
-    [NAVIGATION.SCREENS.COMMON.CRYPTO_WALLET]: {
+    [NAVIGATION.SCREENS.CRYPTO.CRYPTO_WALLET]: {
         topBar: {
             title: {
                 color: colors.GHOST_WHITE,

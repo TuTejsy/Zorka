@@ -5,7 +5,7 @@ import { Options, Navigation } from 'react-native-navigation';
 
 import { actionCreators } from 'appApi';
 import { ToastEmitter } from 'appEmitters';
-import { CurrencyId, CURRENCY } from 'appConstants';
+import { CurrencyId, CURRENCY, NAVIGATION } from 'appConstants';
 import { useCryptoCurrency } from 'appHooks';
 import { CryptoWalletScreen } from 'appComponents/screens';
 
@@ -22,7 +22,7 @@ function CryptoWalletScreenContainer({
     const cryptoCurrency = useCryptoCurrency(cryptoCurrencyId);
 
     const dispatch = useDispatch();
-    const dispatchPush = useCallback(
+    const dispatchShowModal = useCallback(
         ({
             passProps,
             screenName,
@@ -33,15 +33,14 @@ function CryptoWalletScreenContainer({
             screenOptions?: Options;
         }) => {
             dispatch(
-                actionCreators.push({
+                actionCreators.showModal({
                     passProps,
                     screenName,
-                    componentId,
                     screenOptions,
                 }),
             );
         },
-        [componentId, dispatch],
+        [ dispatch ],
     );
 
     useEffect(() => {
@@ -86,6 +85,18 @@ function CryptoWalletScreenContainer({
         [ dispatch ],
     );
 
+    const handleViewHistoryPress = useCallback(
+        () => {
+            dispatchShowModal({
+                screenName: NAVIGATION.SCREENS.CRYPTO.TRANSACTIONS_LIST,
+                passProps: {
+                    walletAddress: cryptoCurrency?.publicAddress
+                }
+            });
+        },
+        [cryptoCurrency?.publicAddress, dispatchShowModal],
+    );
+
     const hanldeCopyPublicAddressPress = useCallback(
         () => {
             if (cryptoCurrency?.publicAddress) {
@@ -104,6 +115,7 @@ function CryptoWalletScreenContainer({
             onRefresh={handleRefresh}
             isRefreshing={isRefreshing}
             cryptoCurrency={cryptoCurrency}
+            onViewHistoryPress={handleViewHistoryPress}
             onCreateWalletPress={handleCreateWalletPress}
             onCopyPublicAddressPress={hanldeCopyPublicAddressPress}
         />
