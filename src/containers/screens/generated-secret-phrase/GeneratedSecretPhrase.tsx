@@ -3,7 +3,7 @@ import { Share } from 'react-native';
 import ViewShot, { captureRef } from 'react-native-view-shot';
 import { useDispatch } from 'react-redux';
 
-import { actionCreators } from 'appApi';
+import { actionCreators } from 'appApi/client';
 import { GeneratedSecretPhraseScreen } from 'appComponents/screens';
 
 interface GeneratedSecretPhraseScreenContainerPropTypes {
@@ -31,7 +31,7 @@ function GeneratedSecretPhraseScreenContainer({
             format: 'png',
             quality: 1,
         }).then(
-            url => {
+            (url) => {
                 Share.share({ url });
             },
             error => console.error('Snapshot failed', error),
@@ -40,7 +40,7 @@ function GeneratedSecretPhraseScreenContainer({
 
     const handleDonePress = useCallback(() => {
         dispatchCreateWallet();
-    }, [dispatchCreateWallet]);
+    }, [ dispatchCreateWallet ]);
 
     return (
         <GeneratedSecretPhraseScreen

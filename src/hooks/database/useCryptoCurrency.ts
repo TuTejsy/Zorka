@@ -3,8 +3,6 @@ import { ObjectChangeCallback } from 'realm';
 
 import { CryptoDB } from 'appDatabase';
 import { getMapById } from 'appUtils';
-import { CurrencyId } from 'appConstants';
-import { CryptoCurrency } from 'database/types';
 
 function useCryptoCurrency(
     cryptoId: CurrencyId,

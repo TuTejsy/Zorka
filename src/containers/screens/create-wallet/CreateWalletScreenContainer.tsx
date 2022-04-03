@@ -2,7 +2,7 @@ import React, { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Options } from 'react-native-navigation';
 
-import { actionCreators } from 'appApi';
+import { actionCreators } from 'appApi/client';
 import { Generator } from 'appUtils';
 import { NAVIGATION } from 'appConstants';
 import { CreateWalletScreen } from 'appComponents/screens';

@@ -14,6 +14,7 @@ import {
     CreateWalletScreen,
     CryptoWalletScreen,
     TransactionsListScreen,
+    CreateTransactionScreen,
     GeneratedSecretPhraseScreen,
 } from 'appContainers/screens';
 
@@ -29,6 +30,7 @@ const screens: [[string, FunctionComponent | Component]] = [
     [ NAVIGATION.SCREENS.CRYPTO.CRYPTO_LIST, CryptoListScreen],
     [ NAVIGATION.SCREENS.CRYPTO.CRYPTO_WALLET, CryptoWalletScreen],
     [ NAVIGATION.SCREENS.CRYPTO.TRANSACTIONS_LIST, TransactionsListScreen],
+    [ NAVIGATION.SCREENS.CRYPTO.CREATE_TRANSACTION, CreateTransactionScreen],
 
     [ NAVIGATION.SCREENS.AUTH.CREATE_CRYPTO_WALLET, CreateWalletScreen],
     [ NAVIGATION.SCREENS.AUTH.GENERATED_SECRET_PHRASE, GeneratedSecretPhraseScreen],

@@ -3,7 +3,7 @@ import { Share } from 'react-native';
 import ViewShot, { captureRef } from 'react-native-view-shot';
 import { useDispatch } from 'react-redux';
 
-import { actionCreators } from 'appApi';
+import { actionCreators } from 'appApi/client';
 import { BackupScreen } from 'appComponents/screens';
 
 interface BackupScreenContainerPropTypes {

@@ -1,10 +1,7 @@
 import React, { useCallback } from 'react';
 import { View, SafeAreaView, FlatList } from 'react-native';
 
-import { CurrencyId } from 'appConstants';
-
 import { TransactionPreview } from './components';
-import { Transaction } from 'database/types';
 
 import styles from './styles';
 

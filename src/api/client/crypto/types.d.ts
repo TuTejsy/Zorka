@@ -1,0 +1,4 @@
+
+interface UpdateCryptBalancePayload {
+    cryptoId: CurrencyId;
+}

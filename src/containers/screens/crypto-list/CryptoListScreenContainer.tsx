@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { Options } from 'react-native-navigation';
 
-import { actionCreators } from 'appApi';
+import { actionCreators } from 'appApi/client';
 import { NAVIGATION, CurrencyId } from 'appConstants';
 import { useCryptoCurrencies } from 'appHooks';
 

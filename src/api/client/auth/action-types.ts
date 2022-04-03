@@ -1,0 +1,14 @@
+const SIGN_UP = 'AUTH/SIGN_UP';
+const SIGN_IN = 'AUTH/SIGN_IN';
+const LOGOUT = 'AUTH/LOGOUT';
+const SAVE_BACKUP = 'AUTH/SAVE_BACKUP';
+const CREATE_CRYPTO_WALLET = 'AUTH/CREATE_CRYPTO_WALLET';
+
+
+export default {
+    LOGOUT,
+    SIGN_IN,
+    SIGN_UP,
+    SAVE_BACKUP,
+    CREATE_CRYPTO_WALLET,
+};

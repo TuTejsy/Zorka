@@ -1,10 +1,12 @@
 
-import { CurrencyId } from 'appConstants';
+
 declare module 'realm' {
     interface Configuration {
         deleteCache: (dbInstance: Realm) => void;
     }
 }
+
+type CurrencyId = 'BTC' | 'ETH' | 'XRP' | 'ADA';
 
 interface CryptoCurrency {
     id: CurrencyId,

@@ -1,4 +1,4 @@
-import { Generator } from 'appUtils';
+import { Generator } from '../generator';
 
 /** Class representing operations with Random numbers using cryptographically secure random */
 class Random extends Object {
@@ -17,7 +17,7 @@ class Random extends Object {
 
         do {
             randomInt32 = await this.getInt32();
-        } while (randomInt32 === 0 || randomInt32 / upperLimit > safeLoops);
+        } while(randomInt32 === 0 || randomInt32 / upperLimit > safeLoops);
 
         const randomNumberInRange = randomInt32 % upperLimit;
 

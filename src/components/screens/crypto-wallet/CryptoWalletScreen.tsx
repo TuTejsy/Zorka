@@ -12,6 +12,7 @@ interface CryptoWalletScreenPropTypes {
     cryptoCurrency: (CryptoCurrency & Realm.Object) | null | undefined,
 
     onRefresh: () => void,
+    onSendCryptoPress: () => void,
     onViewHistoryPress: () => void,
     onCreateWalletPress: () => void,
     onCopyPublicAddressPress: () => void,
@@ -22,6 +23,7 @@ function CryptoWalletScreen({
     cryptoCurrency,
 
     onRefresh,
+    onSendCryptoPress,
     onViewHistoryPress,
     onCreateWalletPress,
     onCopyPublicAddressPress,
@@ -59,7 +61,7 @@ function CryptoWalletScreen({
 
                         <TouchableOpacity
                             style={styles.sendButton}
-                            onPress={onCopyPublicAddressPress}
+                            onPress={onSendCryptoPress}
                         >
                             <Text style={styles.transactionsText}>Send Crypto</Text>
                         </TouchableOpacity>

@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
 import { Options } from 'react-native-navigation';
-import { useDispatch } from 'react-redux';
 
-import { actionCreators } from 'appApi';
+import { actionCreators } from 'appApi/client';
 import { NAVIGATION } from 'appConstants';
-
+import { useActions } from 'appHooks';
+import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 import { GetStartedScreen } from 'appComponents/screens';
 interface GetStartedScreenContainerPropTypes {
     componentId: string;
@@ -13,18 +13,23 @@ interface GetStartedScreenContainerPropTypes {
 function GetStartedScreenContainer({
     componentId,
 }: GetStartedScreenContainerPropTypes) {
-    const dispatch = useDispatch();
+    const [
+        push,
+    ] = useActions<[
+        ACTION_CREATORS_TYPES['push'],
+    ]>([
+        'push',
+    ]);
+
     const dispatchPush = useCallback(
         (screenName: string, screenOptions?: Options) => {
-            dispatch(
-                actionCreators.push({
-                    componentId,
-                    screenName,
-                    screenOptions,
-                }),
-            );
+            push({
+                componentId,
+                screenName,
+                screenOptions,
+            });
         },
-        [componentId, dispatch],
+        [push, componentId],
     );
 
     const handleSignInPress = useCallback(() => {}, []);

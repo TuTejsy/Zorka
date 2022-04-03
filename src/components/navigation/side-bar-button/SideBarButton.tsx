@@ -1,14 +1,11 @@
 import React, { useCallback } from 'react';
 import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
-import { useDispatch } from 'react-redux';
 
-import { Screen } from 'appUtils';
-import { colors } from 'appAssets/styles';
 import { SvgIcon } from 'appComponents/core';
-import { actionCreators } from 'appApi';
+import { useActions } from 'appHooks';
+import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 
 import styles from './styles';
-import { ToggleSideBarPayload } from 'api/types';
 
 
 interface SideBarButtonPropTypes {
@@ -18,16 +15,19 @@ interface SideBarButtonPropTypes {
 function SideBarButton({
     componentId,
 }: SideBarButtonPropTypes) {
-    const dispatch = useDispatch();
-    const dispatchToggleSideBar = useCallback((props: ToggleSideBarPayload) => {
-        dispatch(actionCreators.toggleSideBar(props));
-    }, [ dispatch ]);
+    const [
+        toggleSideBar,
+    ] = useActions<[
+        ACTION_CREATORS_TYPES['toggleSideBar'],
+    ]>([
+        'toggleSideBar',
+    ]);
 
     const handleToggleSideBarPress = useCallback(
         () => {
-            dispatchToggleSideBar({ visible: true });
+            toggleSideBar({ visible: true });
         },
-        [ dispatchToggleSideBar ],
+        [ toggleSideBar ],
     );
 
     return (

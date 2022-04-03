@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import Clipboard from '@react-native-clipboard/clipboard';
 import { Options, Navigation } from 'react-native-navigation';
 
-import { actionCreators } from 'appApi';
+import { actionCreators } from 'appApi/client';
 import { ToastEmitter } from 'appEmitters';
 import { CurrencyId, CURRENCY, NAVIGATION } from 'appConstants';
 import { useCryptoCurrency } from 'appHooks';
@@ -97,7 +97,18 @@ function CryptoWalletScreenContainer({
         [cryptoCurrency?.publicAddress, dispatchShowModal],
     );
 
-    const hanldeCopyPublicAddressPress = useCallback(
+    const handleSendCryptoPress = useCallback(
+        () => {
+            dispatchShowModal({
+                screenName: NAVIGATION.SCREENS.CRYPTO.CREATE_TRANSACTION,
+                passProps: {
+                },
+            });
+        },
+        [ dispatchShowModal ],
+    );
+
+    const handleCopyPublicAddressPress = useCallback(
         () => {
             if (cryptoCurrency?.publicAddress) {
                 Clipboard.setString(cryptoCurrency.publicAddress);
@@ -115,9 +126,10 @@ function CryptoWalletScreenContainer({
             onRefresh={handleRefresh}
             isRefreshing={isRefreshing}
             cryptoCurrency={cryptoCurrency}
+            onSendCryptoPress={handleSendCryptoPress}
             onViewHistoryPress={handleViewHistoryPress}
             onCreateWalletPress={handleCreateWalletPress}
-            onCopyPublicAddressPress={hanldeCopyPublicAddressPress}
+            onCopyPublicAddressPress={handleCopyPublicAddressPress}
         />
     );
 }

@@ -1,11 +1,11 @@
 import React, { useCallback } from 'react';
 import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
-import { useDispatch } from 'react-redux';
 
 import { Screen } from 'appUtils';
 import { colors } from 'appAssets/styles';
 import { SvgIcon } from 'appComponents/core';
-import { actionCreators } from 'appApi';
+import { useActions } from 'appHooks';
+import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 
 import styles from './styles';
 
@@ -15,10 +15,13 @@ interface UpdateCryptoListButtonPropTypes {
 
 function UpdateCryptoListButton({
 }: UpdateCryptoListButtonPropTypes) {
-    const dispatch = useDispatch();
-    const dispatchUpdateCyptoList = useCallback(() => {
-        dispatch(actionCreators.updateCryptoList());
-    }, [ dispatch ]);
+    const [
+        updateCryptoList,
+    ] = useActions<[
+        ACTION_CREATORS_TYPES['updateCryptoList'],
+    ]>([
+        'toggleSideBar',
+    ]);
 
     return (
         <SvgIcon
@@ -27,7 +30,7 @@ function UpdateCryptoListButton({
             width={44}
             height={44}
             iconSet="symbol"
-            onPress={dispatchUpdateCyptoList}
+            onPress={updateCryptoList}
             isTouchable
         />
     );

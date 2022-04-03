@@ -4,7 +4,7 @@ import { Navigation ,Options } from 'react-native-navigation';
 
 import { Keychain } from 'appUtils';
 import { KEYCHAIN, NAVIGATION } from 'appConstants';
-import { actionCreators } from 'appApi';
+import { actionCreators } from 'appApi/client';
 import { LeftSideMenu } from 'appComponents/navigation';
 
 interface LeftSideMenuContainerPropTypes {
