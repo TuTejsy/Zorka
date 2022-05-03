@@ -7,15 +7,15 @@ import { operations } from 'appOperations';
 import { actionTypes } from 'appApi/client';
 
 export default function* () {
-    yield fork(watchCreateWallet);
+    yield fork(watchCreateZorkaWallet);
 }
 
-function* watchCreateWallet() {
+function* watchCreateZorkaWallet() {
     while(true) {
         const {
             payload: { secretPhrase },
-        }: { payload: CreateWalletPayload } = yield take(
-            actionTypes.CREATE_CRYPTO_WALLET,
+        }: { payload: CreateZorkaWalletPayload } = yield take(
+            actionTypes.CREATE_ZORKA_WALLET,
         );
 
         if (secretPhrase) {

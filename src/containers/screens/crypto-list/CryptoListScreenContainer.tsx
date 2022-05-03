@@ -1,10 +1,9 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useCallback } from 'react';
 import { Options } from 'react-native-navigation';
 
-import { actionCreators } from 'appApi/client';
-import { NAVIGATION, CurrencyId } from 'appConstants';
-import { useCryptoCurrencies } from 'appHooks';
+import { NAVIGATION } from 'appConstants';
+import { useActions, useCryptoCurrencies } from 'appHooks';
+import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 
 import { CryptoListScreen } from 'appComponents/screens';
 
@@ -15,11 +14,16 @@ interface CryptoListScreenContainerPropTypes {
 function CryptoListScreenContainer({
     componentId,
 }: CryptoListScreenContainerPropTypes) {
-    const dispatch = useDispatch();
-
-    const dispatchUpdateCyptoList = useCallback(() => {
-        dispatch(actionCreators.updateCryptoList());
-    }, [ dispatch ]);
+    const [
+        push,
+        updateCryptoList,
+    ] = useActions<[
+        ACTION_CREATORS_TYPES['push'],
+        ACTION_CREATORS_TYPES['updateCryptoList'],
+    ]>([
+        'push',
+        'updateCryptoList',
+    ]);
 
     const dispatchPush = useCallback(
         ({
@@ -32,22 +36,20 @@ function CryptoListScreenContainer({
             passProps?: any;
             screenOptions?: Options;
         }) => {
-            dispatch(
-                actionCreators.push({
-                    passProps,
-                    screenName,
-                    componentId,
-                    screenOptions,
-                }),
-            );
+            push({
+                passProps,
+                screenName,
+                componentId,
+                screenOptions,
+            });
         },
-        [componentId, dispatch],
+        [componentId, push],
     );
 
     const [cryptoCurrencies, cryptoCurrenciesVersion] = useCryptoCurrencies('');
 
     useEffect(() => {
-        dispatchUpdateCyptoList();
+        updateCryptoList();
     }, []);
 
     const handleCryptoCurrencyPress = useCallback(

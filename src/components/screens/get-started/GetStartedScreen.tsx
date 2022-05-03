@@ -5,12 +5,12 @@ import styles from './styles';
 
 interface GetStartedScreenPropTypes {
     onSignInPress: () => void;
-    onCreateWalletPress: () => void;
+    onCreateZorkaWalletPress: () => void;
 }
 
 function GetStartedScreen({
     onSignInPress,
-    onCreateWalletPress,
+    onCreateZorkaWalletPress,
 }: GetStartedScreenPropTypes) {
     return (
         <SafeAreaView style={styles.screen}>
@@ -24,9 +24,9 @@ function GetStartedScreen({
                 </TouchableOpacity>
 
                 <TouchableOpacity
-                    style={styles.createWalletButton}
-                    onPress={onCreateWalletPress}>
-                    <Text style={styles.createWalletButtonText}>
+                    style={styles.CreateZorkaWalletButton}
+                    onPress={onCreateZorkaWalletPress}>
+                    <Text style={styles.CreateZorkaWalletButtonText}>
                         Create Wallet
                     </Text>
                 </TouchableOpacity>

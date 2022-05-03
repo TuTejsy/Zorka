@@ -23,12 +23,12 @@ export default StyleSheet.create({
         marginBottom: Screen.height / 10,
     },
 
-    createWalletButtonText: {
+    CreateZorkaWalletButtonText: {
         color: colors.CORAL_BLACK,
         fontSize: 16,
         fontFamily: fonts.REGULAR,
     },
-    createWalletButton: {
+    CreateZorkaWalletButton: {
         width: Screen.width * 0.6,
         height: 50,
         alignItems: 'center',

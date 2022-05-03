@@ -1,10 +1,10 @@
 import React, { useCallback } from 'react';
-import { useDispatch } from 'react-redux';
 import { Navigation ,Options } from 'react-native-navigation';
 
 import { Keychain } from 'appUtils';
 import { KEYCHAIN, NAVIGATION } from 'appConstants';
-import { actionCreators } from 'appApi/client';
+import { useActions } from 'appHooks';
+import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 import { LeftSideMenu } from 'appComponents/navigation';
 
 interface LeftSideMenuContainerPropTypes {
@@ -14,7 +14,16 @@ interface LeftSideMenuContainerPropTypes {
 function LeftSideMenuContainer({
     componentId,
 }: LeftSideMenuContainerPropTypes) {
-    const dispatch = useDispatch();
+    const [
+        push,
+        logout,
+    ] = useActions<[
+        ACTION_CREATORS_TYPES['push'],
+        ACTION_CREATORS_TYPES['logout'],
+    ]>([
+        'push',
+        'logout',
+    ]);
 
     const dispatchPush = useCallback(
         ({
@@ -26,25 +35,14 @@ function LeftSideMenuContainer({
             screenName: string;
             screenOptions?: Options;
         }) => {
-            dispatch(
-                actionCreators.push({
-                    passProps,
-                    screenName,
-                    componentId: NAVIGATION.STACKS.CRYPTO_LIST,
-                    screenOptions,
-                }),
-            );
+            push({
+                passProps,
+                screenName,
+                componentId: NAVIGATION.STACKS.CRYPTO_LIST,
+                screenOptions,
+            });
         },
-        [ dispatch ],
-    );
-
-    const dispatchLogout = useCallback(
-        () => {
-            dispatch(
-                actionCreators.logout(),
-            );
-        },
-        [ dispatch ],
+        [ push ],
     );
 
     const handleSecretPhrasePress = useCallback(
@@ -73,7 +71,7 @@ function LeftSideMenuContainer({
     return (
         <LeftSideMenu
             componentId={componentId}
-            onLogoutPress={dispatchLogout}
+            onLogoutPress={logout}
             onSecretPhrasePress={handleSecretPhrasePress}
         />);
 }

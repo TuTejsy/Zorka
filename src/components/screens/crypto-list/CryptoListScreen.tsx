@@ -27,6 +27,7 @@ function CryptoListScreen({
         <CryptoCurrencyPreview
             name={item.id}
             price={item.lastPrice}
+            amount={item.balance}
             logoURL={item.logoUrl}
             onPress={createOnCurrencyPress(item.id)}
         />

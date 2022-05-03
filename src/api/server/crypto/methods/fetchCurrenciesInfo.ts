@@ -1,6 +1,5 @@
 import Nomics from 'nomics';
 import { CURRENCY, NOMIX_API_KEY } from 'appConstants';
-// import { CryptoCurrency } from 'database/types';
 
 async function fetchCurrenciesInfo(): Promise<Array<CryptoCurrency>> {
     const interalToFetch = '1h';
@@ -34,6 +33,4 @@ async function fetchCurrenciesInfo(): Promise<Array<CryptoCurrency>> {
 }
 
 
-export default {
-    fetchCurrenciesInfo
-};
+export default fetchCurrenciesInfo;

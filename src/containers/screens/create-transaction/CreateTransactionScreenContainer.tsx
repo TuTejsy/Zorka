@@ -18,7 +18,6 @@ function CreateTransactionScreenContainer({
 }: CreateTransactionScreenContainerPropTypes) {
     const cryptoWallet = useCryptoCurrency(cryptoId);
 
-
     return (
         <CreateTransactionScreen
             cryptoWallet={cryptoWallet}

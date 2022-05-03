@@ -1,10 +1,10 @@
 import React, { useState, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
 import { Options } from 'react-native-navigation';
 
-import { actionCreators } from 'appApi/client';
 import { Generator } from 'appUtils';
 import { NAVIGATION } from 'appConstants';
+import { useActions } from 'appHooks';
+import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 import { CreateWalletScreen } from 'appComponents/screens';
 
 interface CreateWalletScreenContainerPropTypes {
@@ -14,7 +14,14 @@ interface CreateWalletScreenContainerPropTypes {
 function CreateWalletScreenContainer({
     componentId,
 }: CreateWalletScreenContainerPropTypes) {
-    const dispatch = useDispatch();
+    const [
+        push,
+    ] = useActions<[
+        ACTION_CREATORS_TYPES['push'],
+    ]>([
+        'push',
+    ]);
+
     const dispatchPush = useCallback(
         ({
             passProps,
@@ -25,16 +32,14 @@ function CreateWalletScreenContainer({
             screenName: string;
             screenOptions?: Options;
         }) => {
-            dispatch(
-                actionCreators.push({
-                    passProps,
-                    screenName,
-                    componentId,
-                    screenOptions,
-                }),
-            );
+            push({
+                passProps,
+                screenName,
+                componentId,
+                screenOptions,
+            });
         },
-        [componentId, dispatch],
+        [componentId, push],
     );
 
     const [isGenerating, setIsGenerating] = useState(false);

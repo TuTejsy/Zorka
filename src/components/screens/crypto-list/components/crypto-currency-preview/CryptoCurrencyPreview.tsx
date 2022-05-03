@@ -5,12 +5,14 @@ import { SvgUri } from 'react-native-svg';
 import { Screen } from 'appUtils';
 import { colors } from 'appAssets/styles';
 import { LoadingCircle } from 'appComponents/core';
+import { SATOSHI_IN_BTC } from 'appConstants';
 
 import styles from './styles';
 
 interface CryptoCurrencyPreviewPropTypes {
     name: string,
     price: string,
+    amount: number,
 
     onPress: () => void,
 
@@ -20,6 +22,7 @@ interface CryptoCurrencyPreviewPropTypes {
 function CryptoCurrencyPreview({
     name,
     price,
+    amount,
 
     onPress,
 
@@ -44,6 +47,8 @@ function CryptoCurrencyPreview({
             </View>
 
             <Text style={styles.name}>{name}</Text>
+
+            <Text style={styles.amount}>{amount / SATOSHI_IN_BTC}</Text>
         </TouchableOpacity>
     );
 }

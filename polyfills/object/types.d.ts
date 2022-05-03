@@ -1,7 +1,7 @@
 import Realm from 'realm';
 import { Task } from 'redux-saga';
 
-declare global {
+declare module global {
     interface Object {
         cloneSK<T>(): T,
         isUint8Array: () => this is Uint8Array,
@@ -10,4 +10,6 @@ declare global {
         isReduxSagaTask: () => this is Task,
     }
 
+    let isAndroid: boolean;
+    let isIos: boolean;
 }

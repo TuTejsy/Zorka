@@ -1,6 +1,6 @@
 import navigationTypes from './action-types';
 
-import { PushPayload, ToggleSideBarPayload, ShowModalPayload } from './types';
+import { PushPayload, ToggleSideBarPayload } from './types';
 
 const push = (payload: PushPayload) => ({
     type: navigationTypes.PUSH,

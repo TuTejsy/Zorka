@@ -5,8 +5,9 @@ import { Options, Navigation } from 'react-native-navigation';
 
 import { actionCreators } from 'appApi/client';
 import { ToastEmitter } from 'appEmitters';
-import { CurrencyId, CURRENCY, NAVIGATION } from 'appConstants';
-import { useCryptoCurrency } from 'appHooks';
+import { NAVIGATION } from 'appConstants';
+import { useActions, useCryptoCurrency } from 'appHooks';
+import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 import { CryptoWalletScreen } from 'appComponents/screens';
 
 interface CryptoWalletScreenContainerPropTypes {
@@ -21,7 +22,20 @@ function CryptoWalletScreenContainer({
     const [isRefreshing, setIsRefreshing] = useState(false);
     const cryptoCurrency = useCryptoCurrency(cryptoCurrencyId);
 
-    const dispatch = useDispatch();
+    const [
+        showModal,
+        createCryptoWallet,
+        updateCryptoWalletBalance,
+    ] = useActions<[
+        ACTION_CREATORS_TYPES['showModal'],
+        ACTION_CREATORS_TYPES['createCryptoWallet'],
+        ACTION_CREATORS_TYPES['updateCryptoWalletBalance'],
+    ]>([
+        'showModal',
+        'createCryptoWallet',
+        'updateCryptoWalletBalance',
+    ]);
+
     const dispatchShowModal = useCallback(
         ({
             passProps,
@@ -32,21 +46,17 @@ function CryptoWalletScreenContainer({
             screenName: string;
             screenOptions?: Options;
         }) => {
-            dispatch(
-                actionCreators.showModal({
-                    passProps,
-                    screenName,
-                    screenOptions,
-                }),
-            );
+            showModal({
+                passProps,
+                screenName,
+                screenOptions,
+            });
         },
-        [ dispatch ],
+        [ showModal ],
     );
 
     useEffect(() => {
-        dispatch(
-            actionCreators.updateCryptoWalletBalance({ cryptoId: cryptoCurrencyId }),
-        );
+        updateCryptoWalletBalance({ cryptoId: cryptoCurrencyId });
     }, []);
 
     useEffect(() => {
@@ -69,20 +79,16 @@ function CryptoWalletScreenContainer({
         () => {
             setIsRefreshing(true);
 
-            dispatch(
-                actionCreators.updateCryptoWalletBalance({ cryptoId: cryptoCurrencyId }),
-            );
+            updateCryptoWalletBalance({ cryptoId: cryptoCurrencyId });
         },
-        [cryptoCurrencyId, dispatch],
+        [cryptoCurrencyId, updateCryptoWalletBalance],
     );
 
-    const handleCreateWalletPress = useCallback(
+    const handleCreateZorkaWalletPress = useCallback(
         () => {
-            dispatch(
-                actionCreators.createCryptoWallet(),
-            );
+            createCryptoWallet();
         },
-        [ dispatch ],
+        [ createCryptoWallet ],
     );
 
     const handleViewHistoryPress = useCallback(
@@ -102,10 +108,11 @@ function CryptoWalletScreenContainer({
             dispatchShowModal({
                 screenName: NAVIGATION.SCREENS.CRYPTO.CREATE_TRANSACTION,
                 passProps: {
+                    cryptoId: cryptoCurrency?.id,
                 },
             });
         },
-        [ dispatchShowModal ],
+        [cryptoCurrency?.id, dispatchShowModal],
     );
 
     const handleCopyPublicAddressPress = useCallback(
@@ -128,7 +135,7 @@ function CryptoWalletScreenContainer({
             cryptoCurrency={cryptoCurrency}
             onSendCryptoPress={handleSendCryptoPress}
             onViewHistoryPress={handleViewHistoryPress}
-            onCreateWalletPress={handleCreateWalletPress}
+            onCreateZorkaWalletPress={handleCreateZorkaWalletPress}
             onCopyPublicAddressPress={handleCopyPublicAddressPress}
         />
     );

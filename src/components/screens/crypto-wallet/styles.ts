@@ -104,13 +104,13 @@ export default StyleSheet.create({
         fontFamily: fonts.REGULAR,
     },
 
-    createWalletContainer: {
+    CreateZorkaWalletContainer: {
         flex: 1,
         alignItems: 'center',
         paddingBottom: 150,
         justifyContent: 'center',
     },
-    createWalletText: {
+    CreateZorkaWalletText: {
         color: colors.GHOST_WHITE,
         fontSize: 21,
         fontFamily: fonts.REGULAR,

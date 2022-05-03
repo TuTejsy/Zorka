@@ -1,5 +1,4 @@
 import cryptoTypes from './action-types';
-import { UpdateCryptBalancePayload } from './types';
 
 const createCryptoWallet = () => ({
     type: cryptoTypes.CREATE_CRYPTO_WALLET,

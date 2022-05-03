@@ -6,10 +6,10 @@ import {
     watchCryptoWalletInfo,
 } from './watchers';
 
-function* authSaga(dispatch) {
+function* cryptoSaga(dispatch) {
     yield fork(watchUpdateCryptoList);
     yield fork(watchCreateCryptoWallet);
     yield fork(watchCryptoWalletInfo);
 }
 
-export default authSaga;
+export default cryptoSaga;

@@ -1,3 +1,3 @@
-interface CreateWalletPayload {
+interface CreateZorkaWalletPayload {
     secretPhrase: string;
 }

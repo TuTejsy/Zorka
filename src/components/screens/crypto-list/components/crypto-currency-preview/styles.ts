@@ -27,5 +27,10 @@ export default StyleSheet.create({
         color: colors.GHOST_WHITE,
         fontSize: 14,
         fontFamily: fonts.REGULAR,
+    },
+    amount: {
+        color: colors.GHOST_WHITE,
+        fontSize: 16,
+        fontFamily: fonts.MEDIUM,
     }
 });

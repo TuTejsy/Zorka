@@ -1,7 +1,6 @@
 type OrNull<T> = { [K in keyof T]: T[K] | null }
 type NonEmptyArray<T> = [T, ...T[]];
 type SingleElementArray<T> = [T];
-
 interface MapById<T> {
     [id: string]: T
 }

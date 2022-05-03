@@ -1,9 +1,9 @@
 import React, { useRef, useCallback } from 'react';
 import { Share } from 'react-native';
 import ViewShot, { captureRef } from 'react-native-view-shot';
-import { useDispatch } from 'react-redux';
 
-import { actionCreators } from 'appApi/client';
+import { useActions } from 'appHooks';
+import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 import { BackupScreen } from 'appComponents/screens';
 
 interface BackupScreenContainerPropTypes {
@@ -15,16 +15,15 @@ function BackupScreenContainer({
     componentId,
     secretPhrase,
 }: BackupScreenContainerPropTypes) {
-    const dispatch = useDispatch();
+    const [
+        saveBackup,
+    ] = useActions<[
+        ACTION_CREATORS_TYPES['saveBackup'],
+    ]>([
+        'saveBackup',
+    ]);
 
     const secretPhraseRef = useRef<ViewShot>();
-
-    const handleSaveBackupPress = useCallback(
-        () => {
-            dispatch(actionCreators.saveBackup());
-        },
-        [ dispatch ],
-    );
 
     const handleSaveSecretPhrasePress = useCallback(() => {
         captureRef(secretPhraseRef, {
@@ -43,7 +42,7 @@ function BackupScreenContainer({
             componentId={componentId}
             secretPhrase={secretPhrase}
             secretPhraseRef={secretPhraseRef}
-            onSaveBackupPress={handleSaveBackupPress}
+            onSaveBackupPress={saveBackup}
             onSaveSecretPharsePress={handleSaveSecretPhrasePress}
         />
     );

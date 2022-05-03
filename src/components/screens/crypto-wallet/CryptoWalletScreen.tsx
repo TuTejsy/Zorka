@@ -14,7 +14,7 @@ interface CryptoWalletScreenPropTypes {
     onRefresh: () => void,
     onSendCryptoPress: () => void,
     onViewHistoryPress: () => void,
-    onCreateWalletPress: () => void,
+    onCreateZorkaWalletPress: () => void,
     onCopyPublicAddressPress: () => void,
 }
 
@@ -25,7 +25,7 @@ function CryptoWalletScreen({
     onRefresh,
     onSendCryptoPress,
     onViewHistoryPress,
-    onCreateWalletPress,
+    onCreateZorkaWalletPress,
     onCopyPublicAddressPress,
 }: CryptoWalletScreenPropTypes) {
     return (
@@ -81,11 +81,11 @@ function CryptoWalletScreen({
                     {/* <Text >Unconfirmed Balance: {cryptoCurrency.unconfirmedBalance / SATOSHI_IN_BTC}</Text> */}
                 </View>
                 ) : (
-                    <View style={styles.createWalletContainer}>
-                        <Text style={styles.createWalletText}>Create Your {cryptoCurrency?.name} Wallet</Text>
+                    <View style={styles.CreateZorkaWalletContainer}>
+                        <Text style={styles.CreateZorkaWalletText}>Create Your {cryptoCurrency?.name} Wallet</Text>
                         <TouchableOpacity
                             style={styles.button}
-                            onPress={onCreateWalletPress}
+                            onPress={onCreateZorkaWalletPress}
                         >
                             <Text style={styles.buttonText}>Create Wallet</Text>
                         </TouchableOpacity>

@@ -33,14 +33,14 @@ function GetStartedScreenContainer({
     );
 
     const handleSignInPress = useCallback(() => {}, []);
-    const handleCreateWalletPress = useCallback(() => {
+    const handleCreateZorkaWalletPress = useCallback(() => {
         dispatchPush(NAVIGATION.SCREENS.AUTH.CREATE_CRYPTO_WALLET);
     }, [ dispatchPush ]);
 
     return (
         <GetStartedScreen
             onSignInPress={handleSignInPress}
-            onCreateWalletPress={handleCreateWalletPress}
+            onCreateZorkaWalletPress={handleCreateZorkaWalletPress}
         />
     );
 }
