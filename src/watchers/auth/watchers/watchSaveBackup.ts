@@ -1,11 +1,10 @@
-import { call, fork, take } from 'redux-saga/effects';
+import { call, fork, put, take } from 'redux-saga/effects';
 import { SHA512, enc, AES } from 'crypto-js';
-import RNFS from 'react-native-fs';
-import { Share } from 'react-native';
 
 import { Keychain } from 'appUtils';
 import { KEYCHAIN } from 'appConstants';
 import { CryptoDB } from 'appDatabase';
+import { ServerAPI } from 'appApi/server';
 import { actionTypes } from 'appApi/client';
 
 export default function* () {
@@ -14,13 +13,14 @@ export default function* () {
 
 function* watchSaveBackup() {
     while(true) {
-        yield take(actionTypes.SAVE_BACKUP);
+        yield take(actionTypes.BACKUP_SAVE);
 
         try {
             const secretPhrase: string | null = yield call(Keychain.getItem, KEYCHAIN.KEYS.SECRET_PHRASE);
 
             if (secretPhrase) {
-                const privateKey = SHA512(secretPhrase).toString(enc.Base64);
+                const privateKey = SHA512(secretPhrase).toString(enc.Hex);
+                const publicKey = SHA512(privateKey).toString(enc.Hex);
 
                 const cryptoWallets = CryptoDB.objects();
 
@@ -29,12 +29,17 @@ function* watchSaveBackup() {
                 )).join(';');
                 const encryptedBackup = AES.encrypt(dataToEncrypt, privateKey);
 
-                const path = `${RNFS.DocumentDirectoryPath}/backup.zrk`;
+                yield call(ServerAPI.upsertEWallet, publicKey, encryptedBackup.toString());
 
-                yield call(RNFS.writeFile,path, encryptedBackup.toString(), 'utf8');
-                Share.share({ url: path });
+                yield put({
+                    type: actionTypes.BACKUP_SAVE_SUCCESS
+                });
             }
         } catch(err) {
+            yield put({
+                type: actionTypes.BACKUP_SAVE_FAIL
+            });
+
             console.error(err);
         }
     }

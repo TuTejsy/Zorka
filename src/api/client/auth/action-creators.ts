@@ -6,7 +6,7 @@ const CreateZorkaWallet = (payload: CreateZorkaWalletPayload) => ({
 });
 
 const saveBackup = () => ({
-    type: authTypes.SAVE_BACKUP,
+    type: authTypes.BACKUP_SAVE,
     payload: undefined,
 });
 

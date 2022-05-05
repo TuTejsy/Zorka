@@ -1,5 +1,5 @@
 import Bitcore, { Networks } from 'bitcore-lib';
-import { call, fork, take } from 'redux-saga/effects';
+import { put, fork, take } from 'redux-saga/effects';
 
 import { CryptoDB } from 'appDatabase';
 import { CURRENCY } from 'appConstants';
@@ -27,5 +27,9 @@ function* watchCreateCryptoWallet() {
                 btcCrypto.publicAddress = publicAddress;
             });
         }
+
+        yield put({
+            type: actionTypes.BACKUP_SAVE
+        });
     }
 }

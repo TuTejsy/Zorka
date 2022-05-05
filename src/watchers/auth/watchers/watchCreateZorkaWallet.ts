@@ -1,4 +1,4 @@
-import { call, fork, take } from 'redux-saga/effects';
+import { put, call, fork, take } from 'redux-saga/effects';
 
 import { Keychain } from 'appUtils';
 import { KEYCHAIN } from 'appConstants';
@@ -26,6 +26,10 @@ function* watchCreateZorkaWallet() {
             );
 
             yield call(operations.setupRootCryptoScreen);
+
+            yield put({
+                type: actionTypes.BACKUP_SAVE
+            });
         }
     }
 }
