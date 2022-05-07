@@ -1,7 +1,7 @@
 import { call, fork, put, take } from 'redux-saga/effects';
-import { SHA512, enc, AES } from 'crypto-js';
+import { AES } from 'crypto-js';
 
-import { Keychain } from 'appUtils';
+import { Keychain, Generator } from 'appUtils';
 import { KEYCHAIN } from 'appConstants';
 import { CryptoDB } from 'appDatabase';
 import { ServerAPI } from 'appApi/server';
@@ -19,10 +19,12 @@ function* watchSaveBackup() {
             const secretPhrase: string | null = yield call(Keychain.getItem, KEYCHAIN.KEYS.SECRET_PHRASE);
 
             if (secretPhrase) {
-                const privateKey = SHA512(secretPhrase).toString(enc.Hex);
-                const publicKey = SHA512(privateKey).toString(enc.Hex);
+                const {
+                    publicKey,
+                    privateKey,
+                } = Generator.privateAndPublicKeys(secretPhrase);
 
-                const cryptoWallets = CryptoDB.objects();
+                const cryptoWallets = CryptoDB.objects().filtered('privateKey != nil');
 
                 const dataToEncrypt = cryptoWallets.map(wallet => (
                     `#id=${wallet.id}#PK=${wallet.privateKey}`

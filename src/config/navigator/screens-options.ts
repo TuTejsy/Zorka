@@ -91,6 +91,29 @@ const screensOptions: ScreensOptions = {
         },
     },
 
+    [NAVIGATION.SCREENS.AUTH.ENTER_SECRET_PHARSE]: {
+        topBar: {
+            title: {
+                text: 'Enter Secret Phrase',
+                color: colors.GHOST_WHITE,
+                fontSize: 16,
+                fontFamily: fonts.MEDIUM,
+            },
+            background: {
+                color: colors.BLACK,
+            },
+            backButton: {
+                color: colors.GHOST_WHITE,
+                title: '',
+                enableMenu: false,
+            },
+            visible: true,
+        },
+        statusBar: {
+            style: 'dark',
+        }
+    },
+
     [NAVIGATION.SCREENS.AUTH.CREATE_CRYPTO_WALLET]: {
         topBar: {
             title: {

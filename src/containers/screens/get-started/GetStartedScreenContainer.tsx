@@ -32,7 +32,10 @@ function GetStartedScreenContainer({
         [push, componentId],
     );
 
-    const handleSignInPress = useCallback(() => {}, []);
+    const handleSignInPress = useCallback(() => {
+        dispatchPush(NAVIGATION.SCREENS.AUTH.ENTER_SECRET_PHARSE);
+    }, [ dispatchPush ]);
+
     const handleCreateZorkaWalletPress = useCallback(() => {
         dispatchPush(NAVIGATION.SCREENS.AUTH.CREATE_CRYPTO_WALLET);
     }, [ dispatchPush ]);

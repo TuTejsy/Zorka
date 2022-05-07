@@ -5,9 +5,6 @@ const configureNavigationStack = (rootScreen: string) => ({
                 component: {
                     name: rootScreen,
                     options: {
-                        statusBar: {
-                            backgroundColor: '#FFF',
-                        },
                     },
                 },
             },

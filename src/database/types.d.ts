@@ -16,7 +16,6 @@ interface CryptoCurrency {
     unconfirmedBalance: number,
 
     logoUrl?: string,
-    publicKey?: string,
     privateWif?: string,
     privateKey?: string,
     publicAddress?: string,

@@ -17,7 +17,8 @@ export const NAVIGATION = {
             CREATE_TRANSACTION: 'zrk.CreateTransactionScreen',
         },
         AUTH: {
-            CREATE_CRYPTO_WALLET: 'zrk.CreateWalletScreen',
+            ENTER_SECRET_PHARSE: 'zrk.EnterSecretPhraseScreen',
+            CREATE_CRYPTO_WALLET: 'zrk.CreateCryptoWalletScreen',
             GENERATED_SECRET_PHRASE: 'zrk.GeneratedSecretPhraseScreen',
         },
     },

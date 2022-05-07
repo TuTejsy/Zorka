@@ -16,19 +16,19 @@ function GeneratedSecretPhraseScreenContainer({
     secretPhrase,
 }: GeneratedSecretPhraseScreenContainerPropTypes) {
     const [
-        CreateZorkaWallet,
+        createZorkaWallet,
     ] = useActions<[
-        ACTION_CREATORS_TYPES['CreateZorkaWallet'],
+        ACTION_CREATORS_TYPES['createZorkaWallet'],
     ]>([
-        'CreateZorkaWallet',
+        'createZorkaWallet',
     ]);
 
 
     const dispatchCreateZorkaWallet = useCallback(() => {
-        CreateZorkaWallet({
+        createZorkaWallet({
             secretPhrase,
         });
-    }, [CreateZorkaWallet, secretPhrase]);
+    }, [createZorkaWallet, secretPhrase]);
 
     const secretPhraseRef = useRef<ViewShot>();
 

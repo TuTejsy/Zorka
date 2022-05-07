@@ -2,6 +2,7 @@ import {
     createReducer,
     createNameRegex,
     createMiddleware,
+    createRequestURL,
     createNameForDuplicate,
     createCollectionObserverChannel,
     createCollectionChangesObserverChannel,
@@ -10,11 +11,12 @@ import {
 class Creator {
     static reducer = createReducer;
     static nameRegex = createNameRegex;
+    static requestURL = createRequestURL;
     static middleware = createMiddleware;
     static nameForDuplicate = createNameForDuplicate;
     static collectionObserverChannel = createCollectionObserverChannel;
     static collectionChangesObserverChannel =
-        createCollectionChangesObserverChannel;
+    createCollectionChangesObserverChannel;
 }
 
 export default Creator;

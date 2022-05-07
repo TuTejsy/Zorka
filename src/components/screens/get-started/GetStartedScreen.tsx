@@ -19,13 +19,15 @@ function GetStartedScreen({
             <View style={styles.buttons}>
                 <TouchableOpacity
                     style={styles.signInButton}
-                    onPress={onSignInPress}>
-                    <Text style={styles.signInButtonText}>Sign in</Text>
+                    onPress={onSignInPress}
+                >
+                    <Text style={styles.signInButtonText}>Enter Secret Phrase</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
                     style={styles.CreateZorkaWalletButton}
-                    onPress={onCreateZorkaWalletPress}>
+                    onPress={onCreateZorkaWalletPress}
+                >
                     <Text style={styles.CreateZorkaWalletButtonText}>
                         Create Wallet
                     </Text>

@@ -1,7 +1,12 @@
 import authTypes from './action-types';
 
-const CreateZorkaWallet = (payload: CreateZorkaWalletPayload) => ({
+const createZorkaWallet = (payload: CreateZorkaWalletPayload) => ({
     type: authTypes.CREATE_ZORKA_WALLET,
+    payload,
+});
+
+const enterSecretPhrase = (payload: EnterSecretPhrasePayload) => ({
+    type: authTypes.ENTER_SECRET_PHRASE,
     payload,
 });
 
@@ -18,5 +23,6 @@ const logout = () => ({
 export default {
     logout,
     saveBackup,
-    CreateZorkaWallet,
+    enterSecretPhrase,
+    createZorkaWallet,
 };

@@ -1,5 +1,4 @@
 import { cryptoConfig, transactionsConfig } from './config';
-import { CryptoCurrency, Transaction } from './types';
 
 import { default as RealmDB } from './Realm';
 

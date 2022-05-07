@@ -29,7 +29,7 @@ const getDefaultOptions: () => Options = () => ({
     },
     statusBar: {
         backgroundColor: 'transparent',
-        style: 'dark',
+        style: 'light',
     },
     popGesture: true,
     ...(global.isAndroid && {
