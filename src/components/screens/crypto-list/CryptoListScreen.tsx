@@ -1,6 +1,8 @@
 import React, { useCallback } from 'react';
 import { SafeAreaView, FlatList } from 'react-native';
 
+import { CURRENCY } from 'appConstants';
+
 import { CryptoCurrencyPreview } from './components';
 
 import styles from './styles';
@@ -27,7 +29,7 @@ function CryptoListScreen({
         <CryptoCurrencyPreview
             name={item.id}
             price={item.lastPrice}
-            amount={item.balance}
+            amount={item.balance / CURRENCY.SATOSHI_AMOUNT[item.id]}
             logoURL={item.logoUrl}
             onPress={createOnCurrencyPress(item.id)}
         />

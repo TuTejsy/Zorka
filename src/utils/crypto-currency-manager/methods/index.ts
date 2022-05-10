@@ -1,2 +1,2 @@
-export { default as convertTransactionToDB } from './parseTransaction';
-export { default as fetchAddressInfoForCrypto } from './fetchAddressInfoForCrypto';
+export { default as createTransaction } from './createTransaction';
+export { default as processCryptoInfoResponse } from './processCryptoInfoResponse';

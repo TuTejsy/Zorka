@@ -13,8 +13,14 @@ const updateCryptoWalletBalance = (payload: UpdateCryptBalancePayload) => ({
     payload,
 });
 
+const createTransaction = (payload: CreateTransactionPayload) => ({
+    type: cryptoTypes.CREATE_TRANSACTION,
+    payload,
+});
+
 export default {
     updateCryptoList,
+    createTransaction,
     createCryptoWallet,
     updateCryptoWalletBalance,
 };

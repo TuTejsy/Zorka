@@ -3,7 +3,7 @@ import { Configuration } from 'realm';
 import { CryptoSchema } from '../schema';
 
 const cryptoConfig: Configuration = {
-    schemaVersion: 6,
+    schemaVersion: 7,
     deleteCache: () => {},
     migration: (oldRealm, newRealm) => {
         const newCryptoObjects = newRealm.objects<CryptoCurrency>(CryptoSchema.name);

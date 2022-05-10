@@ -1,9 +1,11 @@
 import { take, fork, call } from 'redux-saga/effects';
 
-import { CryptoDB, TransactionsDB } from 'appDatabase';
+import { CryptoDB } from 'appDatabase';
 import { CryptoCurrencyManager } from 'appUtils';
 
 import { actionTypes } from 'appApi/client';
+import { ServerAPI } from 'appApi/server';
+import { CURRENCY } from 'appConstants';
 
 export default function* () {
     yield fork(watchCryptoWalletInfo);
@@ -18,46 +20,33 @@ function* watchCryptoWalletInfo() {
         } = yield take(actionTypes.UPDATE_CRYPTO_WALLET_INFO);
 
         const crypto = CryptoDB.object(cryptoId);
-        const publicAddress = crypto?.publicAddress;
 
-        if (publicAddress) {
+        if (crypto) {
             try {
-                const jsonRepsonse: BlockchyperResponse = yield call(
-                    CryptoCurrencyManager.fetchAddressInfoForCrypto,
+                const addressRepsonse: Address = yield call(
+                    ServerAPI.fetchAddressInfoForCrypto,
                     crypto
                 );
 
-                const cryptoBalance: number = jsonRepsonse.balance;
-                const unconfirmedBalance: number = jsonRepsonse.unconfirmed_balance;
+                yield call(CryptoCurrencyManager.processCryptoInfoResponse, addressRepsonse, cryptoId);
+            } catch(err) {
+                console.log('watchCryptoWalletInfo Error: ', err);
+            }
 
-                if (cryptoBalance) {
-                    CryptoDB.modify(() => {
-                        crypto.balance = cryptoBalance;
-                        crypto.unconfirmedBalance = unconfirmedBalance;
-                    });
+            try {
+                const blockchainResponse: Blockchain = yield call(
+                    ServerAPI.fetchBlockchainInfo,
+                    crypto
+                );
 
-                    const transactionsToUpsert: Array<Transaction> = [];
-
-                    jsonRepsonse.txrefs?.forEach((confirmedTransaction) => {
-                        const transaction = CryptoCurrencyManager.convertTransactionToDB(
-                            confirmedTransaction,
-                            publicAddress
-                        );
-
-                        transactionsToUpsert.push(transaction);
-                    });
-
-                    jsonRepsonse.unconfirmed_txrefs?.forEach((unconfirmedTransaction) => {
-                        const transaction = CryptoCurrencyManager.convertTransactionToDB(
-                            unconfirmedTransaction,
-                            publicAddress
-                        );
-
-                        transactionsToUpsert.push(transaction);
-                    });
-
-                    TransactionsDB.upsert(transactionsToUpsert);
-                }
+                CryptoDB.modify(() => {
+                    crypto.lowFee =
+                    blockchainResponse.low_fee_per_kb * CURRENCY.AVERAGE_TRANSACTION_SIZE[cryptoId] / 1000;
+                    crypto.highFee =
+                    blockchainResponse.high_fee_per_kb * CURRENCY.AVERAGE_TRANSACTION_SIZE[cryptoId] / 1000;
+                    crypto.mediumFee =
+                        blockchainResponse.medium_fee_per_kb * CURRENCY.AVERAGE_TRANSACTION_SIZE[cryptoId] / 1000;
+                });
             } catch(err) {
                 console.log('watchCryptoWalletInfo Error: ', err);
             }

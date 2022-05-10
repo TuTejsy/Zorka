@@ -11,14 +11,14 @@ Object.defineProperty(Object.prototype, 'cloneZRK', {
             const isRealmList = keyValue?.isRealmList && keyValue.isRealmList();
 
             if (isObject || isRealmObject) {
-                result[key] = keyValue.cloneSK();
+                result[key] = keyValue.cloneZRK();
             } else if (isRealmList || isArray) {
                 result[key] = keyValue.map((listValue) => {
                     const isObject = listValue?.constructor?.name === 'object';
                     const isRealmObject = listValue?.isRealmObject && listValue.isRealmObject();
 
                     if (isObject || isRealmObject) {
-                        return listValue.cloneSK();
+                        return listValue.cloneZRK();
                     } else {
                         return listValue;
                     }

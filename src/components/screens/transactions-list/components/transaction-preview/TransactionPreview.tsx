@@ -2,20 +2,25 @@ import React, { useMemo } from 'react';
 import { Text, View } from 'react-native';
 import moment from 'moment';
 
-import { SATOSHI_IN_BTC } from 'appConstants';
-
-import { Transaction } from 'database/types';
+import { CURRENCY } from 'appConstants';
 
 import styles, { useContextualStyles } from './styles';
 
 interface TransactionPreviewPropTypes {
+    currencyId: CurrencyId,
     transaction: Transaction,
+    currencyName: string,
 }
 
 function TransactionPreview({
-    transaction
+    currencyId,
+    transaction,
+    currencyName,
 }: TransactionPreviewPropTypes) {
-    const contextualStyles = useContextualStyles({ isIncoming: transaction.isIncoming });
+    const contextualStyles = useContextualStyles({
+        isIncoming: transaction.isIncoming,
+        isConfirmed: transaction.isConfirmed,
+    });
 
     const [transactionDate, transactionTime] = useMemo(() => {
         const date = moment(transaction.timestamp);
@@ -24,16 +29,23 @@ function TransactionPreview({
     }, [ transaction.timestamp ]);
 
     const transactionAmount = useMemo(() => (
-        `${transaction.value / SATOSHI_IN_BTC} BTC`
-    ), [ transaction.value ]);
+        `${transaction.value / CURRENCY.SATOSHI_AMOUNT[currencyId]} ${currencyName}`
+    ), [currencyId, currencyName, transaction.value]);
 
     return (
         <View
-            style={styles.preview}
+            style={contextualStyles.preview}
         >
             <View style={contextualStyles.incomingIndicator} />
 
-            <Text style={styles.amountText}>{transactionAmount}</Text>
+            <View style={styles.amountContainer}>
+                <Text style={styles.amountText}> { transactionAmount }</Text>
+                { !transaction.isConfirmed && (
+                    <Text style={styles.confirmations}> ({transaction.confirmations} confirmations)</Text>
+                )
+                }
+            </View>
+
 
             <View style={styles.date}>
                 <Text style={styles.dateText}>{transactionTime}</Text>

@@ -3,7 +3,7 @@ import { Task } from 'redux-saga';
 
 declare module global {
     interface Object {
-        cloneSK<T>(): T,
+        cloneZRK<T>(): T,
         isUint8Array: () => this is Uint8Array,
         isRealmObject: () => this is Realm.Object,
         isArrayBuffer: () => this is ArrayBuffer,

@@ -11,14 +11,16 @@
     "ios": "react-native run-ios",
     "test": "jest",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "postinstall": "yarn postinstall-crypto",
+    "postinstall": "yarn postinstall-crypto && rn-nodeify --install stream,buffer,events,assert,fs --hack",
     "postinstall-crypto": "sed -i -e \"s/var Script = function Script(from) {/var Script = function Script(from) { Address = require('..\\/address');/g\" ./node_modules/bitcore-lib/lib/script/script.js",
     "fix-bitcore-lib": "node scripts/fix-bitcore-lib.js"
   },
   "dependencies": {
     "@expo/react-native-action-sheet": "^3.11.0",
+    "@miblanchard/react-native-slider": "^2.1.0",
     "@react-native-clipboard/clipboard": "^1.9.0",
     "bitcore-lib": "^8.25.10",
+    "buffer": "^6.0.3",
     "crypto-js": "3.1.9-1",
     "eslint-plugin-json": "^3.1.0",
     "ethers": "^5.5.1",
@@ -27,6 +29,7 @@
     "react": "17.0.2",
     "react-native": "0.68.0",
     "react-native-document-picker": "^8.1.0",
+    "react-native-level-fs": "^3.0.1",
     "react-native-navigation": "^7.22.3",
     "react-native-navigation-hooks": "^6.3.0",
     "react-native-qrcode-svg": "^6.1.1",
@@ -36,10 +39,12 @@
     "react-native-svg-icon": "^0.10.0",
     "react-native-view-shot": "^3.1.2",
     "react-redux": "^7.2.5",
+    "readable-stream": "^3.6.0",
     "realm": "10.20.0-beta.3",
     "redux-devtools-extension": "^2.13.9",
     "redux-saga": "^1.1.3",
-    "rn-qr-generator": "^1.2.0"
+    "rn-qr-generator": "^1.2.0",
+    "stream-browserify": "^1.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -62,6 +67,7 @@
     "node-libs-react-native": "^1.2.1",
     "react-native-fs": "^2.18.0",
     "react-test-renderer": "17.0.2",
+    "rn-nodeify": "^10.3.0",
     "typescript": "^3.8.3"
   },
   "resolutions": {
@@ -77,5 +83,23 @@
       "json",
       "node"
     ]
+  },
+  "react-native": {
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify",
+    "fs": "react-native-level-fs"
+  },
+  "browser": {
+    "_stream_transform": "readable-stream/transform",
+    "_stream_readable": "readable-stream/readable",
+    "_stream_writable": "readable-stream/writable",
+    "_stream_duplex": "readable-stream/duplex",
+    "_stream_passthrough": "readable-stream/passthrough",
+    "stream": "stream-browserify",
+    "fs": "react-native-level-fs"
   }
 }

@@ -96,11 +96,11 @@ function CryptoWalletScreenContainer({
             dispatchShowModal({
                 screenName: NAVIGATION.SCREENS.CRYPTO.TRANSACTIONS_LIST,
                 passProps: {
-                    walletAddress: cryptoCurrency?.publicAddress
+                    cryptoId: cryptoCurrency?.id
                 }
             });
         },
-        [cryptoCurrency?.publicAddress, dispatchShowModal],
+        [cryptoCurrency?.id, dispatchShowModal],
     );
 
     const handleSendCryptoPress = useCallback(

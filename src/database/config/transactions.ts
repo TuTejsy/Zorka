@@ -1,15 +1,20 @@
-import { Transaction } from 'ethers';
 import { Configuration } from 'realm';
 
-import { TransactionSchema } from '../schema';
+import {
+    TransactionSchema,
+    TransactionInputSchema,
+    TransactionOutputSchema,
+} from '../schema';
 
 const transactionsConfig: Configuration = {
-    schemaVersion: 1,
+    schemaVersion: 10,
     deleteCache: () => {},
     migration: (oldRealm, newRealm) => {
     },
     schema: [
-        TransactionSchema
+        TransactionSchema,
+        TransactionInputSchema,
+        TransactionOutputSchema,
     ],
 };
 

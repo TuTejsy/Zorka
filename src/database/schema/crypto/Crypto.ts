@@ -20,6 +20,19 @@ const CryptoSchema: ObjectSchema = {
         privateWif: 'string?',
         privateKey: 'string?',
         publicAddress: 'string?',
+
+        lowFee: {
+            type: 'int',
+            default: 0,
+        },
+        mediumFee: {
+            type: 'int',
+            default: 0,
+        },
+        highFee: {
+            type: 'int',
+            default: 0,
+        },
     },
 };
 

@@ -2,10 +2,9 @@ import React, { useMemo } from 'react';
 import { Text, View, RefreshControl, ScrollView, TouchableOpacity } from 'react-native';
 
 import { colors } from 'appAssets/styles';
-import { SATOSHI_IN_BTC } from 'appConstants';
+import { CURRENCY } from 'appConstants';
 
 import styles from './styles';
-import { CryptoCurrency } from 'database/types';
 
 interface CryptoWalletScreenPropTypes {
     isRefreshing: boolean,
@@ -48,7 +47,8 @@ function CryptoWalletScreen({
                         >Your balance is</Text>
                         <Text
                             style={styles.balance}
-                        >{cryptoCurrency.balance / SATOSHI_IN_BTC} {cryptoCurrency.name}</Text>
+                        >{cryptoCurrency.balance / CURRENCY.SATOSHI_AMOUNT[cryptoCurrency.id]} {cryptoCurrency.name}
+                        </Text>
                     </View>
 
                     <View style={styles.transactionsContainer}>

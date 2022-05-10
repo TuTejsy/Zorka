@@ -1,11 +1,11 @@
 import {
-    convertTransactionToDB,
-    fetchAddressInfoForCrypto
+    createTransaction,
+    processCryptoInfoResponse,
 } from './methods';
 
 class CryptoCurrencyManager {
-    static convertTransactionToDB = convertTransactionToDB;
-    static fetchAddressInfoForCrypto = fetchAddressInfoForCrypto;
+    static createTransaction = createTransaction;
+    static processCryptoInfoResponse = processCryptoInfoResponse;
 }
 
 export default CryptoCurrencyManager;

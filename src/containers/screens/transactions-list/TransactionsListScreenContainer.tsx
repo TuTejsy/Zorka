@@ -1,24 +1,27 @@
 import React, { useCallback } from 'react';
 
 
-import { useTransactions } from 'appHooks';
+import { useCryptoCurrency, useTransactions } from 'appHooks';
 import { NAVIGATION } from 'appConstants';
 
 import { TransactionsListScreen } from 'appComponents/screens';
 
 interface TransactionsListScreenContainerPropTypes {
+    cryptoId: CurrencyId,
     componentId: string;
-    walletAddress: string;
 }
 
 function TransactionsListScreenContainer({
+    cryptoId,
     componentId,
-    walletAddress,
 }: TransactionsListScreenContainerPropTypes) {
-    const [transactions, transactionsVersion] = useTransactions(walletAddress);
+    const currency = useCryptoCurrency(cryptoId);
+    const [transactions, transactionsVersion] = useTransactions(currency?.publicAddress ?? '');
 
     return (
         <TransactionsListScreen
+            currencyId={cryptoId}
+            currencyName={currency?.name ?? ''}
             transactions={transactions}
             transactionsVersion={transactionsVersion}
         />
