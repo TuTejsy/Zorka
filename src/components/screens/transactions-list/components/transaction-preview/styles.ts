@@ -5,6 +5,10 @@ import { StyleSheet, StyleProp, ViewStyle } from 'react-native';
 import { colors, fonts } from 'appAssets/styles';
 
 export default StyleSheet.create({
+    transactionValueContainer: {
+        maxWidth: '80%',
+        marginLeft: 10,
+    },
     amountContainer: {
         alignItems: 'center',
         flexDirection: 'row',
@@ -13,7 +17,6 @@ export default StyleSheet.create({
     amountText: {
         color: colors.GHOST_WHITE,
         fontSize: 16,
-        marginLeft: 10,
         fontFamily: fonts.MEDIUM,
     },
     date: {
@@ -29,6 +32,12 @@ export default StyleSheet.create({
         color: colors.GREY,
         fontSize: 12,
         marginLeft: 5,
+        fontFamily: fonts.REGULAR,
+    },
+    transactionAddress: {
+        color: colors.GREY,
+        fontSize: 11,
+        marginLeft: 2,
         fontFamily: fonts.REGULAR,
     }
 });

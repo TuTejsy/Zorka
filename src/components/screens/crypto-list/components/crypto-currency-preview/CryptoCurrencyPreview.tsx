@@ -1,17 +1,15 @@
 import React, { useMemo } from 'react';
-import { Text, View, Image, FlatList, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { SvgUri } from 'react-native-svg';
 
-import { Screen } from 'appUtils';
-import { colors } from 'appAssets/styles';
-import { LoadingCircle } from 'appComponents/core';
-
-import styles from './styles';
+import styles, { useContextualStyles } from './styles';
 
 interface CryptoCurrencyPreviewPropTypes {
+    id: string,
     name: string,
     price: string,
     amount: number,
+    prevPrice: string,
 
     onPress: () => void,
 
@@ -19,9 +17,11 @@ interface CryptoCurrencyPreviewPropTypes {
 }
 
 function CryptoCurrencyPreview({
+    id,
     name,
     price,
     amount,
+    prevPrice,
 
     onPress,
 
@@ -30,11 +30,17 @@ function CryptoCurrencyPreview({
     const extention = useMemo(() => logoURL?.split('.').pop(), [ logoURL ]);
     const isSVG = extention === 'svg';
 
+    const priceDiff = useMemo(
+        () => (Number(prevPrice) - Number(price)),
+        [prevPrice, price]
+    );
+
+    const contextualStyles = useContextualStyles({ priceDiff });
+
     const priceLabel = useMemo(
         () => `$${Math.round(Number(price) * 1000) / 1000}`,
         [ price ]
     );
-
     const totalPriceLabel = useMemo(
         () => {
             const totalPrice = amount * Number(price);
@@ -72,13 +78,13 @@ function CryptoCurrencyPreview({
             <View style={styles.content}>
                 <View>
                     <Text style={styles.name}>{name}</Text>
-                    <Text style={styles.amount}>{amount}</Text>
+                    <Text style={styles.amount}>{id} {amount}</Text>
                 </View>
 
                 <View
                     style={styles.priceContainer}
                 >
-                    <Text style={styles.price}>{priceLabel}</Text>
+                    <Text style={contextualStyles.price}>{priceLabel}</Text>
                     <Text style={styles.totalPrice}>{totalPriceLabel}</Text>
                 </View>
             </View>

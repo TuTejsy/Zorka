@@ -7532,6 +7532,11 @@ react-native-codegen@*, react-native-codegen@^0.0.13:
     jscodeshift "^0.13.1"
     nullthrows "^1.1.1"
 
+react-native-context-menu-view@^1.5.2:
+  version "1.5.2"
+  resolved "https://registry.yarnpkg.com/react-native-context-menu-view/-/react-native-context-menu-view-1.5.2.tgz#944d407b1c5562ceeca66fbd602be3946e9e2ff1"
+  integrity sha512-0oGSmi2qLTVIloL3a+1oSMEr9xkpr2SgXznYbFfDuRahlYt8asFKNj1o8k71vpao8GEusXE4khYHZdLMF+SE2g==
+
 react-native-crypto@^2.0.1:
   version "2.2.0"
   resolved "https://registry.npmjs.org/react-native-crypto/-/react-native-crypto-2.2.0.tgz"

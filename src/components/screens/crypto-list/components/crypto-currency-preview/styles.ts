@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native';
+import { useMemo } from 'react';
+import { StyleSheet, StyleProp, TextStyle } from 'react-native';
 
 import { colors, fonts } from 'appAssets/styles';
 
@@ -41,14 +42,38 @@ export default StyleSheet.create({
     priceContainer: {
         alignItems: 'flex-end',
     },
-    price: {
-        color: colors.GHOST_WHITE,
-        fontSize: 14,
-        fontFamily: fonts.REGULAR,
-    },
     totalPrice: {
         color: colors.GHOST_WHITE,
         fontSize: 16,
         fontFamily: fonts.MEDIUM,
     }
 });
+
+export const useContextualStyles = ({
+    priceDiff,
+}: {
+    priceDiff: number;
+}) => {
+    const price: StyleProp<TextStyle> = useMemo(
+        () => {
+            let color: string;
+
+            if (priceDiff > 0) {
+                color = colors.GREEN;
+            } else if (priceDiff < 0) {
+                color = colors.ORANGE_RED;
+            } else {
+                color = colors.GHOST_WHITE;
+            }
+
+            return ({
+                color,
+                fontSize: 14,
+                fontFamily: fonts.REGULAR,
+            });
+        }, [ priceDiff ]);
+
+    return {
+        price
+    };
+};

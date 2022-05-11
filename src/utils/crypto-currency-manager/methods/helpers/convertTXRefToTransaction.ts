@@ -9,6 +9,8 @@ function convertTXRefToTransaction(txRef: TXRef, walletAddress: string): Transac
         total: txRef.value,
         inputs: [],
         outputs: [],
+        sender: isIncoming ? txRef.address ?? '' : walletAddress,
+        reciver: isIncoming ? walletAddress : txRef.address ?? '',
         addresses: [ txRef.address || '' ],
         timestamp: transactionDate.getTime(),
         isIncoming,

@@ -1,5 +1,12 @@
 import React, { useCallback } from 'react';
-import { View, SafeAreaView, FlatList, RefreshControl } from 'react-native';
+import {
+    View,
+    FlatList,
+    SafeAreaView,
+    RefreshControl,
+    NativeSyntheticEvent,
+} from 'react-native';
+import { ContextMenuOnPressNativeEvent } from 'react-native-context-menu-view';
 
 import { colors } from 'appAssets/styles';
 
@@ -10,29 +17,35 @@ import styles from './styles';
 interface TransactionsListScreenPropTypes {
     currencyId: CurrencyId,
     currencyName: string,
+    isRefreshing: boolean,
     transactions: Realm.Results<Transaction & Realm.Object>
     transactionsVersion: number,
 
     onRefresh: () => void,
-    isRefreshing: boolean,
+    makeOnTransactionOptionSelect: (
+        transactionIndex: number,
+    ) => ( e: NativeSyntheticEvent<ContextMenuOnPressNativeEvent>) => void,
 }
 
 function TransactionsListScreen({
     currencyId,
     currencyName,
     transactions,
+    isRefreshing,
     transactionsVersion,
 
     onRefresh,
-    isRefreshing,
+    makeOnTransactionOptionSelect,
 }: TransactionsListScreenPropTypes) {
-    const renderItem = useCallback(({ item }: {item: Transaction }) => (
+    const renderItem = useCallback(({ item, index }: {item: Transaction, index: number }) => (
         <TransactionPreview
             currencyId={currencyId}
             transaction={item}
             currencyName={currencyName}
+            onOptionSelect={makeOnTransactionOptionSelect(index)}
+            transactionIndex={index}
         />
-    ), [currencyId, currencyName]);
+    ), [currencyId, currencyName, makeOnTransactionOptionSelect]);
 
     const renderSeparator = useCallback(({ item }: {item: Transaction }) => (
         <View style={styles.separator} />

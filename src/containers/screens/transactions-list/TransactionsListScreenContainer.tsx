@@ -1,9 +1,11 @@
 import React, { useEffect, useCallback } from 'react';
-
+import { NativeSyntheticEvent } from 'react-native';
+import Clipboard from '@react-native-clipboard/clipboard';
+import { ContextMenuOnPressNativeEvent } from 'react-native-context-menu-view';
 
 import { useAppSelector, useActions, useCryptoCurrency, useTransactions } from 'appHooks';
+import { ToastEmitter } from 'appEmitters';
 import { ACTION_CREATORS_TYPES } from 'appHooks/types';
-import { NAVIGATION } from 'appConstants';
 
 import { TransactionsListScreen } from 'appComponents/screens';
 
@@ -40,6 +42,29 @@ function TransactionsListScreenContainer({
         [updateCryptoWalletBalance, cryptoId],
     );
 
+    const makeOnTransactionOptionSelect = useCallback(
+        (transactionIndex) => {
+            const transaction = transactions[transactionIndex];
+
+            return (e: NativeSyntheticEvent<ContextMenuOnPressNativeEvent>) => {
+                switch(e.nativeEvent.index) {
+                    case 0: {
+                        if (transaction.isIncoming) {
+                            Clipboard.setString(transaction.sender);
+                        } else {
+                            Clipboard.setString(transaction.reciver);
+                        }
+
+                        ToastEmitter.showToast({
+                            text: 'Copied',
+                            isSuccess: true,
+                        });
+                        break;
+                    }
+                }
+            };
+        }, [ transactions ]);
+
     return (
         <TransactionsListScreen
             onRefresh={handleRefresh}
@@ -48,6 +73,7 @@ function TransactionsListScreenContainer({
             currencyName={currency?.name ?? ''}
             transactions={transactions}
             transactionsVersion={transactionsVersion}
+            makeOnTransactionOptionSelect={makeOnTransactionOptionSelect}
         />
     );
 }

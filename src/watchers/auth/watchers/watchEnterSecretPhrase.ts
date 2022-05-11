@@ -46,6 +46,7 @@ function* watchEnterSecretPhrase() {
                             name: cryptoId,
                             balance: 0,
                             lastPrice: '0',
+                            prevPrice: '0',
                             privateKey: cryptoPrivateKey,
                             privateWif: bitcoreKey.toWIF(),
                             publicAddress: bitcoreKey.toAddress().toString(),

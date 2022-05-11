@@ -14,6 +14,16 @@ function* watchUpdateCryptoList() {
         yield take(actionTypes.UPDATE_CRYPTO_LIST);
 
         const currenciesInfo: CryptoCurrency[] = yield call(ServerAPI.fetchCurrenciesInfo);
+
+        currenciesInfo.forEach((currency) => {
+            const cryptoCurrency = CryptoDB.object(currency.id);
+
+            if (cryptoCurrency?.lastPrice !== currency.lastPrice) {
+                // eslint-disable-next-line no-param-reassign
+                currency.prevPrice = cryptoCurrency?.lastPrice || currency.lastPrice;
+            }
+        }, []);
+
         yield call(CryptoDB.upsert, currenciesInfo);
 
         yield putResolve({

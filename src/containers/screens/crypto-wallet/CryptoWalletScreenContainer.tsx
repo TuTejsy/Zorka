@@ -65,6 +65,17 @@ function CryptoWalletScreenContainer({
     }, []);
 
     useEffect(() => {
+        const priceDiff = Number(cryptoCurrency?.prevPrice) - Number(cryptoCurrency?.lastPrice);
+        let rightTextColor: string;
+
+        if (priceDiff > 0) {
+            rightTextColor = colors.GREEN;
+        } else if (priceDiff < 0) {
+            rightTextColor = colors.ORANGE_RED;
+        } else {
+            rightTextColor = colors.GHOST_WHITE;
+        }
+
         Navigation.mergeOptions(componentId, {
             topBar: {
                 title: {
@@ -76,7 +87,7 @@ function CryptoWalletScreenContainer({
                     enabled: false,
                     fontSize: 16,
                     fontFamily: fonts.REGULAR,
-                    disabledColor: colors.GHOST_WHITE,
+                    disabledColor: rightTextColor,
                 } ]
             },
         });

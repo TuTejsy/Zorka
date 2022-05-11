@@ -3,7 +3,7 @@ import { StyleProp, ViewStyle, StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
     svg: {
-        transform: [{ rotateZ: '270deg' }],
+        transform: [ { rotateZ: '270deg' } ],
     },
 });
 
@@ -36,7 +36,7 @@ export const useContextualStyles = ({
             alignItems: 'center',
             justifyContent: 'center',
         }),
-        [size],
+        [ size ],
     );
 
     return {

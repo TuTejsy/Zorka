@@ -31,11 +31,13 @@ function CryptoListScreen({
 
     const renderItem = useCallback(({ item }: {item: CryptoCurrency }) => (
         <CryptoCurrencyPreview
-            name={item.id}
+            id={item.id}
+            name={item.name}
             price={item.lastPrice}
             amount={item.balance / CURRENCY.SATOSHI_AMOUNT[item.id]}
             logoURL={item.logoUrl}
             onPress={createOnCurrencyPress(item.id)}
+            prevPrice={item.prevPrice}
         />
     ), [ createOnCurrencyPress ]);
 

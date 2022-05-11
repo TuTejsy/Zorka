@@ -17,7 +17,7 @@ async function fetchCurrenciesInfo(): Promise<Array<CryptoCurrency>> {
         currencyTickers.forEach((currencyTicker) => {
             const currency: CryptoCurrency = {
                 id: currencyTicker.id as CurrencyId,
-                name: currencyTicker.currency,
+                name: currencyTicker.name || currencyTicker.currency,
                 logoUrl: currencyTicker.logo_url,
                 lastPrice: currencyTicker.price,
             };

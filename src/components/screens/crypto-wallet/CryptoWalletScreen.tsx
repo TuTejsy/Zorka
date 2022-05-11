@@ -97,7 +97,7 @@ function CryptoWalletScreen({
                         >Your balance is</Text>
                         <Text
                             style={styles.balance}
-                        >{ balance } { cryptoCurrency.name }
+                        >{ balance } { cryptoCurrency.id }
                         </Text>
                         <Text
                             style={styles.balancePrice}

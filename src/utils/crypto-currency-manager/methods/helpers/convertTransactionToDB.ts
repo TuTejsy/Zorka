@@ -13,11 +13,26 @@ function convertTransactionToDB(transaction: TX, walletAddress: string): Transac
                 .reduce((prevValue, value) => (prevValue + value))
         );
 
+    const sender = isIncoming ? (
+        transaction.inputs
+            .filter(input => !input.addresses.includes(walletAddress))
+            .map(input => input.addresses.filter(address => address !== walletAddress).join(', '))
+            .join(', ')
+    ) : walletAddress;
+
+    const reciver = !isIncoming ? (
+        transaction.outputs
+            .filter(output => (!output.addresses.includes(walletAddress) && output.value !== value))
+            .map(output => output.addresses.filter(address => address !== walletAddress).join(', '))
+            .join(', ')
+    ) : walletAddress;
+
     return {
         hash: transaction.hash,
         fees: transaction.fees,
         value,
         total: transaction.total,
+        sender,
         inputs: transaction.inputs.map(input => ({
             script: input.script,
             prevHash: input.prev_hash,
@@ -31,6 +46,7 @@ function convertTransactionToDB(transaction: TX, walletAddress: string): Transac
             spentBy: output.spent_by,
             addresses: output.addresses,
         })),
+        reciver,
         addresses: transaction.addresses,
         timestamp: transactionDate.getTime(),
         isIncoming,

@@ -5,6 +5,7 @@ interface CryptoCurrency {
     id: CurrencyId,
     name: string,
     balance: number,
+    prevPrice: string,
     lastPrice: string,
     unconfirmedBalance: number,
 
@@ -39,7 +40,9 @@ interface Transaction {
     fees: number,
     value: number,
     total: number,
+    sender: string,
     inputs: Realm.List<TransactionInput>,
+    reciver: string,
     outputs: Realm.List<TransactionOutput>,
     addresses: Array<string>,
     timestamp: number,
