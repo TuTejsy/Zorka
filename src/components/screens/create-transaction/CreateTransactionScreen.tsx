@@ -147,7 +147,7 @@ function CreateTransactionScreen({
                         <View style={styles.inputTitleContainer}>
                             <Text
                                 style={styles.text}
-                            >Fee: {fee / CURRENCY.SATOSHI_AMOUNT[cryptoId]} {cryptoWallet?.name}</Text>
+                            >Fee: {fee / CURRENCY.SATOSHI_AMOUNT[cryptoId]} {cryptoId}</Text>
 
                             <Text
                                 style={contextualStyles.preferenceText}

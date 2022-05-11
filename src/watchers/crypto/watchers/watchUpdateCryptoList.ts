@@ -1,6 +1,8 @@
+/* eslint-disable no-param-reassign */
 import { call, fork, putResolve, take } from 'redux-saga/effects';
 
 import { CryptoDB } from 'appDatabase';
+import { CURRENCY } from 'appConstants';
 
 import { ServerAPI } from 'appApi/server';
 import { actionTypes } from 'appApi/client';
@@ -18,8 +20,13 @@ function* watchUpdateCryptoList() {
         currenciesInfo.forEach((currency) => {
             const cryptoCurrency = CryptoDB.object(currency.id);
 
+            if (!cryptoCurrency ) {
+                return;
+            }
+
+            currency.totalPrice = currency.lastPrice * cryptoCurrency.balance / CURRENCY.SATOSHI_AMOUNT[currency.id];
+
             if (cryptoCurrency?.lastPrice !== currency.lastPrice) {
-                // eslint-disable-next-line no-param-reassign
                 currency.prevPrice = cryptoCurrency?.lastPrice || currency.lastPrice;
             }
         }, []);

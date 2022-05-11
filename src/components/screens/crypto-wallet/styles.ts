@@ -56,7 +56,12 @@ export default StyleSheet.create({
         color: colors.GREY,
         fontSize: 16,
         alignSelf: 'flex-start',
-        marginLeft: 10,
+        fontFamily: fonts.REGULAR,
+    },
+    publicAddress: {
+        color: colors.YELLOW,
+        fontSize: 16,
+        alignSelf: 'flex-start',
         fontFamily: fonts.REGULAR,
     },
     transactionsContainer: {

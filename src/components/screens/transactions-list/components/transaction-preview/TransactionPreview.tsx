@@ -69,7 +69,7 @@ function TransactionPreview({
 
                     <Text
                         style={styles.transactionAddress}
-                        numberOfLines={1}
+                        numberOfLines={2}
                         ellipsizeMode="middle"
                     >{ transactionAddressLabel }</Text>
                 </View>

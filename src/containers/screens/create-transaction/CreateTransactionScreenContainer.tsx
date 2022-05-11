@@ -64,7 +64,7 @@ function CreateTransactionScreenContainer({
 
     const maxAmountText = useMemo(() => {
         if (cryptoWallet) {
-            return `${maxAmount} ${cryptoWallet.name}`;
+            return `${maxAmount} ${cryptoWallet.id}`;
         }
 
         return '';
@@ -103,7 +103,7 @@ function CreateTransactionScreenContainer({
         }
 
         if (cryptoWallet) {
-            return `Send ${sendAmountInputValue} ${cryptoWallet.name}`;
+            return `Send ${sendAmountInputValue} ${cryptoWallet.id}`;
         }
 
         return '';

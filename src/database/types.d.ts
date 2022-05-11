@@ -5,8 +5,9 @@ interface CryptoCurrency {
     id: CurrencyId,
     name: string,
     balance: number,
-    prevPrice: string,
-    lastPrice: string,
+    prevPrice: number,
+    lastPrice: number,
+    totalPrice: number,
     unconfirmedBalance: number,
 
     lowFee: number,

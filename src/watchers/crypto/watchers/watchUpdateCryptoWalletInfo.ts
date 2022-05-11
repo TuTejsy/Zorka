@@ -14,9 +14,9 @@ export default function* () {
 function* watchCryptoWalletInfo() {
     while(true) {
         const {
-            payload: { cryptoId }
+            payload: { cryptoId, shouldUpdateCryptoList }
         }: {
-            payload: UpdateCryptBalancePayload
+            payload: UpdateCryptoBalancePayload
         } = yield take(actionTypes.UPDATE_CRYPTO_WALLET_INFO);
 
         const crypto = CryptoDB.object(cryptoId);
@@ -52,13 +52,16 @@ function* watchCryptoWalletInfo() {
             }
         }
 
-        yield put({
-            type: actionTypes.UPDATE_CRYPTO_LIST,
-        });
-        yield take(actionTypes.CRYPTO_LIST_UPDATED);
+        if (shouldUpdateCryptoList) {
+            yield put({
+                type: actionTypes.UPDATE_CRYPTO_LIST,
+            });
+            yield take(actionTypes.CRYPTO_LIST_UPDATED);
+        }
 
         yield putResolve({
             type: actionTypes.CRYPTO_WALLET_INFO_UPDATED,
+            payload: { cryptoId }
         });
     }
 }

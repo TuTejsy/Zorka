@@ -7,9 +7,10 @@ import styles, { useContextualStyles } from './styles';
 interface CryptoCurrencyPreviewPropTypes {
     id: string,
     name: string,
-    price: string,
+    price: number,
     amount: number,
-    prevPrice: string,
+    prevPrice: number,
+    totalPrice: number,
 
     onPress: () => void,
 
@@ -22,6 +23,7 @@ function CryptoCurrencyPreview({
     price,
     amount,
     prevPrice,
+    totalPrice,
 
     onPress,
 
@@ -31,22 +33,19 @@ function CryptoCurrencyPreview({
     const isSVG = extention === 'svg';
 
     const priceDiff = useMemo(
-        () => (Number(prevPrice) - Number(price)),
+        () => (prevPrice - price),
         [prevPrice, price]
     );
 
     const contextualStyles = useContextualStyles({ priceDiff });
 
     const priceLabel = useMemo(
-        () => `$${Math.round(Number(price) * 1000) / 1000}`,
+        () => `$${Math.round(price * 1000) / 1000}`,
         [ price ]
     );
     const totalPriceLabel = useMemo(
-        () => {
-            const totalPrice = amount * Number(price);
-            return `$${Math.round(totalPrice * 1000) / 1000}`;
-        },
-        [amount, price]
+        () => `$${Math.round(totalPrice * 1000) / 1000}`,
+        [ totalPrice ]
     );
 
     return (

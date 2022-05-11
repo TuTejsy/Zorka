@@ -11,20 +11,25 @@ export default function* () {
 
 function* watchCreateCryptoWallet() {
     while(true) {
-        yield take(actionTypes.CREATE_CRYPTO_WALLET);
+        const {
+            payload: {
+                cryptoId
+            } }: {
+            payload: CreateCryptoWalletPayload
+        } = yield take(actionTypes.CREATE_CRYPTO_WALLET);
 
         const bitcoreKey = new Bitcore.PrivateKey(undefined, Networks.testnet);
         const privateWif: string = bitcoreKey.toWIF();
         const privateKey: string = bitcoreKey.toString();
         const publicAddress: string = bitcoreKey.toAddress().toString();
 
-        const btcCrypto = CryptoDB.object(CURRENCY.ID.BTC);
+        const crypto = CryptoDB.object(cryptoId);
 
-        if (btcCrypto) {
+        if (crypto) {
             CryptoDB.modify(() => {
-                btcCrypto.privateWif = privateWif;
-                btcCrypto.privateKey = privateKey;
-                btcCrypto.publicAddress = publicAddress;
+                crypto.privateWif = privateWif;
+                crypto.privateKey = privateKey;
+                crypto.publicAddress = publicAddress;
             });
         }
 

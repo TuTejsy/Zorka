@@ -16,15 +16,13 @@ function convertTransactionToDB(transaction: TX, walletAddress: string): Transac
     const sender = isIncoming ? (
         transaction.inputs
             .filter(input => !input.addresses.includes(walletAddress))
-            .map(input => input.addresses.filter(address => address !== walletAddress).join(', '))
-            .join(', ')
+            .map(input => input.addresses.filter(address => address !== walletAddress)[0])[0]
     ) : walletAddress;
 
     const reciver = !isIncoming ? (
         transaction.outputs
             .filter(output => (!output.addresses.includes(walletAddress) && output.value !== value))
-            .map(output => output.addresses.filter(address => address !== walletAddress).join(', '))
-            .join(', ')
+            .map(output => output.addresses.filter(address => address !== walletAddress)[0])[0]
     ) : walletAddress;
 
     return {

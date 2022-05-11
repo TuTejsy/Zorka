@@ -1,5 +1,15 @@
 
-interface UpdateCryptBalancePayload {
+interface CreateCryptoWalletPayload {
+    cryptoId: CurrencyId,
+}
+
+
+interface UpdateCryptoBalancePayload {
+    cryptoId: CurrencyId;
+    shouldUpdateCryptoList?: boolean,
+}
+
+interface CryptoBalanceUpdatedPayload {
     cryptoId: CurrencyId;
 }
 

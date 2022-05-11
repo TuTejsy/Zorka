@@ -21,7 +21,7 @@ function TransactionsListScreenContainer({
     const currency = useCryptoCurrency(cryptoId);
     const [transactions, transactionsVersion] = useTransactions(currency?.publicAddress ?? '');
 
-    const isCryptoWalletInfoUpdating = useAppSelector(state => state.crypto.isCryptoWalletInfoUpdating);
+    const isCryptoWalletInfoUpdating = useAppSelector(state => state.crypto.isCryptoWalletInfoUpdating[cryptoId]);
 
     const [
         updateCryptoWalletBalance,

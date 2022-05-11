@@ -20,12 +20,15 @@ function CryptoListScreenContainer({
     const [
         push,
         updateCryptoList,
+        updateAllCryptoWalletsBalance,
     ] = useActions<[
         ACTION_CREATORS_TYPES['push'],
         ACTION_CREATORS_TYPES['updateCryptoList'],
+        ACTION_CREATORS_TYPES['updateAllCryptoWalletsBalance'],
     ]>([
         'push',
         'updateCryptoList',
+        'updateAllCryptoWalletsBalance',
     ]);
 
     const dispatchPush = useCallback(
@@ -53,11 +56,13 @@ function CryptoListScreenContainer({
 
     useEffect(() => {
         updateCryptoList();
+        updateAllCryptoWalletsBalance();
     }, []);
 
     const handleRefresh = useCallback(() => {
         updateCryptoList();
-    }, [ updateCryptoList ]);
+        updateAllCryptoWalletsBalance();
+    }, [updateCryptoList, updateAllCryptoWalletsBalance]);
 
     const handleCryptoCurrencyPress = useCallback(
         (cryptoCurrencyId: CurrencyId) => {

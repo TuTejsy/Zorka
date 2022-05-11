@@ -6,6 +6,7 @@ import { CryptoDB } from 'appDatabase';
 function useCryptoCurrencies(filter: string): [Results<CryptoCurrency & Realm.Object>, number] {
     const cryptoCurrencies = useMemo(() => (
         CryptoDB.objects()
+            .sorted([['totalPrice', true], ['publicAddress', true]])
     ), []);
 
     const [cryptoCurrenciesVersion, setCryptoCurrenciesVersion] = useState(0);

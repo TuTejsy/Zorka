@@ -19,7 +19,9 @@ function CryptoWalletScreenContainer({
     cryptoCurrencyId,
 }: CryptoWalletScreenContainerPropTypes) {
     const cryptoCurrency = useCryptoCurrency(cryptoCurrencyId);
-    const isCryptoWalletInfoUpdating = useAppSelector(state => state.crypto.isCryptoWalletInfoUpdating);
+    const isCryptoWalletInfoUpdating = useAppSelector(
+        state => state.crypto.isCryptoWalletInfoUpdating[cryptoCurrencyId]
+    );
 
     const [
         showModal,
@@ -35,9 +37,9 @@ function CryptoWalletScreenContainer({
         'updateCryptoWalletBalance',
     ]);
 
-    const price = cryptoCurrency?.lastPrice ?? '';
+    const price = cryptoCurrency?.lastPrice ?? 0;
     const priceLabel = useMemo(
-        () => `$${Math.round(Number(price) * 1000) / 1000}`,
+        () => `$${Math.round(price * 1000) / 1000}`,
         [ price ]
     );
 
@@ -61,11 +63,11 @@ function CryptoWalletScreenContainer({
     );
 
     useEffect(() => {
-        updateCryptoWalletBalance({ cryptoId: cryptoCurrencyId });
+        updateCryptoWalletBalance({ cryptoId: cryptoCurrencyId, shouldUpdateCryptoList: true, });
     }, []);
 
     useEffect(() => {
-        const priceDiff = Number(cryptoCurrency?.prevPrice) - Number(cryptoCurrency?.lastPrice);
+        const priceDiff = (cryptoCurrency?.prevPrice ?? 0) - (cryptoCurrency?.lastPrice ?? 0);
         let rightTextColor: string;
 
         if (priceDiff > 0) {
@@ -95,16 +97,16 @@ function CryptoWalletScreenContainer({
 
     const handleRefresh = useCallback(
         () => {
-            updateCryptoWalletBalance({ cryptoId: cryptoCurrencyId });
+            updateCryptoWalletBalance({ cryptoId: cryptoCurrencyId, shouldUpdateCryptoList: true, });
         },
         [cryptoCurrencyId, updateCryptoWalletBalance],
     );
 
     const handleCreateZorkaWalletPress = useCallback(
         () => {
-            createCryptoWallet();
+            createCryptoWallet({ cryptoId: cryptoCurrencyId });
         },
-        [ createCryptoWallet ],
+        [cryptoCurrencyId, createCryptoWallet],
     );
 
     const handleViewHistoryPress = useCallback(
@@ -146,7 +148,6 @@ function CryptoWalletScreenContainer({
 
     return (
         <CryptoWalletScreen
-            price={price}
             onRefresh={handleRefresh}
             isRefreshing={isCryptoWalletInfoUpdating}
             cryptoCurrency={cryptoCurrency}

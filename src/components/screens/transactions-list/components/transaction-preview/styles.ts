@@ -6,7 +6,7 @@ import { colors, fonts } from 'appAssets/styles';
 
 export default StyleSheet.create({
     transactionValueContainer: {
-        maxWidth: '80%',
+        maxWidth: '70%',
         marginLeft: 10,
     },
     amountContainer: {

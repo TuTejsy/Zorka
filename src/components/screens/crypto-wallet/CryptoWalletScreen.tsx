@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { Text, Image, View, RefreshControl, ScrollView, TouchableOpacity, Button } from 'react-native';
+import { Text, Image, View, RefreshControl, ScrollView, TouchableOpacity } from 'react-native';
 import { SvgUri } from 'react-native-svg';
 
 import { colors } from 'appAssets/styles';
@@ -8,7 +8,6 @@ import { CURRENCY } from 'appConstants';
 import styles from './styles';
 
 interface CryptoWalletScreenPropTypes {
-    price: string,
     isRefreshing: boolean,
     cryptoCurrency: (CryptoCurrency & Realm.Object) | null | undefined,
 
@@ -20,7 +19,6 @@ interface CryptoWalletScreenPropTypes {
 }
 
 function CryptoWalletScreen({
-    price,
     isRefreshing,
     cryptoCurrency,
 
@@ -48,11 +46,8 @@ function CryptoWalletScreen({
     );
 
     const balancePriceLabel = useMemo(
-        () => {
-            const totalPrice = balance * Number(price);
-            return `$${Math.round(Number(totalPrice) * 1000) / 1000}`;
-        },
-        [balance, price]
+        () => `$${Math.round((cryptoCurrency?.totalPrice ?? 0) * 1000) / 1000}`,
+        [ cryptoCurrency ]
     );
 
     return (
@@ -107,11 +102,13 @@ function CryptoWalletScreen({
 
                     <View style={styles.publicAddressContainer}>
                         <Text style={styles.publicAddressTitle}>Public Address:</Text>
-                        <Button
-                            color={colors.YELLOW}
-                            title={cryptoCurrency.publicAddress ?? ''}
+                        <TouchableOpacity
                             onPress={onCopyPublicAddressPress}
-                        />
+                        >
+                            <Text style={styles.publicAddress}>
+                                {cryptoCurrency.publicAddress}
+                            </Text>
+                        </TouchableOpacity>
                     </View>
 
                     <View style={styles.transactionsContainer}>

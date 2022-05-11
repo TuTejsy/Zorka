@@ -14,8 +14,18 @@ const CryptoSchema: ObjectSchema = {
             type: 'int',
             default: 0,
         },
-        prevPrice: 'string',
-        lastPrice: 'string',
+        prevPrice: {
+            type: 'double',
+            default: 0,
+        },
+        lastPrice: {
+            type: 'double',
+            default: 0,
+        },
+        totalPrice: {
+            type: 'double',
+            default: 0,
+        },
 
         logoUrl: 'string?',
         privateWif: 'string?',

@@ -3,7 +3,7 @@ import { Configuration } from 'realm';
 import { CryptoSchema } from '../schema';
 
 const cryptoConfig: Configuration = {
-    schemaVersion: 12,
+    schemaVersion: 13,
     deleteCache: () => {},
     deleteRealmIfMigrationNeeded: true,
     // migration: (oldRealm, newRealm) => {

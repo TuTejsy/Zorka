@@ -19,7 +19,8 @@ async function fetchCurrenciesInfo(): Promise<Array<CryptoCurrency>> {
                 id: currencyTicker.id as CurrencyId,
                 name: currencyTicker.name || currencyTicker.currency,
                 logoUrl: currencyTicker.logo_url,
-                lastPrice: currencyTicker.price,
+                prevPrice: Number(currencyTicker.price),
+                lastPrice: Number(currencyTicker.price),
             };
 
             currenciesInfo.push(currency);

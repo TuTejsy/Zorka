@@ -38,6 +38,7 @@ function CryptoListScreen({
             logoURL={item.logoUrl}
             onPress={createOnCurrencyPress(item.id)}
             prevPrice={item.prevPrice}
+            totalPrice={item.totalPrice}
         />
     ), [ createOnCurrencyPress ]);
 
