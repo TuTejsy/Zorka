@@ -16,7 +16,7 @@ export default StyleSheet.create({
         width: Screen.width - 48,
     },
 
-    saveBackupButton: {
+    copySecretPhraseButton: {
         width: Screen.width * 0.6,
         height: 50,
         marginTop: 50,

@@ -34,7 +34,7 @@ function BackupScreen({
             </ViewShot>
 
             <TouchableOpacity
-                style={styles.saveBackupButton}
+                style={styles.copySecretPhraseButton}
                 onPress={onCopySecretPhrasePress}
             >
                 <Text style={styles.saveText}>Copy Secret Phrase</Text>

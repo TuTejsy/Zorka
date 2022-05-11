@@ -16,10 +16,20 @@ export default StyleSheet.create({
         width: Screen.width - 48,
     },
 
-    saveButton: {
+    copySecretPhraseButton: {
         width: Screen.width * 0.6,
         height: 50,
         marginTop: 50,
+        alignItems: 'center',
+        borderRadius: 30,
+        justifyContent: 'center',
+        backgroundColor: colors.GREEN,
+    },
+
+    saveButton: {
+        width: Screen.width * 0.6,
+        height: 50,
+        marginTop: 20,
         alignItems: 'center',
         borderRadius: 30,
         justifyContent: 'center',

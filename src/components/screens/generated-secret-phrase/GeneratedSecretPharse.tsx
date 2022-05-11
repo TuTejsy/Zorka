@@ -14,6 +14,7 @@ interface GeneratedSecretPhraseScreenPropTypes {
     secretPhraseRef: MutableRefObject<ViewShot | undefined>;
 
     onDonePress: () => void;
+    onCopySecretPhrasePress: () => void,
     onSaveSecretPharsePress: () => void;
 }
 
@@ -23,6 +24,7 @@ function GeneratedSecretPhraseScreen({
     secretPhraseRef,
 
     onDonePress,
+    onCopySecretPhrasePress,
     onSaveSecretPharsePress,
 }: GeneratedSecretPhraseScreenPropTypes) {
     useEffect(() => {
@@ -57,10 +59,17 @@ function GeneratedSecretPhraseScreen({
             </ViewShot>
 
             <TouchableOpacity
+                style={styles.copySecretPhraseButton}
+                onPress={onCopySecretPhrasePress}
+            >
+                <Text style={styles.saveText}>Copy Secret Phrase</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
                 onPress={onSaveSecretPharsePress}
                 style={styles.saveButton}
             >
-                <Text style={styles.saveText}>Save</Text>
+                <Text style={styles.saveText}>Save Secret Phrase</Text>
             </TouchableOpacity>
         </SafeAreaView>
     );

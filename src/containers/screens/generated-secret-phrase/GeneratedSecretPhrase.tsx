@@ -1,8 +1,10 @@
 import React, { useRef, useCallback } from 'react';
 import { Share } from 'react-native';
+import Clipboard from '@react-native-clipboard/clipboard';
 import ViewShot, { captureRef } from 'react-native-view-shot';
 
 import { useActions } from 'appHooks';
+import { ToastEmitter } from 'appEmitters';
 import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 import { GeneratedSecretPhraseScreen } from 'appComponents/screens';
 
@@ -48,12 +50,22 @@ function GeneratedSecretPhraseScreenContainer({
         dispatchCreateZorkaWallet();
     }, [ dispatchCreateZorkaWallet ]);
 
+    const handleCopySecretPhrase = useCallback(() => {
+        Clipboard.setString(secretPhrase);
+
+        ToastEmitter.showToast({
+            text: 'Copied',
+            isSuccess: true,
+        });
+    }, [ secretPhrase ]);
+
     return (
         <GeneratedSecretPhraseScreen
             componentId={componentId}
             onDonePress={handleDonePress}
             secretPhrase={secretPhrase}
             secretPhraseRef={secretPhraseRef}
+            onCopySecretPhrasePress={handleCopySecretPhrase}
             onSaveSecretPharsePress={handleSaveSecretPhrasePress}
         />
     );
