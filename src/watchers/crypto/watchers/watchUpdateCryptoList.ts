@@ -1,4 +1,4 @@
-import { call, fork, take } from 'redux-saga/effects';
+import { call, fork, putResolve, take } from 'redux-saga/effects';
 
 import { CryptoDB } from 'appDatabase';
 
@@ -14,6 +14,10 @@ function* watchUpdateCryptoList() {
         yield take(actionTypes.UPDATE_CRYPTO_LIST);
 
         const currenciesInfo: CryptoCurrency[] = yield call(ServerAPI.fetchCurrenciesInfo);
-        CryptoDB.upsert(currenciesInfo);
+        yield call(CryptoDB.upsert, currenciesInfo);
+
+        yield putResolve({
+            type: actionTypes.CRYPTO_LIST_UPDATED,
+        });
     }
 }

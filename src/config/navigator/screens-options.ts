@@ -31,12 +31,6 @@ const screensOptions: ScreensOptions = {
                 visible: false,
                 tintColor: colors.GHOST_WHITE,
             },
-            rightButtons: [ {
-                id: NAVIGATION.COMPONENTS.NAVBAR.UPDATE_CRYPTO_LIST_BUTTON,
-                component: {
-                    name:  NAVIGATION.COMPONENTS.NAVBAR.UPDATE_CRYPTO_LIST_BUTTON,
-                }
-            } ],
             leftButtons: [ {
                 id: NAVIGATION.COMPONENTS.NAVBAR.SIDE_BAR_BUTTON,
                 component: {

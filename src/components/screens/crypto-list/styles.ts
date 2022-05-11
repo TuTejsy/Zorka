@@ -12,5 +12,12 @@ export default StyleSheet.create({
 
     flatList: {
         backgroundColor: colors.BLACK
-    }
+    },
+    separator: {
+        width: '90%',
+        height: 1,
+        alignSelf: 'center',
+        borderRadius: 1,
+        backgroundColor: colors.CORAL_BLACK,
+    },
 });

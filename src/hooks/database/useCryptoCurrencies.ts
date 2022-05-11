@@ -2,7 +2,6 @@ import { useRef, useMemo, useState, useEffect } from 'react';
 import { CollectionChangeCallback, Results } from 'realm';
 
 import { CryptoDB } from 'appDatabase';
-import { CryptoCurrency } from 'database/types';
 
 function useCryptoCurrencies(filter: string): [Results<CryptoCurrency & Realm.Object>, number] {
     const cryptoCurrencies = useMemo(() => (

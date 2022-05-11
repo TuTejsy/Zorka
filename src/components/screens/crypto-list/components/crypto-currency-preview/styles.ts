@@ -18,17 +18,35 @@ export default StyleSheet.create({
         overflow: 'hidden',
         marginRight: 20,
         borderRadius: 25,
-        paddingVertical: 5,
         backgroundColor: colors.GHOST_WHITE,
-        paddingHorizontal: 10,
     },
 
+    content: {
+        flex: 1,
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+    },
+    amount: {
+        color: colors.GHOST_WHITE,
+        fontSize: 16,
+        fontFamily: fonts.MEDIUM,
+    },
     name: {
         color: colors.GHOST_WHITE,
         fontSize: 14,
         fontFamily: fonts.REGULAR,
     },
-    amount: {
+
+    priceContainer: {
+        alignItems: 'flex-end',
+    },
+    price: {
+        color: colors.GHOST_WHITE,
+        fontSize: 14,
+        fontFamily: fonts.REGULAR,
+    },
+    totalPrice: {
         color: colors.GHOST_WHITE,
         fontSize: 16,
         fontFamily: fonts.MEDIUM,

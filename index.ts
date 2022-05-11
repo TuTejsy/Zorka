@@ -32,8 +32,12 @@ CryptoDB.open();
 TransactionsDB.open();
 
 const store = configureStore();
+
 registerScreens(store);
 
 Navigation.events().registerAppLaunchedListener(() => {
     Navigation.setDefaultOptions(getDefaultOptions());
 });
+
+export type RootState = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

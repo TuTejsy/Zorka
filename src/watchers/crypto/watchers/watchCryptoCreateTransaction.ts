@@ -33,12 +33,13 @@ function* watchCryptoCreateTransaction() {
 
             yield call(CryptoCurrencyManager.processCryptoInfoResponse, jsonRepsonse, CURRENCY.ID.BTC);
 
-            const sentTx: TX = yield call(CryptoCurrencyManager.createTransaction, {
+            const newTransaction: string = yield call(CryptoCurrencyManager.createTransaction, {
                 fee,
                 outputAddress: reciverAddress,
                 valueInSatoshi,
             });
 
+            const singedTX: TX = yield call (ServerAPI.pushRawTransaction, newTransaction);
             const sentAmount = (valueInSatoshi + fee) / CURRENCY.SATOSHI_AMOUNT.BTC;
 
             ToastEmitter.showToast({

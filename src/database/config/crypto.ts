@@ -3,16 +3,11 @@ import { Configuration } from 'realm';
 import { CryptoSchema } from '../schema';
 
 const cryptoConfig: Configuration = {
-    schemaVersion: 7,
+    schemaVersion: 8,
     deleteCache: () => {},
-    migration: (oldRealm, newRealm) => {
-        const newCryptoObjects = newRealm.objects<CryptoCurrency>(CryptoSchema.name);
-
-        newCryptoObjects.forEach((object) => {
-            // eslint-disable-next-line no-param-reassign
-            object.unconfirmedBalance = 0;
-        });
-    },
+    deleteRealmIfMigrationNeeded: true,
+    // migration: (oldRealm, newRealm) => {
+    // },
     schema: [
         CryptoSchema
     ],

@@ -1,8 +1,9 @@
 import React, { useEffect, useCallback } from 'react';
+import { useStore } from 'react-redux';
 import { Options } from 'react-native-navigation';
 
 import { NAVIGATION } from 'appConstants';
-import { useActions, useCryptoCurrencies } from 'appHooks';
+import { useAppSelector, useActions, useCryptoCurrencies } from 'appHooks';
 import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 
 import { CryptoListScreen } from 'appComponents/screens';
@@ -14,6 +15,8 @@ interface CryptoListScreenContainerPropTypes {
 function CryptoListScreenContainer({
     componentId,
 }: CryptoListScreenContainerPropTypes) {
+    const isCryptoListUpdating = useAppSelector(state => state.crypto.isCryptoListUpdating);
+
     const [
         push,
         updateCryptoList,
@@ -52,6 +55,10 @@ function CryptoListScreenContainer({
         updateCryptoList();
     }, []);
 
+    const handleRefresh = useCallback(() => {
+        updateCryptoList();
+    }, [ updateCryptoList ]);
+
     const handleCryptoCurrencyPress = useCallback(
         (cryptoCurrencyId: CurrencyId) => {
             dispatchPush({
@@ -64,6 +71,8 @@ function CryptoListScreenContainer({
 
     return (
         <CryptoListScreen
+            onRefresh={handleRefresh}
+            isRefreshing={isCryptoListUpdating}
             cryptoCurrencies={cryptoCurrencies}
             onCryptoCurrencyPress={handleCryptoCurrencyPress}
             cryptoCurrenciesVersion={cryptoCurrenciesVersion}

@@ -1,7 +1,6 @@
-import { Networks, crypto, PrivateKey, Transaction } from 'bitcore-lib';
+import { Networks, PrivateKey, Transaction } from 'bitcore-lib';
 import { CryptoDB, TransactionsDB } from 'appDatabase';
 
-import { ServerAPI } from 'appApi/server';
 import { CURRENCY } from 'appConstants';
 
 interface CreateTransactionPropTypes {
@@ -63,9 +62,7 @@ async function createTransaction({
         .sign(privateKey)
         .serialize();
 
-    const singedTX: TX = await ServerAPI.pushRawTransaction(newTransactions);
-
-    return singedTX;
+    return newTransactions;
 }
 
 export default createTransaction;

@@ -1,5 +1,5 @@
 
-type CurrencyId = 'BTC' | 'ETH' | 'XRP' | 'ADA';
+type CurrencyId = 'BTC' | 'ETH' | 'XRP' | 'ADA' | 'LTC' | 'DASH' | 'BCH';
 
 interface CryptoCurrency {
     id: CurrencyId,

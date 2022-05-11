@@ -9,8 +9,9 @@ import {
 const transactionsConfig: Configuration = {
     schemaVersion: 10,
     deleteCache: () => {},
-    migration: (oldRealm, newRealm) => {
-    },
+    deleteRealmIfMigrationNeeded: true,
+    // migration: (oldRealm, newRealm) => {
+    // },
     schema: [
         TransactionSchema,
         TransactionInputSchema,

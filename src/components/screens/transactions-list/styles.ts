@@ -32,5 +32,5 @@ export default StyleSheet.create({
     },
     flatListContentStyle: {
         paddingVertical: 30,
-    }
+    },
 });
