@@ -21,7 +21,7 @@ export const useContextualStyles = ({
 }) => {
     const toast: StyleProp<ViewStyle> = useMemo(
         () => ({
-            top: 20,
+            top: 10,
             left: Screen.width * 0.2,
             width: Screen.width * 0.6,
             height: 50,

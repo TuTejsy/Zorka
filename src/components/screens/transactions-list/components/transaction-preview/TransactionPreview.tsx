@@ -4,7 +4,6 @@ import ContextMenu, { ContextMenuOnPressNativeEvent } from 'react-native-context
 import moment from 'moment';
 
 import { CURRENCY } from 'appConstants';
-import { colors } from 'appAssets/styles';
 
 import styles, { useContextualStyles } from './styles';
 

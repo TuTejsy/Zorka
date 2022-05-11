@@ -1,1 +1,1 @@
-export { default as BackupScreen } from './BackupScreen';
+export { default as BackupScreen } from './BackupScreenContainer';

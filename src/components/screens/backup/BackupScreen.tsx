@@ -1,6 +1,7 @@
 import React, { MutableRefObject } from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
 import ViewShot from 'react-native-view-shot';
+import ContextMenu, { ContextMenuOnPressNativeEvent } from 'react-native-context-menu-view';
 
 import { SecretPharse } from 'appComponents/core';
 
@@ -11,7 +12,7 @@ interface BackupScreenPropTypes {
     secretPhrase: string;
     secretPhraseRef: MutableRefObject<ViewShot | undefined>;
 
-    onSaveBackupPress: () => void,
+    onCopySecretPhrasePress: () => void,
     onSaveSecretPharsePress: () => void;
 }
 
@@ -20,7 +21,7 @@ function BackupScreen({
     secretPhrase,
     secretPhraseRef,
 
-    onSaveBackupPress,
+    onCopySecretPhrasePress,
     onSaveSecretPharsePress,
 }: BackupScreenPropTypes) {
     return (
@@ -33,10 +34,10 @@ function BackupScreen({
             </ViewShot>
 
             <TouchableOpacity
-                onPress={onSaveBackupPress}
                 style={styles.saveBackupButton}
+                onPress={onCopySecretPhrasePress}
             >
-                <Text style={styles.saveText}>Save Backup</Text>
+                <Text style={styles.saveText}>Copy Secret Phrase</Text>
             </TouchableOpacity>
 
             <TouchableOpacity

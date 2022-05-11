@@ -1,9 +1,9 @@
 import React, { useRef, useCallback } from 'react';
 import { Share } from 'react-native';
+import Clipboard from '@react-native-clipboard/clipboard';
 import ViewShot, { captureRef } from 'react-native-view-shot';
 
-import { useActions } from 'appHooks';
-import { ACTION_CREATORS_TYPES } from 'appHooks/types';
+import { ToastEmitter } from 'appEmitters';
 import { BackupScreen } from 'appComponents/screens';
 
 interface BackupScreenContainerPropTypes {
@@ -15,14 +15,6 @@ function BackupScreenContainer({
     componentId,
     secretPhrase,
 }: BackupScreenContainerPropTypes) {
-    const [
-        saveBackup,
-    ] = useActions<[
-        ACTION_CREATORS_TYPES['saveBackup'],
-    ]>([
-        'saveBackup',
-    ]);
-
     const secretPhraseRef = useRef<ViewShot>();
 
     const handleSaveSecretPhrasePress = useCallback(() => {
@@ -37,12 +29,21 @@ function BackupScreenContainer({
         );
     }, []);
 
+    const handleCopySecretPhrase = useCallback(() => {
+        Clipboard.setString(secretPhrase);
+
+        ToastEmitter.showToast({
+            text: 'Copied',
+            isSuccess: true,
+        });
+    }, [ secretPhrase ]);
+
     return (
         <BackupScreen
             componentId={componentId}
             secretPhrase={secretPhrase}
             secretPhraseRef={secretPhraseRef}
-            onSaveBackupPress={saveBackup}
+            onCopySecretPhrasePress={handleCopySecretPhrase}
             onSaveSecretPharsePress={handleSaveSecretPhrasePress}
         />
     );
