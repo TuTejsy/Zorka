@@ -301,6 +301,8 @@ PODS:
   - React-jsinspector (0.68.0)
   - React-logger (0.68.0):
     - glog
+  - react-native-context-menu-view (1.5.2):
+    - React
   - react-native-document-picker (8.1.0):
     - React-Core
   - react-native-randombytes (3.6.1):
@@ -450,6 +452,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - React-logger (from `../node_modules/react-native/ReactCommon/logger`)
+  - react-native-context-menu-view (from `../node_modules/react-native-context-menu-view`)
   - react-native-document-picker (from `../node_modules/react-native-document-picker`)
   - react-native-randombytes (from `../node_modules/react-native-randombytes`)
   - react-native-sensitive-info (from `../node_modules/react-native-sensitive-info`)
@@ -534,6 +537,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   React-logger:
     :path: "../node_modules/react-native/ReactCommon/logger"
+  react-native-context-menu-view:
+    :path: "../node_modules/react-native-context-menu-view"
   react-native-document-picker:
     :path: "../node_modules/react-native-document-picker"
   react-native-randombytes:
@@ -616,6 +621,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 010a66edf644339f6da72b34208b070089680415
   React-jsinspector: 90f0bfd5d04e0b066c29216a110ffb9a6c34f23f
   React-logger: 8474fefa09d05f573a13c044cb0dfd751d4e52e3
+  react-native-context-menu-view: c72d4120597f5cf3917dcb348cf819f215ed9207
   react-native-document-picker: 5663fe4bcdb646200683a41790464d2793307ac8
   react-native-randombytes: 421f1c7d48c0af8dbcd471b0324393ebf8fe7846
   react-native-sensitive-info: 400c6e3d27945e15c8cddb5b4b92233c85ee06f8
