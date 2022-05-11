@@ -1,4 +1,4 @@
-import { take, fork, call } from 'redux-saga/effects';
+import { put, take, fork, call, putResolve } from 'redux-saga/effects';
 
 import { CryptoDB } from 'appDatabase';
 import { CryptoCurrencyManager } from 'appUtils';
@@ -51,5 +51,14 @@ function* watchCryptoWalletInfo() {
                 console.log('watchCryptoWalletInfo Error: ', err);
             }
         }
+
+        yield put({
+            type: actionTypes.UPDATE_CRYPTO_LIST,
+        });
+        yield take(actionTypes.CRYPTO_LIST_UPDATED);
+
+        yield putResolve({
+            type: actionTypes.CRYPTO_WALLET_INFO_UPDATED,
+        });
     }
 }

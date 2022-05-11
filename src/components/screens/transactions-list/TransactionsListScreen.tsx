@@ -1,5 +1,7 @@
 import React, { useCallback } from 'react';
-import { View, SafeAreaView, FlatList } from 'react-native';
+import { View, SafeAreaView, FlatList, RefreshControl } from 'react-native';
+
+import { colors } from 'appAssets/styles';
 
 import { TransactionPreview } from './components';
 
@@ -10,6 +12,9 @@ interface TransactionsListScreenPropTypes {
     currencyName: string,
     transactions: Realm.Results<Transaction & Realm.Object>
     transactionsVersion: number,
+
+    onRefresh: () => void,
+    isRefreshing: boolean,
 }
 
 function TransactionsListScreen({
@@ -17,6 +22,9 @@ function TransactionsListScreen({
     currencyName,
     transactions,
     transactionsVersion,
+
+    onRefresh,
+    isRefreshing,
 }: TransactionsListScreenPropTypes) {
     const renderItem = useCallback(({ item }: {item: Transaction }) => (
         <TransactionPreview
@@ -46,6 +54,13 @@ function TransactionsListScreen({
                 extraData={transactionsVersion}
                 renderItem={renderItem}
                 keyExtractor={keyExtractor}
+                refreshControl={(
+                    <RefreshControl
+                        onRefresh={onRefresh}
+                        tintColor={colors.GHOST_WHITE}
+                        refreshing={isRefreshing}
+                    />
+                )}
                 contentContainerStyle={styles.flatListContentStyle}
                 ItemSeparatorComponent={renderSeparator}
             />

@@ -6,7 +6,7 @@ import { ANIMATION_DURATION, TOAST_DURATION } from 'appConstants';
 import { ToastEmitter } from 'appEmitters';
 import { ValueHandler } from 'appUtils';
 
-import styles from './styles';
+import styles, { useContextualStyles } from './styles';
 
 interface ToasterTypes {
     componentId: string,
@@ -21,6 +21,8 @@ function Toaster({
 
     const [text, setText] = useState('');
     const [isSuccess, setIsSuccess] = useState(true);
+
+    const contextualStyles = useContextualStyles({ isSuccess, });
 
     const hideToaster = useCallback(
         () => {
@@ -80,7 +82,7 @@ function Toaster({
     return (
         <Animated.View
             style={[
-                styles.toast,
+                contextualStyles.toast,
                 {
                     opacity: animatedOpacityRef.current,
                     transform: [ { scale: animatedScaleRef.current } ]

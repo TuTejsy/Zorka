@@ -13,6 +13,7 @@ export default StyleSheet.create({
         paddingHorizontal: 16,
     },
     scrollView: {
+        paddingTop: 50,
         backgroundColor: colors.CORAL_BLACK,
     },
     content: {
@@ -41,9 +42,13 @@ export default StyleSheet.create({
         fontSize: 24,
         fontFamily: fonts.BOLD,
     },
+    balancePrice: {
+        color: colors.GHOST_WHITE,
+        fontSize: 21,
+        fontFamily: fonts.REGULAR,
+    },
 
     publicAddressContainer: {
-        marginTop: 100,
         alignItems: 'center',
         justifyContent: 'flex-start',
     },
@@ -51,33 +56,13 @@ export default StyleSheet.create({
         color: colors.GREY,
         fontSize: 16,
         alignSelf: 'flex-start',
+        marginLeft: 10,
         fontFamily: fonts.REGULAR,
     },
-    publicAddress: {
-        color: colors.GREY,
-        fontSize: 16,
-        fontFamily: fonts.REGULAR,
-        marginBottom: 50,
-    },
-    button: {
-        width: Screen.width * 0.5,
-        height: 50,
-        alignItems: 'center',
-        borderRadius: 30,
-        justifyContent: 'center',
-        backgroundColor: colors.YELLOW,
-    },
-    buttonText: {
-        color: colors.BLACK,
-        fontSize: 14,
-        fontFamily: fonts.REGULAR,
-    },
-
     transactionsContainer: {
-        marginTop: 90,
+        marginTop: 30,
         justifyContent: 'center',
     },
-
     sendButton: {
         width: Screen.width * 0.7,
         height: 60,
@@ -85,7 +70,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         borderRadius: 30,
         justifyContent: 'center',
-        backgroundColor: colors.GREEN,
+        backgroundColor: colors.YELLOW,
         paddingHorizontal: 15,
     },
     transactionsButton: {
@@ -103,16 +88,40 @@ export default StyleSheet.create({
         textAlign: 'center',
         fontFamily: fonts.REGULAR,
     },
+    createWalletButton: {
+        width: Screen.width * 0.7,
+        height: 60,
+        alignItems: 'center',
+        borderRadius: 30,
+        justifyContent: 'center',
+        backgroundColor: colors.YELLOW,
+        paddingHorizontal: 15,
+    },
+    createWalletText: {
+        color: colors.BLACK,
+        fontSize: 16,
+        textAlign: 'center',
+        fontFamily: fonts.REGULAR,
+    },
 
-    CreateZorkaWalletContainer: {
+    logo: {
+        width: 200,
+        height: 200,
+        overflow: 'hidden',
+        borderRadius: 100,
+        backgroundColor: colors.GHOST_WHITE,
+    },
+
+    createZorkaWalletContainer: {
         flex: 1,
         alignItems: 'center',
-        paddingBottom: 150,
-        justifyContent: 'center',
+        paddingBottom: 100,
+        justifyContent: 'flex-start',
     },
-    CreateZorkaWalletText: {
+    createZorkaWalletText: {
         color: colors.GHOST_WHITE,
         fontSize: 21,
+        marginTop: 50,
         fontFamily: fonts.REGULAR,
         marginBottom: 50,
     },

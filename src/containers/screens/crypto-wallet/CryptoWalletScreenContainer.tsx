@@ -1,12 +1,11 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useMemo, useEffect, useCallback } from 'react';
 import Clipboard from '@react-native-clipboard/clipboard';
 import { Options, Navigation } from 'react-native-navigation';
 
-import { actionCreators } from 'appApi/client';
+import { fonts, colors } from 'appAssets/styles';
 import { ToastEmitter } from 'appEmitters';
 import { NAVIGATION } from 'appConstants';
-import { useActions, useCryptoCurrency } from 'appHooks';
+import { useAppSelector, useActions, useCryptoCurrency } from 'appHooks';
 import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 import { CryptoWalletScreen } from 'appComponents/screens';
 
@@ -19,8 +18,8 @@ function CryptoWalletScreenContainer({
     componentId,
     cryptoCurrencyId,
 }: CryptoWalletScreenContainerPropTypes) {
-    const [isRefreshing, setIsRefreshing] = useState(false);
     const cryptoCurrency = useCryptoCurrency(cryptoCurrencyId);
+    const isCryptoWalletInfoUpdating = useAppSelector(state => state.crypto.isCryptoWalletInfoUpdating);
 
     const [
         showModal,
@@ -35,6 +34,12 @@ function CryptoWalletScreenContainer({
         'createCryptoWallet',
         'updateCryptoWalletBalance',
     ]);
+
+    const price = cryptoCurrency?.lastPrice ?? '';
+    const priceLabel = useMemo(
+        () => `$${Math.round(Number(price) * 1000) / 1000}`,
+        [ price ]
+    );
 
     const dispatchShowModal = useCallback(
         ({
@@ -60,25 +65,25 @@ function CryptoWalletScreenContainer({
     }, []);
 
     useEffect(() => {
-        if (isRefreshing) {
-            setIsRefreshing(false);
-        }
-    }, [cryptoCurrency ,isRefreshing]);
-
-    useEffect(() => {
         Navigation.mergeOptions(componentId, {
             topBar: {
                 title: {
-                    text: cryptoCurrency?.name
+                    text: cryptoCurrency?.name,
                 },
+                rightButtons: [ {
+                    id: 'none',
+                    text: priceLabel,
+                    enabled: false,
+                    fontSize: 16,
+                    fontFamily: fonts.REGULAR,
+                    disabledColor: colors.GHOST_WHITE,
+                } ]
             },
         });
-    }, [componentId, cryptoCurrency]);
+    }, [componentId, cryptoCurrency, priceLabel]);
 
     const handleRefresh = useCallback(
         () => {
-            setIsRefreshing(true);
-
             updateCryptoWalletBalance({ cryptoId: cryptoCurrencyId });
         },
         [cryptoCurrencyId, updateCryptoWalletBalance],
@@ -130,8 +135,9 @@ function CryptoWalletScreenContainer({
 
     return (
         <CryptoWalletScreen
+            price={price}
             onRefresh={handleRefresh}
-            isRefreshing={isRefreshing}
+            isRefreshing={isCryptoWalletInfoUpdating}
             cryptoCurrency={cryptoCurrency}
             onSendCryptoPress={handleSendCryptoPress}
             onViewHistoryPress={handleViewHistoryPress}

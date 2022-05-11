@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
-import { Text, View, RefreshControl, ScrollView, TouchableOpacity } from 'react-native';
+import { Text, Image, View, RefreshControl, ScrollView, TouchableOpacity, Button } from 'react-native';
+import { SvgUri } from 'react-native-svg';
 
 import { colors } from 'appAssets/styles';
 import { CURRENCY } from 'appConstants';
@@ -7,6 +8,7 @@ import { CURRENCY } from 'appConstants';
 import styles from './styles';
 
 interface CryptoWalletScreenPropTypes {
+    price: string,
     isRefreshing: boolean,
     cryptoCurrency: (CryptoCurrency & Realm.Object) | null | undefined,
 
@@ -18,6 +20,7 @@ interface CryptoWalletScreenPropTypes {
 }
 
 function CryptoWalletScreen({
+    price,
     isRefreshing,
     cryptoCurrency,
 
@@ -27,19 +30,66 @@ function CryptoWalletScreen({
     onCreateZorkaWalletPress,
     onCopyPublicAddressPress,
 }: CryptoWalletScreenPropTypes) {
+    const logoURL = cryptoCurrency?.logoUrl;
+
+    const extention = useMemo(() => logoURL?.split('.').pop(), [ logoURL ]);
+    const isSVG = extention === 'svg';
+    const isWalletExists = !!cryptoCurrency?.publicAddress;
+
+    const balance = useMemo(
+        () => {
+            if (cryptoCurrency) {
+                return cryptoCurrency.balance / CURRENCY.SATOSHI_AMOUNT[cryptoCurrency.id];
+            }
+
+            return 0;
+        },
+        [ cryptoCurrency ]
+    );
+
+    const balancePriceLabel = useMemo(
+        () => {
+            const totalPrice = balance * Number(price);
+            return `$${Math.round(Number(totalPrice) * 1000) / 1000}`;
+        },
+        [balance, price]
+    );
+
     return (
         <ScrollView
             style={styles.scrollView}
-            refreshControl={(
+            scrollEnabled={isWalletExists}
+            refreshControl={isWalletExists ? (
                 <RefreshControl
                     onRefresh={onRefresh}
                     tintColor={colors.GHOST_WHITE}
                     refreshing={isRefreshing}
                 />
-            )}
+            ) : undefined}
             contentContainerStyle={styles.screen}
         >
-            { cryptoCurrency?.publicAddress ? (
+            { logoURL && (
+                <View
+                    style={styles.logo}
+                >
+                    { isSVG ? (
+                                <SvgUri
+                                    uri={logoURL}
+                                    width="100%"
+                                    style={styles.logo}
+                                    height="100%"
+                                />
+                                    ) : (
+                                        <Image
+                                            style={styles.logo}
+                                            source={{ uri: logoURL }}
+                                            resizeMode="cover"
+                                        />
+                                    )}
+                </View>
+            )}
+
+            { isWalletExists ? (
                 <View style={styles.content}>
                     <View style={styles.balanceContainer}>
                         <Text
@@ -47,8 +97,21 @@ function CryptoWalletScreen({
                         >Your balance is</Text>
                         <Text
                             style={styles.balance}
-                        >{cryptoCurrency.balance / CURRENCY.SATOSHI_AMOUNT[cryptoCurrency.id]} {cryptoCurrency.name}
+                        >{ balance } { cryptoCurrency.name }
                         </Text>
+                        <Text
+                            style={styles.balancePrice}
+                        >{ balancePriceLabel }
+                        </Text>
+                    </View>
+
+                    <View style={styles.publicAddressContainer}>
+                        <Text style={styles.publicAddressTitle}>Public Address:</Text>
+                        <Button
+                            color={colors.YELLOW}
+                            title={cryptoCurrency.publicAddress ?? ''}
+                            onPress={onCopyPublicAddressPress}
+                        />
                     </View>
 
                     <View style={styles.transactionsContainer}>
@@ -66,28 +129,15 @@ function CryptoWalletScreen({
                             <Text style={styles.transactionsText}>Send Crypto</Text>
                         </TouchableOpacity>
                     </View>
-
-                    <View style={styles.publicAddressContainer}>
-                        <Text style={styles.publicAddressTitle}>Public Address:</Text>
-                        <Text style={styles.publicAddress}>{cryptoCurrency.publicAddress}</Text>
-
-                        <TouchableOpacity
-                            style={styles.button}
-                            onPress={onCopyPublicAddressPress}
-                        >
-                            <Text style={styles.buttonText}>Copy Public Address</Text>
-                        </TouchableOpacity>
-                    </View>
-                    {/* <Text >Unconfirmed Balance: {cryptoCurrency.unconfirmedBalance / SATOSHI_IN_BTC}</Text> */}
                 </View>
                 ) : (
-                    <View style={styles.CreateZorkaWalletContainer}>
-                        <Text style={styles.CreateZorkaWalletText}>Create Your {cryptoCurrency?.name} Wallet</Text>
+                    <View style={styles.createZorkaWalletContainer}>
+                        <Text style={styles.createZorkaWalletText}>Create Your {cryptoCurrency?.name} Wallet</Text>
                         <TouchableOpacity
-                            style={styles.button}
+                            style={styles.createWalletButton}
                             onPress={onCreateZorkaWalletPress}
                         >
-                            <Text style={styles.buttonText}>Create Wallet</Text>
+                            <Text style={styles.createWalletText}>Create Wallet</Text>
                         </TouchableOpacity>
                     </View>
                 )}

@@ -52,7 +52,7 @@ const screensOptions: ScreensOptions = {
         topBar: {
             title: {
                 color: colors.GHOST_WHITE,
-                fontSize: 16,
+                fontSize: 18,
                 fontFamily: fonts.MEDIUM,
             },
             backButton: {
@@ -70,7 +70,7 @@ const screensOptions: ScreensOptions = {
             title: {
                 text: 'Secret Phrase',
                 color: colors.GHOST_WHITE,
-                fontSize: 16,
+                fontSize: 18,
                 fontFamily: fonts.MEDIUM,
             },
             background: {
@@ -90,7 +90,7 @@ const screensOptions: ScreensOptions = {
             title: {
                 text: 'Enter Secret Phrase',
                 color: colors.GHOST_WHITE,
-                fontSize: 16,
+                fontSize: 18,
                 fontFamily: fonts.MEDIUM,
             },
             background: {
@@ -113,7 +113,7 @@ const screensOptions: ScreensOptions = {
             title: {
                 text: 'Create Wallet',
                 color: colors.GHOST_WHITE,
-                fontSize: 16,
+                fontSize: 18,
                 fontFamily: fonts.MEDIUM,
             },
             background: {
@@ -132,7 +132,7 @@ const screensOptions: ScreensOptions = {
             title: {
                 text: 'Secret Phrase',
                 color: colors.GHOST_WHITE,
-                fontSize: 16,
+                fontSize: 18,
                 fontFamily: fonts.MEDIUM,
             },
             background: {

@@ -13,8 +13,14 @@ const cryptoListStatusReducer = Creator.reducer(false, {
     [actionTypes.CRYPTO_LIST_UPDATED]: (state, action) => false,
 });
 
+const cryptoWalletInfoStatusReducer = Creator.reducer(false, {
+    [actionTypes.UPDATE_CRYPTO_WALLET_INFO]: (state, action) => true,
+    [actionTypes.CRYPTO_WALLET_INFO_UPDATED]: (state, action) => false,
+});
+
 
 export default combineReducers({
     isBackupSaving: backupStatusReducer,
     isCryptoListUpdating: cryptoListStatusReducer,
+    isCryptoWalletInfoUpdating: cryptoWalletInfoStatusReducer,
 });

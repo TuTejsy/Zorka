@@ -28,9 +28,9 @@ export default StyleSheet.create({
     },
 
     flatList: {
-        backgroundColor: colors.BLACK
+        marginVertical: 30,
+        backgroundColor: colors.BLACK,
     },
     flatListContentStyle: {
-        paddingVertical: 30,
     },
 });
