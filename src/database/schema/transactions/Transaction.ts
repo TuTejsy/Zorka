@@ -17,7 +17,6 @@ const TransactionSchema: ObjectSchema = {
         isIncoming: 'bool',
         doubleSpend: 'bool',
         isConfirmed: 'bool',
-        outputIndex: 'int',
         confirmations: 'int',
         walletAddress: 'string',
 

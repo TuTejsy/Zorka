@@ -7,7 +7,7 @@ import {
 } from '../schema';
 
 const transactionsConfig: Configuration = {
-    schemaVersion: 11,
+    schemaVersion: 12,
     deleteCache: () => {},
     deleteRealmIfMigrationNeeded: true,
     // migration: (oldRealm, newRealm) => {

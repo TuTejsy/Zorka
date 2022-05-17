@@ -11,11 +11,23 @@ export default StyleSheet.create({
         justifyContent: 'space-between',
         backgroundColor: colors.CORAL_BLACK,
     },
+    keyboardAvoidingContent: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'flex-end',
+    },
+
+    enterSecretPhraseArea: {
+        paddingTop: 20,
+        marginBottom: 50,
+        paddingHorizontal: 10,
+    },
 
     uploadButton: {
         width: Screen.width * 0.6,
         height: 50,
         marginTop: 50,
+        marginBottom: 50,
         alignItems: 'center',
         borderRadius: 30,
         justifyContent: 'center',

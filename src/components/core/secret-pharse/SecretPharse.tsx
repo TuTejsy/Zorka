@@ -38,13 +38,16 @@ function SecretPhrase({ secretPhrase }: SecretPhrasePropTypes) {
     }, []);
 
     return (
-        <View style={styles.secretPhrase} onLayout={onViewLayout}>
+        <View
+            style={styles.secretPhrase}
+            onLayout={onViewLayout}
+        >
             <View style={styles.secretPhraseColumnsContrainer}>
-                {secretPhraseArrays.map((secretWords, arrayIndex) => (
+                { secretPhraseArrays.map((secretWords, arrayIndex) => (
                     <View key={arrayIndex} style={styles.secretPhraseColumn}>
                         {secretWords.map((word, wordIndex) => (
                             <Text key={word} style={styles.word}>
-                                {arrayIndex + wordIndex + 1}. {word}
+                                {arrayIndex * 8 + wordIndex + 1}. {word}
                             </Text>
                         ))}
                     </View>
