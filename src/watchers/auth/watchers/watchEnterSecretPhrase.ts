@@ -60,13 +60,15 @@ function* watchEnterSecretPhrase() {
                         return crypto;
                     });
 
-                    CryptoDB.upsert(cryptoWallets);
-
                     yield call(
                         Keychain.setItem,
                         KEYCHAIN.KEYS.SECRET_PHRASE,
                         secretPhrase,
                     );
+
+                    yield call(operations.openEncryptedDB, secretPhrase);
+
+                    CryptoDB.upsert(cryptoWallets);
 
                     yield call(operations.setupRootCryptoScreen);
                 }

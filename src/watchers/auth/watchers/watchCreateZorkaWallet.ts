@@ -25,6 +25,7 @@ function* watchCreateZorkaWallet() {
                 secretPhrase,
             );
 
+            yield call(operations.openEncryptedDB, secretPhrase);
             yield call(operations.setupRootCryptoScreen);
 
             yield put({

@@ -23,19 +23,24 @@ function EnterSecretPharseScreenContainer({
         'enterSecretPhrase',
     ]);
 
+    const handleEnterSecretPhrase = useCallback((secretPhrase: string) => {
+        enterSecretPhrase({ secretPhrase });
+    }, [ enterSecretPhrase ]);
+
     const handleUploadSecretPhrasePress = useCallback(() => {
         DocumentPicker.pickSingle().then(({ uri }) => {
             RNQRGenerator.detect({ uri }).then(({ values }) => {
                 const secretPhrase = values[0];
                 console.log(secretPhrase);
 
-                enterSecretPhrase({ secretPhrase });
+                handleEnterSecretPhrase(secretPhrase);
             });
         });
-    }, [ enterSecretPhrase ]);
+    }, [ handleEnterSecretPhrase ]);
 
     return (
         <EnterSecretPharseScreen
+            onSubmitSecretPhrase={handleEnterSecretPhrase}
             onUploadSecretPhrasePress={handleUploadSecretPhrasePress}
         />
     );

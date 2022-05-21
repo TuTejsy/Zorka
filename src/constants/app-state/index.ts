@@ -5,3 +5,5 @@ export const APP_STATE = {
 };
 
 export const TOAST_DURATION = 3000;
+
+export * from './localization';

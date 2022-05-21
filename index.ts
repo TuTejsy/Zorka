@@ -3,41 +3,23 @@ import 'node-libs-react-native/globals';
 import './src/polyfills';
 
 import { Navigation } from 'react-native-navigation';
-import { SHA512, enc } from 'crypto-js';
 
 import { configureStore } from 'appConfig/redux';
 import { registerScreens } from 'appConfig/screens';
 import { getDefaultOptions } from 'appConfig/navigator';
-import { CryptoDB, TransactionsDB } from 'appDatabase';
+import { operations } from 'appOperations';
 import { Keychain } from 'appUtils';
 import { KEYCHAIN } from 'appConstants';
 
-// Keychain.getItem(KEYCHAIN.KEYS.SECRET_PHRASE).then((secretPhrase: string | null) => {
-//     if (secretPhrase) {
-//         const privateKey = SHA512(secretPhrase).toString(enc.Base64);
-//         const privateKeyBuffer = Buffer.from(privateKey, 'base64');
+Keychain.getItem(KEYCHAIN.KEYS.SECRET_PHRASE).then( async (secretPhrase: string | null) => {
+    if (secretPhrase) {
+        await operations.openEncryptedDB(secretPhrase);
+    }
 
-//         CryptoDB.open(privateKeyBuffer);
-//     }
+    const store = configureStore();
+    registerScreens(store);
 
-//     const store = configureStore();
-//     registerScreens(store);
-
-//     Navigation.events().registerAppLaunchedListener(() => {
-//         Navigation.setDefaultOptions(getDefaultOptions());
-//     });
-// })
-
-CryptoDB.open();
-TransactionsDB.open();
-
-const store = configureStore();
-
-registerScreens(store);
-
-Navigation.events().registerAppLaunchedListener(() => {
-    Navigation.setDefaultOptions(getDefaultOptions());
+    Navigation.events().registerAppLaunchedListener(() => {
+        Navigation.setDefaultOptions(getDefaultOptions());
+    });
 });
-
-export type RootState = ReturnType<typeof store.getState>
-export type AppDispatch = typeof store.dispatch

@@ -9,16 +9,20 @@ import { EnterSecretPhraseArea } from './components';
 import styles from './styles';
 
 interface EnterSecretPharseScreenPropTypes {
+    onSubmitSecretPhrase: (secretPhrase: string) => void,
     onUploadSecretPhrasePress: () => void,
 }
 
 function EnterSecretPharseScreen({
+    onSubmitSecretPhrase,
     onUploadSecretPhrasePress,
 }: EnterSecretPharseScreenPropTypes) {
     return (
         <SafeAreaView style={styles.screen}>
             <EnterSecretPhraseArea
                 style={styles.enterSecretPhraseArea}
+                isSecretPhraseValid
+                onSubmitSecretPhrase={onSubmitSecretPhrase}
             />
 
             <KeyboardAvoidingView

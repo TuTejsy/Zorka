@@ -1,5 +1,8 @@
 import React, { useState, useMemo, useCallback, RefObject } from 'react';
-import { View, Text, TextInput, ViewBase, ViewProps } from 'react-native';
+import { View, Text, TextInput, ViewProps } from 'react-native';
+import ContextMenu from 'react-native-context-menu-view';
+import Clipboard from '@react-native-clipboard/clipboard';
+
 import { SECRETPHRASE_LENGTH } from 'appConstants';
 import { colors } from 'appAssets/styles';
 
@@ -12,10 +15,16 @@ interface InputValue {
 }
 
 interface EnterSecretPhraseAreaPropTypes extends ViewProps {
+    isSecretPhraseValid: boolean
+
+    onSubmitSecretPhrase: (secretPhrase: string) => void,
 }
 
 function EnterSecretPhraseArea({
-    style
+    style,
+    isSecretPhraseValid = true,
+
+    onSubmitSecretPhrase
 }: EnterSecretPhraseAreaPropTypes) {
     const contextualStyles = useContextualStyles({ style });
 
@@ -26,11 +35,14 @@ function EnterSecretPhraseArea({
     );
 
     const [inputValues, setInputValues] = useState(
-        () => (new Array<InputValue>(SECRETPHRASE_LENGTH).fill({
-            ref: React.createRef(),
-            value: '',
-            isActive: false,
-        }))
+        () => (new Array<InputValue>(SECRETPHRASE_LENGTH)
+            .fill({})
+            .map(inputValue => ({
+                ref: React.createRef<TextInput>(),
+                value: '',
+                isActive: false,
+            }))
+        )
     );
 
     const setValueForInput = useCallback((inputValue: InputValue, index: number) => {
@@ -63,11 +75,14 @@ function EnterSecretPhraseArea({
 
     const handleEnterPressForInput = useCallback((index: number) => {
         if (index === (inputValues.length - 1)) {
+            const secretPhrase = inputValues.map(inputValue => inputValue.value).join(' ');
 
+            onSubmitSecretPhrase(secretPhrase);
         } else {
-            inputValues[index + 1].ref?.current?.focus();
+            const inputValue = inputValues[index + 1];
+            inputValue?.ref?.current?.focus();
         }
-    }, [ inputValues ]);
+    }, [inputValues, onSubmitSecretPhrase]);
 
     const makeOnFocus = useCallback(index =>
         () => handleFocus(index),
@@ -86,50 +101,70 @@ function EnterSecretPhraseArea({
     [ handleEnterPressForInput ]
     );
 
+    const handlePasteSecretPhrase = useCallback(async () => {
+        const clipboardValue = await Clipboard.getString();
+        const words = clipboardValue.trim().split(' ');
+
+        const newInputValues = inputValues.map((inputValue, index) => ({
+            ...inputValue,
+            value: words[index].toUpperCase()
+        }));
+
+        setInputValues(newInputValues);
+
+        newInputValues[newInputValues.length - 1].ref.current?.focus();
+    }, [ inputValues ]);
+
 
     return (
-        <View
-            style={contextualStyles.container}
+        <ContextMenu
+            actions={[ { title: 'Paste Secret Phrase' } ]}
+            onPress={handlePasteSecretPhrase}
         >
-            { columns.map((column, columnIndex) => (
-                <View
-                    key={columnIndex}
-                    style={styles.inputsColumn}
-                >
-                    { inputsInColumn.map((input, inputIndex) => {
-                        const inputValueIndex = columnIndex * inputsInColumn.length + inputIndex;
-                        const inputValue = inputValues[inputValueIndex];
-                        const isLastInput = inputValueIndex === inputValues.length - 1;
 
-                        return (
-                            <View
-                                key={inputIndex}
-                                style={styles.inputContainer}
-                            >
-                                <Text
-                                    key={inputIndex}
-                                    style={[styles.inputIndex, inputValue.isActive && styles.activeInputIndex]}
+            <View
+                style={contextualStyles.container}
+            >
+                { columns.map((column, columnIndex) => (
+                    <View
+                        key={columnIndex}
+                        style={styles.inputsColumn}
+                    >
+                        { inputsInColumn.map((input, inputIndex) => {
+                            const inputValueIndex = columnIndex * inputsInColumn.length + inputIndex;
+                            const inputValue = inputValues[inputValueIndex];
+                            const isLastInput = inputValueIndex === inputValues.length - 1;
+
+                            return (
+                                <View
+                                    key={inputValueIndex}
+                                    style={styles.inputContainer}
                                 >
-                                    { inputValueIndex + 1 }.
-                                </Text>
+                                    <Text
+                                        style={[styles.inputIndex, inputValue.isActive && styles.activeInputIndex]}
+                                    >
+                                        { inputValueIndex + 1 }.
+                                    </Text>
 
-                                <TextInput
-                                    ref={inputValue.ref}
-                                    style={[styles.input, inputValue.isActive && styles.activeInput]}
-                                    value={inputValue.value}
-                                    onBlur={makeOnBlur(inputValueIndex)}
-                                    onFocus={makeOnFocus(inputValueIndex)}
-                                    onChangeText={makeOnInputValueChange(inputValueIndex)}
-                                    returnKeyType={isLastInput ? 'done' : 'next'}
-                                    selectionColor={colors.YELLOW}
-                                    onSubmitEditing={makeOnEnterPress(inputValueIndex)}
-                                />
-                            </View>
-                        );
-                    })}
-                </View>
-            ))}
-        </View>);
+                                    <TextInput
+                                        ref={inputValue.ref}
+                                        style={[styles.input, inputValue.isActive && styles.activeInput]}
+                                        value={inputValue.value}
+                                        onBlur={makeOnBlur(inputValueIndex)}
+                                        onFocus={makeOnFocus(inputValueIndex)}
+                                        onChangeText={makeOnInputValueChange(inputValueIndex)}
+                                        returnKeyType={isLastInput ? 'done' : 'next'}
+                                        selectionColor={colors.YELLOW}
+                                        onSubmitEditing={makeOnEnterPress(inputValueIndex)}
+                                        contextMenuHidden
+                                    />
+                                </View>
+                            );
+                        })}
+                    </View>
+                ))}
+            </View>
+        </ContextMenu>);
 }
 
 export default React.memo(EnterSecretPhraseArea);

@@ -18,8 +18,8 @@ export default StyleSheet.create({
     },
 
     enterSecretPhraseArea: {
-        paddingTop: 20,
-        marginBottom: 50,
+        marginBottom: 30,
+        paddingVertical: 20,
         paddingHorizontal: 10,
     },
 

@@ -56,6 +56,7 @@ export const useContextualStyles = ({
                 alignItems: 'center',
                 flexDirection: 'row',
                 justifyContent: 'space-between',
+                backgroundColor: colors.CORAL_BLACK,
             },
             style,
         ]), [ style ]);

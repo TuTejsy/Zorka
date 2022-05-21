@@ -13,7 +13,12 @@ class RealmDB<ObjectType> {
 
     schema = () => this.instance.schema;
 
-    open = (encryptionKey?: Buffer) => {
+    open = (encryptionKey?: Int8Array) => {
+        this.realmConfig = {
+            ...this.realmConfig,
+            encryptionKey,
+        };
+
         this.realmPath = global.isIos
             ? `${ZorkaNative.groupContainerURL}Realm-${this.objectName}.realm`
             : `Realm-${this.objectName}.realm`;
@@ -29,7 +34,6 @@ class RealmDB<ObjectType> {
         return Realm.open({
             ...this.realmConfig,
             path: this.realmPath,
-            encryptionKey,
         })
             .then((realmInstance) => {
                 this.instance = realmInstance;

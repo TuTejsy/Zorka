@@ -6,24 +6,26 @@ import { CURRENCY } from 'appConstants';
 interface CreateTransactionPropTypes {
     fee: number,
     outputAddress: string,
+    cryptoWalletId: string,
     valueInSatoshi: number,
 }
 
 async function createTransaction({
     fee,
     outputAddress,
-    valueInSatoshi
+    valueInSatoshi,
+    cryptoWalletId = CURRENCY.ID.BTC
 }: CreateTransactionPropTypes) {
-    const btcWallet = CryptoDB.object(CURRENCY.ID.BTC);
+    const cryptoWallet = CryptoDB.object(cryptoWalletId);
 
-    if (!btcWallet || !btcWallet.publicAddress) {
-        console.log('createTransaction: btcWallet.address is null');
+    if (!cryptoWallet || !cryptoWallet.publicAddress) {
+        console.error('createTransaction: cryptoWallet.address is null');
 
         return null;
     }
 
-    const privateKey = new PrivateKey(btcWallet.privateKey, Networks.testnet);
-    const publicAddress = btcWallet.publicAddress;
+    const privateKey = new PrivateKey(cryptoWallet.privateKey, Networks.testnet);
+    const publicAddress = cryptoWallet.publicAddress;
 
     const transactions = TransactionsDB
         .objects()

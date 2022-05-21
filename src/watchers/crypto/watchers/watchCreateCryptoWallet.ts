@@ -2,7 +2,6 @@ import Bitcore, { Networks } from 'bitcore-lib';
 import { put, fork, take } from 'redux-saga/effects';
 
 import { CryptoDB } from 'appDatabase';
-import { CURRENCY } from 'appConstants';
 import { actionTypes } from 'appApi/client';
 
 export default function* () {
