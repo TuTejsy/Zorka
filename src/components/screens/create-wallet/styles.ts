@@ -8,12 +8,12 @@ export default StyleSheet.create({
     screen: {
         flex: 1,
         alignItems: 'center',
+        paddingVertical: 30,
         justifyContent: 'space-between',
         backgroundColor: colors.CORAL_BLACK,
     },
 
     attentionContainer: {
-        marginTop: 50,
         borderRadius: 20,
         paddingVertical: 16,
         backgroundColor: colors.BLACK,
@@ -31,16 +31,19 @@ export default StyleSheet.create({
 
     generateSecretPhraseContainer: {
         flex: 1,
+        position: 'relative',
         alignItems: 'center',
         justifyContent: 'center',
     },
 
     generateTextContainer: {
+        top: Screen.width * 0.25,
+        left: 0,
         flex: 1,
-        width: Screen.width * 0.6,
+        width: Screen.width * 0.5,
+        position: 'absolute',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingHorizontal: 20,
     },
 
     generateText: {
@@ -58,12 +61,12 @@ export default StyleSheet.create({
     },
 
     generateSecretPhraseButton: {
-        width: Screen.width * 0.6,
-        height: Screen.width * 0.6,
+        width: Screen.width * 0.5,
+        height: Screen.width * 0.5,
         alignItems: 'center',
         borderWidth: 5,
         borderColor: colors.GHOST_WHITE,
-        borderRadius: Screen.width * 0.3,
+        borderRadius: Screen.width * 0.25,
         justifyContent: 'center',
         backgroundColor: colors.GREEN,
     },

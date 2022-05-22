@@ -56,30 +56,27 @@ function CreateWalletScreen({
             <View style={styles.generateSecretPhraseContainer}>
                 { isGenerating ? (
                     <LoadingCircle
-                        size={Screen.width * 0.6}
+                        size={Screen.width * 0.5}
                         style={styles.loadingCirlce}
                         color={colors.ORANGE_RED}
                         strokeWidth={5}
                         backgroundColor={colors.GHOST_WHITE}
-                    >
-                        <View style={styles.generateTextContainer}>
-                            <Text style={styles.generateText}>
-                                { generateSecretPhraseText }
-                            </Text>
-                        </View>
-                    </LoadingCircle>
+                    />
                 ) : (
                     <TouchableOpacity
                         style={styles.generateSecretPhraseButton}
                         onPress={onGenerateSecretPhrasePress}
-                    >
-                        <View style={styles.generateTextContainer}>
-                            <Text style={styles.generateText}>
-                                { generateSecretPhraseText }
-                            </Text>
-                        </View>
-                    </TouchableOpacity>
+                    />
                 )}
+
+                <View
+                    style={styles.generateTextContainer}
+                    pointerEvents="none"
+                >
+                    <Text style={styles.generateText}>
+                        { generateSecretPhraseText }
+                    </Text>
+                </View>
             </View>
         </SafeAreaView>
     );
