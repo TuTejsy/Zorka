@@ -16,13 +16,13 @@ export default StyleSheet.create({
         marginTop: 50,
         borderRadius: 20,
         paddingVertical: 16,
-        backgroundColor: colors.GHOST_WHITE,
+        backgroundColor: colors.BLACK,
         marginHorizontal: 16,
         paddingHorizontal: 20,
     },
 
     attentionText: {
-        color: colors.CORAL_BLACK,
+        color: colors.ORANGE_RED,
         fontSize: 16,
         textAlign: 'left',
         lineHeight: 21,
