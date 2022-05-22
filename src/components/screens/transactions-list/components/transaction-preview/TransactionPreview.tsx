@@ -3,7 +3,8 @@ import { Text, View, NativeSyntheticEvent } from 'react-native';
 import ContextMenu, { ContextMenuOnPressNativeEvent } from 'react-native-context-menu-view';
 import moment from 'moment';
 
-import { CURRENCY } from 'appConstants';
+import { CURRENCY, LOCALIZATION } from 'appConstants';
+import { useLocalizedStrings } from 'appHooks';
 
 import styles, { useContextualStyles } from './styles';
 
@@ -25,6 +26,16 @@ function TransactionPreview({
 
     onOptionSelect,
 }: TransactionPreviewPropTypes) {
+    const [
+        copySenderAddressText,
+        copyReciverAddressText,
+        confirmationsText,
+    ] = useLocalizedStrings([
+        LOCALIZATION.TRANSACTIONS_LIST_SCREEN.ACTIONS.COPY_SENDER_ADDRESS,
+        LOCALIZATION.TRANSACTIONS_LIST_SCREEN.ACTIONS.COPY_RECIVER_ADDRESS,
+        LOCALIZATION.TRANSACTIONS_LIST_SCREEN.ELEMENTS.CONFIRMATIONS_TITLE,
+    ]);
+
     const contextualStyles = useContextualStyles({
         isIncoming: transaction.isIncoming,
         isConfirmed: transaction.isConfirmed,
@@ -50,7 +61,7 @@ function TransactionPreview({
 
     return (
         <ContextMenu
-            actions={[ { title: `Copy ${transaction.isIncoming ? 'Sender' : 'Reciver'} Address` } ]}
+            actions={[ { title: transaction.isIncoming ? copySenderAddressText : copyReciverAddressText } ]}
             onPress={onOptionSelect}
         >
             <View
@@ -62,7 +73,9 @@ function TransactionPreview({
                     <View style={styles.amountContainer}>
                         <Text style={styles.amountText}> { transactionAmount }</Text>
                         { !transaction.isConfirmed && (
-                            <Text style={styles.confirmations}> ({transaction.confirmations} confirmations)</Text>
+                            <Text
+                                style={styles.confirmations}
+                            > ({transaction.confirmations} {confirmationsText})</Text>
                         )}
                     </View>
 

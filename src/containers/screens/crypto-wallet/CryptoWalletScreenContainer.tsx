@@ -4,8 +4,8 @@ import { Options, Navigation } from 'react-native-navigation';
 
 import { fonts, colors } from 'appAssets/styles';
 import { ToastEmitter } from 'appEmitters';
-import { NAVIGATION } from 'appConstants';
-import { useAppSelector, useActions, useCryptoCurrency } from 'appHooks';
+import { NAVIGATION, LOCALIZATION } from 'appConstants';
+import { useAppSelector, useActions, useCryptoCurrency, useLocalizedStrings } from 'appHooks';
 import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 import { CryptoWalletScreen } from 'appComponents/screens';
 
@@ -22,6 +22,12 @@ function CryptoWalletScreenContainer({
     const isCryptoWalletInfoUpdating = useAppSelector(
         state => state.crypto.isCryptoWalletInfoUpdating[cryptoCurrencyId]
     );
+
+    const [
+        copiedToastrText,
+    ] = useLocalizedStrings([
+        LOCALIZATION.TOASTR.COPIED,
+    ]);
 
     const [
         showModal,
@@ -138,12 +144,12 @@ function CryptoWalletScreenContainer({
             if (cryptoCurrency?.publicAddress) {
                 Clipboard.setString(cryptoCurrency.publicAddress);
                 ToastEmitter.showToast({
-                    text: 'Copied',
+                    text: copiedToastrText,
                     isSuccess: true,
                 });
             }
         },
-        [ cryptoCurrency?.publicAddress ],
+        [cryptoCurrency?.publicAddress, copiedToastrText],
     );
 
     return (

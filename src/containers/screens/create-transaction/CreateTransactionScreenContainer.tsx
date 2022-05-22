@@ -3,8 +3,8 @@ import Clipboard from '@react-native-clipboard/clipboard';
 import { Address, Networks } from 'bitcore-lib';
 import { Navigation } from 'react-native-navigation';
 
-import { CURRENCY } from 'appConstants';
-import { useActions, useCryptoCurrency } from 'appHooks';
+import { CURRENCY, LOCALIZATION } from 'appConstants';
+import { useActions, useCryptoCurrency, useLocalizedStrings } from 'appHooks';
 import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 
 import { CreateTransactionScreen } from 'appComponents/screens';
@@ -18,9 +18,17 @@ function CreateTransactionScreenContainer({
     cryptoId,
     componentId,
 }: CreateTransactionScreenContainerPropTypes) {
+    const [
+        sendText,
+        invalidAddressText,
+    ] = useLocalizedStrings([
+        LOCALIZATION.CREATE_TRANSACTION_SCREEN.BUTTONS.SEND,
+        LOCALIZATION.CREATE_TRANSACTION_SCREEN.BUTTONS.INVALID_ADDRESS,
+    ]);
+
     const cryptoWallet = useCryptoCurrency(cryptoId);
 
-    const [sendAmountInputValue, setSendAmountInputValue] = useState('0');
+    const [sendAmountInputValue, setSendAmountInputValue] = useState('');
     const [reciverAddressInputValue, setReciverAddressInputValue] = useState('');
 
     const [feeStep, minFee, maxFee] = useMemo(() => {
@@ -99,15 +107,15 @@ function CreateTransactionScreenContainer({
 
     const sendButtonText = useMemo(() => {
         if (!isReciverAddressValid) {
-            return 'Invalid Address';
+            return invalidAddressText;
         }
 
         if (cryptoWallet) {
-            return `Send ${sendAmountInputValue} ${cryptoWallet.id}`;
+            return `${sendText} ${sendAmountInputValue} ${cryptoWallet.id}`;
         }
 
         return '';
-    }, [cryptoWallet, isReciverAddressValid, sendAmountInputValue]);
+    }, [cryptoWallet, isReciverAddressValid, sendAmountInputValue, sendText, invalidAddressText]);
 
 
     const handlePasteAddressPress = useCallback(async () => {

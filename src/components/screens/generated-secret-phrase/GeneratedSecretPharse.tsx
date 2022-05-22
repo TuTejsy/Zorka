@@ -4,6 +4,8 @@ import ViewShot from 'react-native-view-shot';
 import { Navigation } from 'react-native-navigation';
 
 import { NAVIGATION } from 'appConstants';
+import { LOCALIZATION } from 'appConstants';
+import { useLocalizedStrings } from 'appHooks';
 import { SecretPharse } from 'appComponents/core';
 import { NavBarDoneButton } from './components';
 import styles from './styles';
@@ -27,16 +29,35 @@ function GeneratedSecretPhraseScreen({
     onCopySecretPhrasePress,
     onSaveSecretPharsePress,
 }: GeneratedSecretPhraseScreenPropTypes) {
+    const [
+        navbarTitleText,
+        navbarRightButtonText,
+        copySecretPhraseText,
+        saveSecretPhraseText,
+    ] = useLocalizedStrings([
+        LOCALIZATION.GENERATED_SECRET_PHRASE_SCREEN.NAVBAR.TITLE,
+        LOCALIZATION.GENERATED_SECRET_PHRASE_SCREEN.NAVBAR.RIGHT_BUTTON,
+        LOCALIZATION.GENERATED_SECRET_PHRASE_SCREEN.BUTTONS.COPY_SECRET_PHRASE,
+        LOCALIZATION.GENERATED_SECRET_PHRASE_SCREEN.BUTTONS.SAVE_SECRET_PHRASE,
+    ]);
+
     useEffect(() => {
         Navigation.registerComponent(
             NAVIGATION.COMPONENTS.NAVBAR.DONE_BUTTON,
             () => props =>
-                <NavBarDoneButton onDonePress={onDonePress} {...props} />,
+                (<NavBarDoneButton
+                    title={navbarRightButtonText}
+                    onDonePress={onDonePress}
+                />),
             () => NavBarDoneButton,
         );
 
         Navigation.mergeOptions(componentId, {
             topBar: {
+                title: {
+                    text: navbarTitleText
+                },
+
                 rightButtons: [
                     {
                         id: NAVIGATION.COMPONENTS.NAVBAR.DONE_BUTTON,
@@ -47,7 +68,7 @@ function GeneratedSecretPhraseScreen({
                 ],
             },
         });
-    }, [componentId, onDonePress]);
+    }, [componentId, navbarTitleText, onDonePress, navbarRightButtonText]);
 
     return (
         <SafeAreaView style={styles.screen}>
@@ -62,14 +83,14 @@ function GeneratedSecretPhraseScreen({
                 style={styles.copySecretPhraseButton}
                 onPress={onCopySecretPhrasePress}
             >
-                <Text style={styles.saveText}>Copy Secret Phrase</Text>
+                <Text style={styles.saveText}>{copySecretPhraseText}</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
                 onPress={onSaveSecretPharsePress}
                 style={styles.saveButton}
             >
-                <Text style={styles.saveText}>Save Secret Phrase</Text>
+                <Text style={styles.saveText}>{saveSecretPhraseText}</Text>
             </TouchableOpacity>
         </SafeAreaView>
     );

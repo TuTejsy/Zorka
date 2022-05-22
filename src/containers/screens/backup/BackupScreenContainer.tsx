@@ -3,6 +3,9 @@ import { Share } from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
 import ViewShot, { captureRef } from 'react-native-view-shot';
 
+import { LOCALIZATION } from 'appConstants';
+import { useLocalizedStrings } from 'appHooks';
+
 import { ToastEmitter } from 'appEmitters';
 import { BackupScreen } from 'appComponents/screens';
 
@@ -16,6 +19,12 @@ function BackupScreenContainer({
     secretPhrase,
 }: BackupScreenContainerPropTypes) {
     const secretPhraseRef = useRef<ViewShot>();
+
+    const [
+        copiedToastrText,
+    ] = useLocalizedStrings([
+        LOCALIZATION.TOASTR.COPIED,
+    ]);
 
     const handleSaveSecretPhrasePress = useCallback(() => {
         captureRef(secretPhraseRef, {
@@ -33,10 +42,10 @@ function BackupScreenContainer({
         Clipboard.setString(secretPhrase);
 
         ToastEmitter.showToast({
-            text: 'Copied',
+            text: copiedToastrText,
             isSuccess: true,
         });
-    }, [ secretPhrase ]);
+    }, [secretPhrase, copiedToastrText]);
 
     return (
         <BackupScreen

@@ -20,14 +20,17 @@ export default StyleSheet.create({
 
     generateTextContainer: {
         flex: 1,
+        width: Screen.width * 0.6,
         alignItems: 'center',
         justifyContent: 'center',
+        paddingHorizontal: 20,
     },
 
     generateText: {
         color: colors.CORAL_BLACK,
         fontSize: 16,
-        lineHeight: 19,
+        textAlign: 'center',
+        lineHeight: 21,
         fontFamily: fonts.MEDIUM,
     },
 

@@ -2,6 +2,7 @@ export const SECRETPHRASE_LENGTH = 24;
 
 export const KEYCHAIN = {
     KEYS: {
+        LOCALIZATIONS: 'zrk.LOCALIZATION',
         SECRET_PHRASE: 'zrk.SECRET_PHRASE',
     },
 };

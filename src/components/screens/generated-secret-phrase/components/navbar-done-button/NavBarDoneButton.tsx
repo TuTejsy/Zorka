@@ -4,12 +4,22 @@ import { Button } from 'react-native';
 import { colors } from 'appAssets/styles';
 
 interface NavBarDoneButtonPropTypes {
+    title: string,
+
     onDonePress: () => void;
 }
 
-function NavBarDoneButton({ onDonePress }: NavBarDoneButtonPropTypes) {
+function NavBarDoneButton({
+    title,
+
+    onDonePress
+}: NavBarDoneButtonPropTypes) {
     return (
-        <Button title="Done" onPress={onDonePress} color={colors.GHOST_WHITE} />
+        <Button
+            color={colors.GHOST_WHITE}
+            title={title}
+            onPress={onDonePress}
+        />
     );
 }
 

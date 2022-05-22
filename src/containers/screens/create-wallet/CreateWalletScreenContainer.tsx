@@ -63,6 +63,7 @@ function CreateWalletScreenContainer({
 
     return (
         <CreateWalletScreen
+            componentId={componentId}
             isGenerating={isGenerating}
             onGenerateSecretPhrasePress={handleGenerateSecretPhrasePress}
         />

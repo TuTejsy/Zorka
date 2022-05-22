@@ -25,7 +25,7 @@ export default StyleSheet.create({
 
     uploadButton: {
         width: Screen.width * 0.6,
-        height: 50,
+        height: 60,
         marginTop: 50,
         marginBottom: 50,
         alignItems: 'center',

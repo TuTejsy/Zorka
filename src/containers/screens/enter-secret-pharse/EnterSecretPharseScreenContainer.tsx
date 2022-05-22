@@ -1,9 +1,7 @@
-import React, { useState, useCallback } from 'react';
+import React, { useCallback } from 'react';
 import RNQRGenerator from 'rn-qr-generator';
 import DocumentPicker from 'react-native-document-picker';
 
-import { Generator } from 'appUtils';
-import { NAVIGATION } from 'appConstants';
 import { useActions } from 'appHooks';
 import { EnterSecretPharseScreen } from 'appComponents/screens';
 import { ACTION_CREATORS_TYPES } from 'appHooks/types';
@@ -40,6 +38,7 @@ function EnterSecretPharseScreenContainer({
 
     return (
         <EnterSecretPharseScreen
+            componentId={componentId}
             onSubmitSecretPhrase={handleEnterSecretPhrase}
             onUploadSecretPhrasePress={handleUploadSecretPhrasePress}
         />

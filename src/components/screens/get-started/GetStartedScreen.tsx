@@ -1,6 +1,9 @@
 import React from 'react';
 import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
 
+import { LOCALIZATION } from 'appConstants';
+import { useLocalizedStrings } from 'appHooks';
+
 import styles from './styles';
 
 interface GetStartedScreenPropTypes {
@@ -12,6 +15,14 @@ function GetStartedScreen({
     onSignInPress,
     onCreateZorkaWalletPress,
 }: GetStartedScreenPropTypes) {
+    const [
+        enterSecretPhrseText,
+        createWalletText,
+    ] = useLocalizedStrings([
+        LOCALIZATION.GET_STARTED_SCREEN.BUTTONS.ENTER_SECRET_PHRASE,
+        LOCALIZATION.GET_STARTED_SCREEN.BUTTONS.CREATE_WALLET,
+    ]);
+
     return (
         <SafeAreaView style={styles.screen}>
             <Text style={styles.title}>Zorka Wallet</Text>
@@ -21,7 +32,7 @@ function GetStartedScreen({
                     style={styles.signInButton}
                     onPress={onSignInPress}
                 >
-                    <Text style={styles.signInButtonText}>Enter Secret Phrase</Text>
+                    <Text style={styles.signInButtonText}>{enterSecretPhrseText}</Text>
                 </TouchableOpacity>
 
                 <TouchableOpacity
@@ -29,7 +40,7 @@ function GetStartedScreen({
                     onPress={onCreateZorkaWalletPress}
                 >
                     <Text style={styles.CreateZorkaWalletButtonText}>
-                        Create Wallet
+                        { createWalletText }
                     </Text>
                 </TouchableOpacity>
             </View>

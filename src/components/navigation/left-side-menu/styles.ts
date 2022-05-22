@@ -23,16 +23,45 @@ export default StyleSheet.create({
         paddingHorizontal: 16,
     },
     button: {
-        height: 50,
+        height: 60,
         alignItems: 'center',
-        marginVertical: 5,
+        marginVertical: 10,
         borderRadius: 30,
         justifyContent: 'center',
         backgroundColor: colors.GREY,
+    },
+    logoutButton: {
+        height: 60,
+        alignItems: 'center',
+        marginVertical: 10,
+        borderRadius: 30,
+        justifyContent: 'center',
+        backgroundColor: colors.ORANGE_RED,
     },
     buttonText: {
         color: colors.BLACK,
         fontSize: 16,
         fontFamily: fonts.REGULAR,
+    },
+    logoutButtonText: {
+        color: colors.GHOST_WHITE,
+        fontSize: 16,
+        fontFamily: fonts.REGULAR,
+    },
+
+    localizationContainer: {
+        width: '100%',
+        marginBottom: 50,
+    },
+    languageTitle: {
+        color: colors.GHOST_WHITE,
+        fontSize: 16,
+        fontFamily: fonts.REGULAR,
+    },
+    languagePicker: {
+        width: '100%',
+        height: 100,
+        justifyContent: 'center',
+        // backgroundColor: colors.GREY,
     },
 });

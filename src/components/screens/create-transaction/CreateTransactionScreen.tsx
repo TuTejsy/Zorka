@@ -1,17 +1,18 @@
-import React, { useState, useCallback } from 'react';
+import React, { useMemo, useState, useCallback } from 'react';
 import {
     Text,
     View,
     Button,
     TextInput,
     SafeAreaView,
+    TouchableOpacity,
     LayoutChangeEvent,
     KeyboardAvoidingView,
-    TouchableOpacity,
 } from 'react-native';
 import { Slider } from '@miblanchard/react-native-slider';
 
-import { CURRENCY } from 'appConstants';
+import { CURRENCY, LOCALIZATION } from 'appConstants';
+import { useLocalizedStrings } from 'appHooks';
 import { colors } from 'appAssets/styles';
 
 import styles, { useContextualStyles } from './styles';
@@ -61,6 +62,30 @@ function CreateTransactionScreen({
     onReciverInputValueChanged,
     onSendAmountInputValueChanged,
 }: CreateTransactionScreenPropTypes) {
+    const [
+        toAddressText,
+        pasteText,
+        reciverAddressText,
+        amountText,
+        maxText,
+        amountToSendText,
+        feeText,
+        lowPreferenceText,
+        mediumPreferenceText,
+        highPreferenceText,
+    ] = useLocalizedStrings([
+        LOCALIZATION.CREATE_TRANSACTION_SCREEN.ELEMENTS.TO_ADDRESS_TITLE,
+        LOCALIZATION.CREATE_TRANSACTION_SCREEN.BUTTONS.PASTE,
+        LOCALIZATION.CREATE_TRANSACTION_SCREEN.ELEMENTS.RECIVER_ADDRESS_TEXT,
+        LOCALIZATION.CREATE_TRANSACTION_SCREEN.ELEMENTS.AMOUNT_TITLE,
+        LOCALIZATION.CREATE_TRANSACTION_SCREEN.BUTTONS.MAX,
+        LOCALIZATION.CREATE_TRANSACTION_SCREEN.ELEMENTS.AMOUNT_TO_SEND_TEXT,
+        LOCALIZATION.CREATE_TRANSACTION_SCREEN.ELEMENTS.FEE_TITLE,
+        LOCALIZATION.CREATE_TRANSACTION_SCREEN.ELEMENTS.PREFERENCE.LOW,
+        LOCALIZATION.CREATE_TRANSACTION_SCREEN.ELEMENTS.PREFERENCE.MEDIUM,
+        LOCALIZATION.CREATE_TRANSACTION_SCREEN.ELEMENTS.PREFERENCE.HIGH,
+    ]);
+
     const cryptoId = cryptoWallet?.id ?? 'BTC';
     const [maxLabelWidth, setMaxLabelWidth] = useState(0);
 
@@ -71,6 +96,19 @@ function CreateTransactionScreen({
         isMaxAmountReached,
         isReciverAddressValid,
     });
+
+    const preferenceText = useMemo(() => {
+        switch(preference) {
+            case 'low':
+                return lowPreferenceText;
+
+            case 'medium':
+                return mediumPreferenceText;
+
+            case 'high':
+                return highPreferenceText;
+        }
+    }, [highPreferenceText, lowPreferenceText, mediumPreferenceText, preference]);
 
     const handleMaxLabelLayout = useCallback((event: LayoutChangeEvent) => {
         setMaxLabelWidth(event.nativeEvent.layout.width);
@@ -92,10 +130,10 @@ function CreateTransactionScreen({
                         <View style={styles.inputTitleContainer}>
                             <Text
                                 style={styles.text}
-                            >To address: </Text>
+                            >{toAddressText}: </Text>
 
                             <Button
-                                title="Paste"
+                                title={pasteText}
                                 color={colors.YELLOW}
                                 onPress={onPasteAddressPress}
                             />
@@ -104,7 +142,7 @@ function CreateTransactionScreen({
                         <TextInput
                             style={contextualStyles.reciverAddressInput}
                             value={reciverAddressInputValue}
-                            placeholder="Reciver address"
+                            placeholder={reciverAddressText}
                             onChangeText={onReciverInputValueChanged}
                             selectionColor={colors.YELLOW}
                             placeholderTextColor={colors.GREY_70}
@@ -115,10 +153,10 @@ function CreateTransactionScreen({
                         <View style={styles.inputTitleContainer}>
                             <Text
                                 style={styles.text}
-                            >Amount: </Text>
+                            >{amountText}: </Text>
 
                             <Button
-                                title="MAX"
+                                title={maxText}
                                 color={colors.YELLOW}
                                 onPress={onSendMaxPress}
                             />
@@ -128,7 +166,7 @@ function CreateTransactionScreen({
                         <TextInput
                             style={contextualStyles.amountToSendInput}
                             value={sendAmountText}
-                            placeholder="Amount to send"
+                            placeholder={amountToSendText}
                             keyboardType="numeric"
                             onChangeText={onSendAmountInputValueChanged}
                             selectionColor={colors.YELLOW}
@@ -147,12 +185,12 @@ function CreateTransactionScreen({
                         <View style={styles.inputTitleContainer}>
                             <Text
                                 style={styles.text}
-                            >Fee: {fee / CURRENCY.SATOSHI_AMOUNT[cryptoId]} {cryptoId}</Text>
+                            >{feeText}: {fee / CURRENCY.SATOSHI_AMOUNT[cryptoId]} {cryptoId}</Text>
 
                             <Text
                                 style={contextualStyles.preferenceText}
                             >
-                                { preference.toUpperCase() }
+                                { preferenceText }
                             </Text>
                         </View>
 

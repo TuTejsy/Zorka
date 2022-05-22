@@ -2,8 +2,8 @@ import React, { useCallback } from 'react';
 import { Navigation ,Options } from 'react-native-navigation';
 
 import { Keychain } from 'appUtils';
-import { KEYCHAIN, NAVIGATION } from 'appConstants';
-import { useActions } from 'appHooks';
+import { KEYCHAIN, NAVIGATION, LOCALIZATION_MODE } from 'appConstants';
+import { useActions, useAppSelector } from 'appHooks';
 import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 import { LeftSideMenu } from 'appComponents/navigation';
 
@@ -14,15 +14,20 @@ interface LeftSideMenuContainerPropTypes {
 function LeftSideMenuContainer({
     componentId,
 }: LeftSideMenuContainerPropTypes) {
+    const localeMode = useAppSelector(state => state.appState.localizationMode);
+
     const [
         push,
         logout,
+        changeAppLocalization,
     ] = useActions<[
         ACTION_CREATORS_TYPES['push'],
         ACTION_CREATORS_TYPES['logout'],
+        ACTION_CREATORS_TYPES['changeAppLocalization'],
     ]>([
         'push',
         'logout',
+        'changeAppLocalization',
     ]);
 
     const dispatchPush = useCallback(
@@ -44,6 +49,10 @@ function LeftSideMenuContainer({
         },
         [ push ],
     );
+
+    const handleLanguageSelect = useCallback((localMode: keyof typeof LOCALIZATION_MODE) => {
+        changeAppLocalization(localMode);
+    }, [ changeAppLocalization ]);
 
     const handleSecretPhrasePress = useCallback(
         () => {
@@ -70,8 +79,10 @@ function LeftSideMenuContainer({
     );
     return (
         <LeftSideMenu
+            localeMode={localeMode}
             componentId={componentId}
             onLogoutPress={logout}
+            onLanguageSelect={handleLanguageSelect}
             onSecretPhrasePress={handleSecretPhrasePress}
         />);
 }

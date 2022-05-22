@@ -3,7 +3,8 @@ import { Share } from 'react-native';
 import Clipboard from '@react-native-clipboard/clipboard';
 import ViewShot, { captureRef } from 'react-native-view-shot';
 
-import { useActions } from 'appHooks';
+import { useActions, useLocalizedStrings } from 'appHooks';
+import { LOCALIZATION } from 'appConstants';
 import { ToastEmitter } from 'appEmitters';
 import { ACTION_CREATORS_TYPES } from 'appHooks/types';
 import { GeneratedSecretPhraseScreen } from 'appComponents/screens';
@@ -17,6 +18,12 @@ function GeneratedSecretPhraseScreenContainer({
     componentId,
     secretPhrase,
 }: GeneratedSecretPhraseScreenContainerPropTypes) {
+    const [
+        copiedToastrText,
+    ] = useLocalizedStrings([
+        LOCALIZATION.TOASTR.COPIED,
+    ]);
+
     const [
         createZorkaWallet,
     ] = useActions<[
@@ -54,10 +61,10 @@ function GeneratedSecretPhraseScreenContainer({
         Clipboard.setString(secretPhrase);
 
         ToastEmitter.showToast({
-            text: 'Copied',
+            text: copiedToastrText,
             isSuccess: true,
         });
-    }, [ secretPhrase ]);
+    }, [secretPhrase, copiedToastrText]);
 
     return (
         <GeneratedSecretPhraseScreen

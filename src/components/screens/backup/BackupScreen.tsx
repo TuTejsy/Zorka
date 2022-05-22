@@ -1,8 +1,10 @@
-import React, { MutableRefObject } from 'react';
+import React, { useEffect, MutableRefObject } from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity } from 'react-native';
 import ViewShot from 'react-native-view-shot';
-import ContextMenu, { ContextMenuOnPressNativeEvent } from 'react-native-context-menu-view';
+import { Navigation } from 'react-native-navigation';
 
+import { LOCALIZATION } from 'appConstants';
+import { useLocalizedStrings } from 'appHooks';
 import { SecretPharse } from 'appComponents/core';
 
 import styles from './styles';
@@ -24,6 +26,26 @@ function BackupScreen({
     onCopySecretPhrasePress,
     onSaveSecretPharsePress,
 }: BackupScreenPropTypes) {
+    const [
+        navbarTitleText,
+        copySecretPhraseText,
+        saveSecretPhraseText,
+    ] = useLocalizedStrings([
+        LOCALIZATION.BACKUP_SCREEN.NAVBAR.TITLE,
+        LOCALIZATION.BACKUP_SCREEN.BUTTONS.COPY_SECRET_PHRASE,
+        LOCALIZATION.BACKUP_SCREEN.BUTTONS.SAVE_SECRET_PHRASE,
+    ]);
+
+    useEffect(() => {
+        Navigation.mergeOptions(componentId, {
+            topBar: {
+                title: {
+                    text: navbarTitleText
+                },
+            },
+        });
+    }, [componentId, navbarTitleText]);
+
     return (
         <SafeAreaView style={styles.screen}>
             <ViewShot
@@ -37,14 +59,14 @@ function BackupScreen({
                 style={styles.copySecretPhraseButton}
                 onPress={onCopySecretPhrasePress}
             >
-                <Text style={styles.saveText}>Copy Secret Phrase</Text>
+                <Text style={styles.saveText}>{ copySecretPhraseText }</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
                 style={styles.saveSecretPharseButton}
                 onPress={onSaveSecretPharsePress}
             >
-                <Text style={styles.saveText}>Save Secret Phrase</Text>
+                <Text style={styles.saveText}> {saveSecretPhraseText} </Text>
             </TouchableOpacity>
         </SafeAreaView>
     );

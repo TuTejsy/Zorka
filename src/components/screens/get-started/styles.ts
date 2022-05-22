@@ -29,8 +29,8 @@ export default StyleSheet.create({
         fontFamily: fonts.REGULAR,
     },
     CreateZorkaWalletButton: {
-        width: Screen.width * 0.6,
-        height: 50,
+        width: Screen.width * 0.7,
+        height: 60,
         alignItems: 'center',
         borderRadius: 30,
         justifyContent: 'center',
@@ -38,8 +38,8 @@ export default StyleSheet.create({
     },
 
     signInButton: {
-        width: Screen.width * 0.6,
-        height: 50,
+        width: Screen.width * 0.7,
+        height: 60,
         alignItems: 'center',
         borderColor: colors.CORAL_BLACK,
         borderWidth: 2,

@@ -391,6 +391,8 @@ PODS:
     - React
   - RNCClipboard (1.10.0):
     - React-Core
+  - RNCPicker (2.4.1):
+    - React-Core
   - RNFS (2.20.0):
     - React-Core
   - RNQrGenerator (1.2.0):
@@ -472,6 +474,7 @@ DEPENDENCIES:
   - ReactNativeNavigation (from `../node_modules/react-native-navigation`)
   - RealmJS (from `../node_modules/realm`)
   - "RNCClipboard (from `../node_modules/@react-native-clipboard/clipboard`)"
+  - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
   - RNFS (from `../node_modules/react-native-fs`)
   - RNQrGenerator (from `../node_modules/rn-qr-generator`)
   - RNSVG (from `../node_modules/react-native-svg`)
@@ -577,6 +580,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/realm"
   RNCClipboard:
     :path: "../node_modules/@react-native-clipboard/clipboard"
+  RNCPicker:
+    :path: "../node_modules/@react-native-picker/picker"
   RNFS:
     :path: "../node_modules/react-native-fs"
   RNQrGenerator:
@@ -641,6 +646,7 @@ SPEC CHECKSUMS:
   ReactNativeNavigation: d8e360047f2cbccc8fa10cabc1c385e59b82fa33
   RealmJS: d3d4acb68c1ce2d9f518e4b9c2e1cc293903372f
   RNCClipboard: f1736c75ab85b627a4d57587edb4b60999c4dd80
+  RNCPicker: abc646b53a3d28ccfa3232c927a0ca52e0cf024d
   RNFS: 4ac0f0ea233904cb798630b3c077808c06931688
   RNQrGenerator: 34beaf1996de4a2f2122c7019dccd1717b22d8d7
   RNSVG: 551acb6562324b1d52a4e0758f7ca0ec234e278f

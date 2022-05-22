@@ -17,18 +17,17 @@ export default StyleSheet.create({
     },
 
     copySecretPhraseButton: {
-        width: Screen.width * 0.6,
-        height: 50,
+        width: Screen.width * 0.7,
+        height: 60,
         marginTop: 50,
         alignItems: 'center',
         borderRadius: 30,
         justifyContent: 'center',
         backgroundColor: colors.GREEN,
     },
-
     saveButton: {
-        width: Screen.width * 0.6,
-        height: 50,
+        width: Screen.width * 0.7,
+        height: 60,
         marginTop: 20,
         alignItems: 'center',
         borderRadius: 30,

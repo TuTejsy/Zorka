@@ -88,7 +88,6 @@ const screensOptions: ScreensOptions = {
     [NAVIGATION.SCREENS.AUTH.ENTER_SECRET_PHARSE]: {
         topBar: {
             title: {
-                text: 'Enter Secret Phrase',
                 color: colors.GHOST_WHITE,
                 fontSize: 18,
                 fontFamily: fonts.MEDIUM,

@@ -126,6 +126,7 @@ export default StyleSheet.create({
     createZorkaWalletText: {
         color: colors.GHOST_WHITE,
         fontSize: 21,
+        textAlign: 'center',
         marginTop: 50,
         fontFamily: fonts.REGULAR,
         marginBottom: 50,

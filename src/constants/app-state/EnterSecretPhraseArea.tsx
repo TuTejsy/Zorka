@@ -31,7 +31,7 @@ function EnterSecretPhraseArea({
     const [
         pasteSecretPhraseText,
     ] = useLocalizedStrings([
-        LOCALIZATION.ENTER_SECRET_PHRASE_SCREEN.ENTER_SECRET_PHRASE_AREA.ACTIONS.PASTE,
+        LOCALIZATION.GET_STARTED_SCREEN..ENTER_SECRET_PHRASE_AREA.ACTIONS.PASTE,
     ]);
 
     const contextualStyles = useContextualStyles({ style });
