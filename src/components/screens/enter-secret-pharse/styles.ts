@@ -19,17 +19,17 @@ export default StyleSheet.create({
 
     enterSecretPhraseArea: {
         marginBottom: 30,
-        paddingVertical: 20,
+        paddingVertical: Screen.isSmall ? 10 : 20,
         paddingHorizontal: 10,
     },
 
     uploadButton: {
         width: Screen.width * 0.6,
-        height: 60,
+        height: Screen.isSmall ? 50 : 60,
         marginTop: 50,
-        marginBottom: 50,
         alignItems: 'center',
         borderRadius: 30,
+        marginBottom:  Screen.isSmall ? 20 : 50,
         justifyContent: 'center',
         backgroundColor: colors.GREEN,
     },

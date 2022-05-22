@@ -8,7 +8,8 @@ export default StyleSheet.create({
     screen: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
+        paddingVertical: 20,
         backgroundColor: colors.CORAL_BLACK,
     },
 
@@ -17,16 +18,15 @@ export default StyleSheet.create({
     },
 
     copySecretPhraseButton: {
-        width: Screen.width * 0.7,
+        width: Screen.width * 0.8,
         height: 60,
-        marginTop: 50,
         alignItems: 'center',
         borderRadius: 30,
         justifyContent: 'center',
         backgroundColor: colors.GREEN,
     },
     saveButton: {
-        width: Screen.width * 0.7,
+        width: Screen.width * 0.8,
         height: 60,
         marginTop: 20,
         alignItems: 'center',

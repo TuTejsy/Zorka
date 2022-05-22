@@ -1,19 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 import { Screen } from 'appUtils';
-
 import { colors, fonts } from 'appAssets/styles';
 
 export default StyleSheet.create({
     screen: {
         flex: 1,
+        paddingTop: Screen.isSmall ? 20 : 50,
         alignItems: 'center',
         justifyContent: 'flex-start',
         backgroundColor: colors.CORAL_BLACK,
         paddingHorizontal: 16,
     },
     scrollView: {
-        paddingTop: 50,
         backgroundColor: colors.CORAL_BLACK,
     },
     content: {

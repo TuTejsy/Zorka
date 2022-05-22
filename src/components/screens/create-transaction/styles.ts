@@ -150,7 +150,7 @@ export const useContextualStyles = ({
     const sendButton: StyleProp<ViewStyle> = useMemo(
         () => ({
             width: Screen.width * 0.7,
-            height: 60,
+            height: Screen.isSmall ? 50 : 60,
             alignItems: 'center',
             borderWidth: 1,
             borderColor: isReadyToSend ? colors.GHOST_WHITE : colors.GREY,

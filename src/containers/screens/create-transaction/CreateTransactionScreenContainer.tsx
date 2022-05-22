@@ -111,7 +111,7 @@ function CreateTransactionScreenContainer({
         }
 
         if (cryptoWallet) {
-            return `${sendText} ${sendAmountInputValue} ${cryptoWallet.id}`;
+            return `${sendText} ${sendAmountInputValue || 0} ${cryptoWallet.id}`;
         }
 
         return '';

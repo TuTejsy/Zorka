@@ -1,5 +1,5 @@
 import React, { useEffect, MutableRefObject } from 'react';
-import { Text, SafeAreaView, TouchableOpacity } from 'react-native';
+import { Text, View, SafeAreaView, TouchableOpacity } from 'react-native';
 import ViewShot from 'react-native-view-shot';
 import { Navigation } from 'react-native-navigation';
 
@@ -71,7 +71,9 @@ function GeneratedSecretPhraseScreen({
     }, [componentId, navbarTitleText, onDonePress, navbarRightButtonText]);
 
     return (
-        <SafeAreaView style={styles.screen}>
+        <SafeAreaView
+            style={styles.screen}
+        >
             <ViewShot
                 ref={secretPhraseRef}
                 style={styles.secretPhraseContainer}
@@ -79,19 +81,21 @@ function GeneratedSecretPhraseScreen({
                 <SecretPharse secretPhrase={secretPhrase} />
             </ViewShot>
 
-            <TouchableOpacity
-                style={styles.copySecretPhraseButton}
-                onPress={onCopySecretPhrasePress}
-            >
-                <Text style={styles.saveText}>{copySecretPhraseText}</Text>
-            </TouchableOpacity>
+            <View>
+                <TouchableOpacity
+                    style={styles.copySecretPhraseButton}
+                    onPress={onCopySecretPhrasePress}
+                >
+                    <Text style={styles.saveText}>{copySecretPhraseText}</Text>
+                </TouchableOpacity>
 
-            <TouchableOpacity
-                onPress={onSaveSecretPharsePress}
-                style={styles.saveButton}
-            >
-                <Text style={styles.saveText}>{saveSecretPhraseText}</Text>
-            </TouchableOpacity>
+                <TouchableOpacity
+                    onPress={onSaveSecretPharsePress}
+                    style={styles.saveButton}
+                >
+                    <Text style={styles.saveText}>{saveSecretPhraseText}</Text>
+                </TouchableOpacity>
+            </View>
         </SafeAreaView>
     );
 }

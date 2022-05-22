@@ -160,6 +160,7 @@ function EnterSecretPhraseArea({
                                         value={inputValue.value}
                                         onBlur={makeOnBlur(inputValueIndex)}
                                         onFocus={makeOnFocus(inputValueIndex)}
+                                        autoCorrect={false}
                                         onChangeText={makeOnInputValueChange(inputValueIndex)}
                                         returnKeyType={isLastInput ? 'done' : 'next'}
                                         selectionColor={colors.YELLOW}

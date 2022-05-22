@@ -120,11 +120,11 @@ export const SCREENS_LOCALIZATION = {
         BUTTONS: {
             CREATE_WALLET: {
                 [LOCALIZATION_MODE.EN]: 'Create Wallet',
-                [LOCALIZATION_MODE.RU]: 'Создать кошелёк',
+                [LOCALIZATION_MODE.RU]: 'Создать Кошелёк',
             },
             VIEW_HISTORY: {
-                [LOCALIZATION_MODE.EN]: 'View History',
-                [LOCALIZATION_MODE.RU]: 'Посмотреть Историю',
+                [LOCALIZATION_MODE.EN]: 'Transactions History',
+                [LOCALIZATION_MODE.RU]: 'История Транзакций',
             },
             SEND_CRYPTO: {
                 [LOCALIZATION_MODE.EN]: 'Send Crypto',

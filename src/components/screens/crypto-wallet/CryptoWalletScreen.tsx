@@ -74,6 +74,7 @@ function CryptoWalletScreen({
         <ScrollView
             style={styles.scrollView}
             scrollEnabled={isWalletExists}
+            contentContainerStyle={styles.screen}
             refreshControl={isWalletExists ? (
                 <RefreshControl
                     onRefresh={onRefresh}
@@ -81,7 +82,6 @@ function CryptoWalletScreen({
                     refreshing={isRefreshing}
                 />
             ) : undefined}
-            contentContainerStyle={styles.screen}
         >
             { logoURL && (
                 <View
