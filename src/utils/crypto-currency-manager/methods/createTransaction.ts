@@ -19,9 +19,7 @@ async function createTransaction({
     const cryptoWallet = CryptoDB.object(cryptoWalletId);
 
     if (!cryptoWallet || !cryptoWallet.publicAddress) {
-        console.error('createTransaction: cryptoWallet.address is null');
-
-        return null;
+        throw 'createTransaction: cryptoWallet.address is null';
     }
 
     const privateKey = new PrivateKey(cryptoWallet.privateKey, Networks.testnet);

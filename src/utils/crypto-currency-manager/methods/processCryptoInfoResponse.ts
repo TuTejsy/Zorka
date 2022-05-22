@@ -1,12 +1,11 @@
 import { CryptoDB, TransactionsDB } from 'appDatabase';
-
 import { convertTransactionToDB, convertTXRefToTransaction } from './helpers';
 
 async function processCryptoInfoResponse(response: Address, cryptoId: string) {
     const crypto = CryptoDB.object(cryptoId);
 
     if (!crypto || !crypto.publicAddress) {
-        return;
+        throw 'Crypto doesn\'t exist';
     }
 
     const publicAddress = crypto.publicAddress;

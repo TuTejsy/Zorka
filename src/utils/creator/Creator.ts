@@ -3,7 +3,6 @@ import {
     createNameRegex,
     createMiddleware,
     createRequestURL,
-    createNameForDuplicate,
     createCollectionObserverChannel,
     createCollectionChangesObserverChannel,
 } from './methods';
@@ -13,7 +12,6 @@ class Creator {
     static nameRegex = createNameRegex;
     static requestURL = createRequestURL;
     static middleware = createMiddleware;
-    static nameForDuplicate = createNameForDuplicate;
     static collectionObserverChannel = createCollectionObserverChannel;
     static collectionChangesObserverChannel =
     createCollectionChangesObserverChannel;

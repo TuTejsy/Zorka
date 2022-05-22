@@ -26,9 +26,11 @@ function CreateWalletScreen({
     const [
         navbarTitleText,
         generateSecretPhraseText,
+        attentionText,
     ] = useLocalizedStrings([
         LOCALIZATION.CREATE_WALLET_SCREEN.NAVBAR.TITLE,
-        LOCALIZATION.CREATE_WALLET_SCREEN.BUTTONS.GENERATE_SECRET_PHRASE
+        LOCALIZATION.CREATE_WALLET_SCREEN.BUTTONS.GENERATE_SECRET_PHRASE,
+        LOCALIZATION.CREATE_WALLET_SCREEN.TEXT.ATTENTION_TEXT,
     ]);
 
     useEffect(() => {
@@ -43,6 +45,14 @@ function CreateWalletScreen({
 
     return (
         <SafeAreaView style={styles.screen}>
+            <View
+                style={styles.attentionContainer}
+            >
+                <Text
+                    style={styles.attentionText}
+                >{attentionText}</Text>
+            </View>
+
             <View style={styles.generateSecretPhraseContainer}>
                 { isGenerating ? (
                     <LoadingCircle

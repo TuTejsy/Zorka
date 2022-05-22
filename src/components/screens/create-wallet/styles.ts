@@ -12,6 +12,23 @@ export default StyleSheet.create({
         backgroundColor: colors.CORAL_BLACK,
     },
 
+    attentionContainer: {
+        marginTop: 50,
+        borderRadius: 20,
+        paddingVertical: 16,
+        backgroundColor: colors.GHOST_WHITE,
+        marginHorizontal: 16,
+        paddingHorizontal: 20,
+    },
+
+    attentionText: {
+        color: colors.CORAL_BLACK,
+        fontSize: 16,
+        textAlign: 'left',
+        lineHeight: 21,
+        fontFamily: fonts.REGULAR,
+    },
+
     generateSecretPhraseContainer: {
         flex: 1,
         alignItems: 'center',

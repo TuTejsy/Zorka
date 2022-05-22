@@ -42,6 +42,15 @@ export const SCREENS_LOCALIZATION = {
                 [LOCALIZATION_MODE.RU]: 'Создать Кошелёк',
             }
         },
+        TEXT: {
+            ATTENTION_TEXT: {
+                [LOCALIZATION_MODE.EN]: '',
+                [LOCALIZATION_MODE.RU]:
+                    'Ваш криптокошелёк будет надёжно защищён Секретной Фразой.\n\nСозданная Секретная Фраза '
+                    + 'гарантирует доступ к вашей криптовалюте.\n\nНадёжно храните и никому не сообщайте '
+                    + 'Секретную Фразу.\n\nПри её утрате восстановить доступ к вашей криптовалюте будет невозможно.',
+            }
+        },
         BUTTONS: {
             GENERATE_SECRET_PHRASE: {
                 [LOCALIZATION_MODE.EN]: 'Generate Secret Phrase',
